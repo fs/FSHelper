@@ -31,8 +31,11 @@ class FSTextView :UITextView {
         let textView = FSTextView(frame: CGRectMake(0, 0, width, 0))
         textView.font = font
         textView.text = text
-        let size = textView.sizeThatFits(CGSizeMake(width, CGFloat.max))
-        return size.height + 1
+        return textView.textHeight
+    }
+    
+    override var textHeight:CGFloat {
+        return super.textHeight
     }
 }
 
@@ -43,7 +46,11 @@ extension UITextView {
         let textView = UITextView(frame: CGRectMake(0, 0, width, 0))
         textView.font = font
         textView.text = text
-        let size = textView.sizeThatFits(CGSizeMake(width, CGFloat.max))
+        return textView.textHeight
+    }
+    
+    var textHeight:CGFloat {
+        let size = self.sizeThatFits(CGSizeMake(width, CGFloat.max))
         return size.height + 1
     }
 }
