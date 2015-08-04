@@ -14,11 +14,11 @@
 		<string>github.com:fs/FSHelper.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Swift/Project/SwiftHelpers/SwiftHelpers.xcodeproj</string>
+	<string>Swift/Project/SwiftHelpers.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>5498BAFDC3AD6CE5D14E6E181524F43733D41CD0</key>
-		<string>../../../../..</string>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:fs/FSHelper.git</string>
