@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = 'FSHelper-ObjectiveC'
+  s.name         = 'FSHelpers-ObjectiveC'
   s.version      = '1.1'
   s.summary      = 'Extensions for iOS'
   s.homepage     = 'https://github.com/fs/FSHelper/Objective-C'
