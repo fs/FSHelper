@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = 'FSHelpers-Swift'
+  s.name         = 'FSHelpers+Swift'
   s.version      = '1.1'
   s.summary      = 'Helpers and extensions for iOS'
   s.homepage     = 'https://github.com/fs/FSHelper/Swift'
