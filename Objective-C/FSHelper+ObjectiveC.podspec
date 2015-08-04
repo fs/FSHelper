@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
-  s.name         = 'FSHelpers+ObjectiveC'
+  s.name         = 'FSHelper+ObjectiveC'
   s.version      = '1.1'
   s.summary      = 'Extensions for iOS'
-  s.homepage     = 'https://github.com/fs/FSHelper/Objective-C'
+  s.homepage     = 'https://github.com/fs/FSHelper/tree/master/Objective-C'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { 'Vladimir Goncharov' => 'vladimir1631@yandex.ru' }
   s.platform     = :ios, '5.0'
