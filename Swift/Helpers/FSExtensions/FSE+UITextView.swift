@@ -10,7 +10,7 @@ import UIKit
 
 class FSTextView :UITextView {
     
-    private var placeholderLabel:UILabel = UILabel()
+    private(set) var placeholderLabel:UILabel = UILabel()
     
     @IBInspectable var placeholderColor:UIColor {
         set (value) {
@@ -27,6 +27,12 @@ class FSTextView :UITextView {
         }
         get {
             return self.placeholderLabel.text
+        }
+    }
+    
+    override var bounds: CGRect {
+        didSet {
+            self.placeholderLabel.preferredMaxLayoutWidth = self.frame.width
         }
     }
     
@@ -62,20 +68,29 @@ class FSTextView :UITextView {
     }
     
     private func setupPlaceholder () {
+        self.placeholderLabel.preferredMaxLayoutWidth = self.frame.width
+        self.placeholderLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.placeholderLabel.textColor = RGBA(198, 198, 204, 1)
         self.placeholderLabel.userInteractionEnabled = false
         self.placeholderLabel.numberOfLines = 0
         self.placeholderLabel.font = self.font
         
-        self.placeholderLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
         self.addSubview(self.placeholderLabel)
         
         let insets = self.textContainerInset
         let views = ["label": self.placeholderLabel]
         let metrics = ["LEFT": insets.left, "TOP": insets.top, "RIGHT": insets.right, "BOTTOM": insets.bottom]
         
-        self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("H:|-LEFT-[label]-RIGHT-|", options: nil, metrics: metrics, views: views))
-        self.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-TOP-[label]-(>=BOTTOM)-|", options: nil, metrics: metrics, views: views))
+        var constraints:[NSLayoutConstraint] = []
+        
+        constraints += NSLayoutConstraint.constraintsWithVisualFormat("H:|-LEFT-[label]-RIGHT-|", options: nil, metrics: metrics, views: views) as! [NSLayoutConstraint]
+        constraints += NSLayoutConstraint.constraintsWithVisualFormat("V:|-TOP-[label]-(>=BOTTOM)-|", options: nil, metrics: metrics, views: views) as! [NSLayoutConstraint]
+        for constraint in constraints {
+            constraint.priority = 751
+        }
+        
+        self.addConstraints(constraints)
+        self.textViewDidChange(nil)
     }
     
     override class func getTextHeight (forText text:String, width:CGFloat, font:UIFont) -> CGFloat {
