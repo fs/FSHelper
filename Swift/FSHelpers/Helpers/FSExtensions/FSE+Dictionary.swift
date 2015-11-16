@@ -8,9 +8,9 @@
 
 import Foundation
 
-extension Dictionary {
+public extension Dictionary {
     
-    func objectForKey(key:Key, orDefault def:Value) -> Value {
+    public func objectForKey(key:Key, orDefault def:Value) -> Value {
         guard let value = self[key] else {return def}
         return value
     }

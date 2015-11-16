@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TimePeriod:NSTimeInterval {
+public enum TimePeriod:NSTimeInterval {
     case Second     = 1
     case Minute     = 60
     case Hour       = 3600
@@ -16,13 +16,13 @@ enum TimePeriod:NSTimeInterval {
     case Week       = 604800
 }
 
-enum DatePeriod:Int {
+public enum DatePeriod:Int {
     case Unknow     = -1
     case Today      = 0
     case Tomorrow   = 1
     case ThisWeek   = 2
     
-    init (date:NSDate) {
+    public init (date:NSDate) {
         
         if date.isDateToday() {
             self = .Today
@@ -43,8 +43,8 @@ enum DatePeriod:Int {
     }
 }
 
-extension NSTimeInterval {
-    var timezone: NSTimeInterval {
+public extension NSTimeInterval {
+    public var timezone: NSTimeInterval {
         let calendar = NSCalendar.currentCalendar()
         let date = NSDate(timeIntervalSince1970: self)
         
@@ -55,25 +55,25 @@ extension NSTimeInterval {
     }
 }
 
-extension NSDate {
+public extension NSDate {
     
-    var timezone: NSTimeInterval {
+    public var timezone: NSTimeInterval {
         return self.timeIntervalSince1970.timezone
     }
     
-    func isDateToday () -> Bool {
+    public func isDateToday () -> Bool {
         return NSDate().midnightDate() == self.midnightDate()
     }
     
-    func isTomorrow () -> Bool {
+    public func isTomorrow () -> Bool {
         return self.isEqualToDateIgnoringTime(NSDate().tomorrow)
     }
     
-    func isThisWeek () -> Bool {
+    public func isThisWeek () -> Bool {
         return self.isSameWeekAsDate(NSDate())
     }
     
-    func midnightDate () -> NSDate {
+    public func midnightDate () -> NSDate {
         
         let timestamp = self.timeIntervalSince1970 + self.timezone
         let midnightTimestamp = timestamp - timestamp%(TimePeriod.Day.rawValue)
@@ -82,7 +82,7 @@ extension NSDate {
         return result
     }
     
-    func isSameWeekAsDate(date:NSDate) -> Bool
+    public func isSameWeekAsDate(date:NSDate) -> Bool
     {
         //Compare by date components is not working becouse it's start week from monday
         
@@ -153,17 +153,17 @@ extension NSDate {
         return dateInterval >= minInterval && dateInterval <= maxInterval
     }
     
-    func isEqualToDateIgnoringTime (date:NSDate) -> Bool {
+    public func isEqualToDateIgnoringTime (date:NSDate) -> Bool {
         return self.midnightDate() == date.midnightDate()
     }
     
-    func dateByAddingDays (days: Int) -> NSDate {
+    public func dateByAddingDays (days: Int) -> NSDate {
         let timeInterval:NSTimeInterval = self.timeIntervalSinceReferenceDate + TimePeriod.Day.rawValue * NSTimeInterval(days)
         let newDate = NSDate(timeIntervalSinceReferenceDate: timeInterval)
         return newDate
     }
     
-    var tomorrow: NSDate {
+    public var tomorrow: NSDate {
         return self.dateByAddingDays(1)
     }
 }

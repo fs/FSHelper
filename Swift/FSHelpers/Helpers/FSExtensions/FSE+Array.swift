@@ -8,14 +8,14 @@
 
 import Foundation
 
-extension Array {
+public extension Array {
     
-    func objectAtIndexOrNil (index:Int) -> Element? {
+    public func objectAtIndexOrNil (index:Int) -> Element? {
         guard index < self.count && index >= 0 else {return nil}
         return self[index]
     }
     
-    func shuffle () -> Array {
+    public func shuffle () -> Array {
         var array:Array = self
         
         for i in 0 ..< array.count {

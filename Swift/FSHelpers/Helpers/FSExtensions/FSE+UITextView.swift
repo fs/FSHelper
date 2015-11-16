@@ -8,11 +8,11 @@
 
 import UIKit
 
-class FSTextView :UITextView {
+public class FSTextView :UITextView {
     
     private(set) var placeholderLabel:UILabel = UILabel()
     
-    @IBInspectable var placeholderColor:UIColor {
+    @IBInspectable public  var placeholderColor:UIColor {
         set (value) {
             self.placeholderLabel.textColor = value
         }
@@ -21,7 +21,7 @@ class FSTextView :UITextView {
         }
     }
     
-    @IBInspectable var placeholder: String? {
+    @IBInspectable public  var placeholder: String? {
         set (value) {
             self.placeholderLabel.text = value
         }
@@ -30,7 +30,7 @@ class FSTextView :UITextView {
         }
     }
     
-    override var bounds: CGRect {
+    override public var bounds: CGRect {
         didSet {
             self.placeholderLabel.preferredMaxLayoutWidth = self.frame.width
         }
@@ -46,7 +46,7 @@ class FSTextView :UITextView {
         self.initialize()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.initialize()
     }
@@ -93,18 +93,18 @@ class FSTextView :UITextView {
         self.textViewDidChange(nil)
     }
     
-    override class func getTextHeight (forText text:String, width:CGFloat, font:UIFont) -> CGFloat {
+    override class public func getTextHeight (forText text:String, width:CGFloat, font:UIFont) -> CGFloat {
         let textView = FSTextView(frame: CGRectMake(0, 0, width, 0))
         textView.font = font
         textView.text = text
         return textView.textHeight
     }
     
-    override var textHeight:CGFloat {
+    override public var textHeight:CGFloat {
         return super.textHeight
     }
     
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+    override public func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
         if keyPath ==  "text" || object as? NSObject == self {
             self.textViewDidChange(nil)
         } else {
@@ -133,7 +133,7 @@ class FSTextView :UITextView {
 
 extension UITextView {
     
-    class func getTextHeight (forText text:String, width:CGFloat, font:UIFont) -> CGFloat {
+    class public func getTextHeight (forText text:String, width:CGFloat, font:UIFont) -> CGFloat {
         
         let textView = UITextView(frame: CGRectMake(0, 0, width, 0))
         textView.font = font
@@ -141,7 +141,7 @@ extension UITextView {
         return textView.textHeight
     }
     
-    var textHeight:CGFloat {
+    public var textHeight:CGFloat {
         let size = self.sizeThatFits(CGSizeMake(width, CGFloat.max))
         return size.height + 1
     }

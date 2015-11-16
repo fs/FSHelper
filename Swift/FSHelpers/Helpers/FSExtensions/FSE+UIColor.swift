@@ -8,9 +8,9 @@
 
 import UIKit
 
-extension UIColor {
+public extension UIColor {
     
-    convenience init? (hexString:String, alpha: CGFloat = 1) {
+    convenience public init? (hexString:String, alpha: CGFloat = 1) {
         
         let regex:NSRegularExpression = try! NSRegularExpression(pattern: "[^a-fA-F|0-9]", options: [])
         
@@ -43,7 +43,7 @@ extension UIColor {
         )
     }
     
-    func hexString () -> String {
+    public func hexString () -> String {
         
         // Special case, as white doesn't fall into the RGB color space
         if (self == UIColor.whiteColor()) {

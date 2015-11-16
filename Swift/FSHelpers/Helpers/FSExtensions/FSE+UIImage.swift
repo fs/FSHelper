@@ -8,20 +8,20 @@
 
 import UIKit
 
-struct BitmapPixel {
-    var r: UInt8
-    var g: UInt8
-    var b: UInt8
-    var a: UInt8
+public struct BitmapPixel {
+    public var r: UInt8
+    public var g: UInt8
+    public var b: UInt8
+    public var a: UInt8
     
-    init (value: UInt32) {
+    public init (value: UInt32) {
         self.r  = UInt8((value >> 0)   & 0xFF)
         self.g  = UInt8((value >> 8)   & 0xFF)
         self.b  = UInt8((value >> 16)  & 0xFF)
         self.a  = UInt8((value >> 24)  & 0xFF)
     }
     
-    init (color: UIColor) {
+    public init (color: UIColor) {
         var red:    CGFloat = -1
         var green:  CGFloat = -1
         var blue:   CGFloat = -1
@@ -35,7 +35,7 @@ struct BitmapPixel {
         self.a  = UInt8(alpha   * 255)
     }
     
-    var value: UInt32 {
+    public var value: UInt32 {
         let red     = UInt32(self.r) << 0
         let green   = UInt32(self.g) << 8
         let blue    = UInt32(self.b) << 16
@@ -46,7 +46,7 @@ struct BitmapPixel {
         return result
     }
     
-    var color: UIColor {
+    public var color: UIColor {
         return UIColor(
             red:    CGFloat(self.r)/255,
             green:  CGFloat(self.g)/255,
@@ -54,45 +54,45 @@ struct BitmapPixel {
             alpha:  CGFloat(self.a)/255)
     }
     
-    var description: String {
+    public var description: String {
         return "\(self.r)|\(self.g)|\(self.b)|\(self.a)"
+    }
+    
+    public var brightness: UInt8 {
+        return UInt8((CGFloat(self.brightness32)/(255*3))*255)
     }
     
     private var brightness32: UInt32 {
         return UInt32(self.r) + UInt32(self.g) + UInt32(self.b)
     }
-    
-    var brightness: UInt8 {
-        return UInt8((CGFloat(self.brightness32)/(255*3))*255)
-    }
 }
 
-class Bitmap: NSObject {
+public class Bitmap: NSObject {
     
     private var bytesPerRow: Int {
         return Int(self.size.width)
     }
     
-    var data: UnsafeMutablePointer<UInt32>
-    var size: (width: Int, height: Int)
+    public var data: UnsafeMutablePointer<UInt32>
+    public var size: (width: Int, height: Int)
     
-    init (data: UnsafeMutablePointer<UInt32>, size: (width: Int, height: Int)) {
+    public init (data: UnsafeMutablePointer<UInt32>, size: (width: Int, height: Int)) {
         self.size = size
         self.data = data
         super.init()
     }
     
-    init (size: (width: Int, height: Int)) {
+    public init (size: (width: Int, height: Int)) {
         self.size = size
         self.data = UnsafeMutablePointer<UInt32>(calloc(self.size.width*self.size.height, sizeof(UInt32)))
         super.init()
     }
     
-    convenience init (size: CGSize) {
+    convenience public init (size: CGSize) {
         self.init(size: (width: Int(size.width), height: Int(size.height)))
     }
     
-    func getCGImage () -> CGImage {
+    public func getCGImage () -> CGImage {
         let width   = self.size.width
         let height  = self.size.height
         
@@ -117,16 +117,16 @@ class Bitmap: NSObject {
         return image!
     }
     
-    func getUIImage (scale: CGFloat = UIScreen.mainScreen().scale, orientation: UIImageOrientation = UIImageOrientation.Up) -> UIImage {
+    public func getUIImage (scale: CGFloat = UIScreen.mainScreen().scale, orientation: UIImageOrientation = UIImageOrientation.Up) -> UIImage {
         let image = self.getCGImage()
         return UIImage(CGImage: image, scale: scale, orientation: orientation)
     }
     
-    func getPixel (x: Int, _ y: Int) -> BitmapPixel {
+    public func getPixel (x: Int, _ y: Int) -> BitmapPixel {
         return BitmapPixel(value: self.data[self.index(x, y)])
     }
     
-    func setPixel (pixel: BitmapPixel, point: (x: Int, y: Int)) {
+    public func setPixel (pixel: BitmapPixel, point: (x: Int, y: Int)) {
         self.data[self.index(point.x, point.y)] = pixel.value
     }
     
@@ -135,9 +135,9 @@ class Bitmap: NSObject {
     }
 }
 
-extension UIImage {
+public extension UIImage {
     
-    func getBitmap () -> Bitmap {
+    public func getBitmap () -> Bitmap {
         let imageRef: CGImageRef? = self.CGImage
         
         //Get image width, height
@@ -166,7 +166,7 @@ extension UIImage {
         return Bitmap(data: bitmapData, size: (pixelsWide, pixelsHigh))
     }
     
-    var base64: String {
+    public var base64: String {
         let imageData = UIImagePNGRepresentation(self)!
         let base64String = imageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
         return base64String
