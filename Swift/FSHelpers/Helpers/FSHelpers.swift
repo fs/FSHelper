@@ -11,72 +11,72 @@ import UIKit
 
 //MARK: - Application Directory
 
-func ApplicationDirectoryPath (directoryToSearch:NSSearchPathDirectory) -> String {
+public func ApplicationDirectoryPath (directoryToSearch:NSSearchPathDirectory) -> String {
     return NSSearchPathForDirectoriesInDomains(directoryToSearch, NSSearchPathDomainMask.UserDomainMask, true).first!
 }
 
-func ApplicationDirectoryURL (directoryToSearch:NSSearchPathDirectory) -> NSURL {
+public func ApplicationDirectoryURL (directoryToSearch:NSSearchPathDirectory) -> NSURL {
     return NSURL(string: ApplicationDirectoryPath(directoryToSearch))!
 }
 
 //MARK: - Interface
 
-let ScreenBounds: CGRect = UIScreen.mainScreen().bounds
+public let ScreenBounds: CGRect = UIScreen.mainScreen().bounds
 
-func IsIPad () -> Bool {
+public func IsIPad () -> Bool {
     return UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
 }
 
-func IsIPhone () -> Bool {
+public func IsIPhone () -> Bool {
     return UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone
 }
 
-func ScaleFactor () -> CGFloat {
+public func ScaleFactor () -> CGFloat {
     return UIScreen.mainScreen().scale
 }
 
-func IsRetina () -> Bool {
+public func IsRetina () -> Bool {
     return ScaleFactor() == 2
 }
 
-func DeviceOrientation () -> UIDeviceOrientation {
+public func DeviceOrientation () -> UIDeviceOrientation {
     return UIDevice.currentDevice().orientation
 }
 
 //MARK: - System Version
 
-func SystemVersionEqualTo(version: String) -> Bool {
+public func SystemVersionEqualTo(version: String) -> Bool {
     return UIDevice.currentDevice().systemVersion.compare(version,
         options: NSStringCompareOptions.NumericSearch) == NSComparisonResult.OrderedSame
 }
 
-func SystemVersionGreatherThan(version: String) -> Bool {
+public func SystemVersionGreatherThan(version: String) -> Bool {
     return UIDevice.currentDevice().systemVersion.compare(version,
         options: NSStringCompareOptions.NumericSearch) == NSComparisonResult.OrderedDescending
 }
 
-func SystemVersionGreatherThanOrEqualTo(version: String) -> Bool {
+public func SystemVersionGreatherThanOrEqualTo(version: String) -> Bool {
     return UIDevice.currentDevice().systemVersion.compare(version,
         options: NSStringCompareOptions.NumericSearch) != NSComparisonResult.OrderedAscending
 }
 
-func SystemVersionLessThan(version: String) -> Bool {
+public func SystemVersionLessThan(version: String) -> Bool {
     return UIDevice.currentDevice().systemVersion.compare(version,
         options: NSStringCompareOptions.NumericSearch) == NSComparisonResult.OrderedAscending
 }
 
-func SystemVersionLessThanOrEqualTo(version: String) -> Bool {
+public func SystemVersionLessThanOrEqualTo(version: String) -> Bool {
     return UIDevice.currentDevice().systemVersion.compare(version,
         options: NSStringCompareOptions.NumericSearch) != NSComparisonResult.OrderedDescending
 }
 
 //MARK: - Images and colors
 
-func RGBA (r:CGFloat, _ g:CGFloat, _ b:CGFloat, _ a:CGFloat) -> UIColor {
+public func RGBA (r:CGFloat, _ g:CGFloat, _ b:CGFloat, _ a:CGFloat) -> UIColor {
     return UIColor(red: r/255, green: g/255, blue: b/255, alpha: a)
 }
 
-func ImageFromColor (color:UIColor) -> UIImage {
+public func ImageFromColor (color:UIColor) -> UIImage {
     
     let rect:CGRect = CGRectMake(0, 0, 1, 1)
     UIGraphicsBeginImageContext(rect.size)
@@ -91,7 +91,7 @@ func ImageFromColor (color:UIColor) -> UIImage {
     return image
 }
 
-func RandomColor () -> UIColor {
+public func RandomColor () -> UIColor {
     let red     = CGFloat(arc4random_uniform(255))/255.0
     let green   = CGFloat(arc4random_uniform(255))/255.0
     let blue    = CGFloat(arc4random_uniform(255))/255.0
@@ -101,13 +101,13 @@ func RandomColor () -> UIColor {
 
 //MARK: - GCD
 
-func dispatch_after_short (delay:Double, block:dispatch_block_t) {
+public func dispatch_after_short (delay:Double, block:dispatch_block_t) {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), block);
 }
 
 //MARK: - Other
 
-func DLog(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
+public func DLog(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
     #if DEBUG
         print("Message \"\(message)\" (File: \(file), Function: \(function), Line: \(line))")
     #endif
@@ -115,7 +115,7 @@ func DLog(message: String, function: String = __FUNCTION__, file: String = __FIL
 
 //MARK: - Enumerations
 
-enum ScreenTypeInch {
+public enum ScreenTypeInch {
     case _3_5
     case _4
     case _4_7

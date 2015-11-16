@@ -1,15 +1,15 @@
 //
-//  SwiftHelpersTests.swift
-//  SwiftHelpersTests
+//  FSHelpersTests.swift
+//  FSHelpersTests
 //
-//  Created by Kruperfone on 31.07.15.
-//  Copyright (c) 2015 FlatStack. All rights reserved.
+//  Created by Kruperfone on 16.11.15.
+//
 //
 
-import UIKit
 import XCTest
+@testable import FSHelpers
 
-class SwiftHelpersTests: XCTestCase {
+class FSHelpersTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -23,12 +23,12 @@ class SwiftHelpersTests: XCTestCase {
     
     func testExample() {
         // This is an example of a functional test case.
-        XCTAssert(true, "Pass")
+        // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     
     func testPerformanceExample() {
         // This is an example of a performance test case.
-        self.measureBlock() {
+        self.measureBlock {
             // Put the code you want to measure the time of here.
         }
     }
