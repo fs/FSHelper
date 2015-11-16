@@ -12,62 +12,36 @@ extension UIView {
     
     //MARK: - Set size
     
-    func setSize (size:CGSize) {
-        var frame = self.frame
-        frame.size = size
-        self.frame = frame
+    var size: CGSize {
+        set (value) {self.frame.size = value}
+        get         {return self.frame.size}
     }
     
     var width:CGFloat {
-        
-        set (value) {
-            self.setSize(CGSizeMake(value, frame.size.height))
-        }
-        
-        get {
-            return self.frame.size.width
-        }
+        set (value) {self.size = CGSizeMake(value, frame.size.height)}
+        get         {return self.frame.size.width}
     }
     
     var height:CGFloat {
-        
-        set (value) {
-            self.setSize(CGSizeMake(frame.size.width, height))
-        }
-        
-        get {
-            return self.frame.size.height
-        }
+        set (value) {self.size = CGSizeMake(frame.size.width, value)}
+        get         {return self.frame.size.height}
     }
     
     //MARK: - Set origin
     
-    func setOrigin (origin:CGPoint) {
-        var frame = self.frame
-        frame.origin = origin
-        self.frame = frame
+    var origin: CGPoint {
+        set (value) {self.frame.origin = value}
+        get         {return self.frame.origin}
     }
     
-    var x:CGFloat {
-        
-        set (value) {
-            self.setOrigin(CGPointMake(value, frame.origin.y))
-        }
-        
-        get {
-            return self.frame.origin.x
-        }
+    var x: CGFloat {
+        set (value) {self.origin = CGPointMake(value, frame.origin.y)}
+        get         {return self.frame.origin.x}
     }
     
-    var y:CGFloat {
-        
-        set (value) {
-            setOrigin(CGPointMake(frame.origin.x, value))
-        }
-        
-        get {
-            return self.frame.origin.y
-        }
+    var y: CGFloat {
+        set (value) {self.origin = CGPointMake(frame.origin.x, value)}
+        get         {return self.frame.origin.y}
     }
     
     //MARK: - Other
@@ -79,7 +53,7 @@ extension UIView {
         }
         
         for view in subviews {
-            if findAndResignFirstResponder() {
+            if view.findAndResignFirstResponder() {
                 return true
             }
         }
@@ -87,7 +61,7 @@ extension UIView {
         return false
     }
     
-    var allSubviews:[UIView] {
+    var allSubviews: [UIView] {
         var arr:[UIView] = [self]
         
         for view in subviews {
