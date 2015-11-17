@@ -1,15 +1,15 @@
 //
-//  FSHelpersTests.swift
-//  FSHelpersTests
+//  ExampleTests.swift
+//  ExampleTests
 //
 //  Created by Kruperfone on 16.11.15.
 //  Copyright © 2015 FlatStack. All rights reserved.
 //
 
 import XCTest
-@testable import FSHelpers
+@testable import Example
 
-class FSHelpersTests: XCTestCase {
+class ExampleTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>FSHelpers.xcscheme</key>
+		<key>Example.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>210C52AC1BFA3C8100F6C390</key>
+		<key>210C527F1BFA3C6400F6C390</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>210C52B61BFA3C8100F6C390</key>
+		<key>210C52931BFA3C6500F6C390</key>
 		<dict>
 			<key>primary</key>
 			<true/>
