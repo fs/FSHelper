@@ -8,15 +8,10 @@
 
 import Foundation
 
-extension Dictionary {
+public extension Dictionary {
     
-    func objectForKey(key:String, orDefault def:AnyObject) -> Value {
-        var res = key as! Key
-        
-        if self[res] != nil {
-            return self[res]!
-        } else {
-            return def as! Value
-        }
+    public func fs_objectForKey(key:Key, orDefault def:Value) -> Value {
+        guard let value = self[key] else {return def}
+        return value
     }
 }

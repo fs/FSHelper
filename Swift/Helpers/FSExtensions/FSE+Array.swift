@@ -8,23 +8,21 @@
 
 import Foundation
 
-extension Array {
+public extension Array {
     
-    func objectAtIndexOrNil (index:Int) -> T? {
-        if (index < self.count && index >= 0) {
-            return self[index]
-        } else {
-            return nil
-        }
+    public func fs_objectAtIndexOrNil (index:Int) -> Element? {
+        guard index < self.count && index >= 0 else {return nil}
+        return self[index]
     }
     
-    func shuffle () -> Array {
+    public func fs_shuffle () -> Array {
         var array:Array = self
         
-        for (var i = 0; i < array.count; i++) {
+        for i in 0 ..< array.count {
             let remainingCount = array.count - i
             let exchangeIndex = i + Int(arc4random_uniform(UInt32(remainingCount)))
             
+            guard i != exchangeIndex else {continue}
             swap(&array[i], &array[exchangeIndex])
         }
         

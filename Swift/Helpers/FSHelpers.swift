@@ -11,117 +11,117 @@ import UIKit
 
 //MARK: - Application Directory
 
-func ApplicationDirectoryPath (directoryToSearch:NSSearchPathDirectory) -> String {
-    return NSSearchPathForDirectoriesInDomains(directoryToSearch, NSSearchPathDomainMask.UserDomainMask, true).first as! String
+public func FSApplicationDirectoryPath (directoryToSearch:NSSearchPathDirectory) -> String {
+    return NSSearchPathForDirectoriesInDomains(directoryToSearch, NSSearchPathDomainMask.UserDomainMask, true).first!
 }
 
-func ApplicationDirectoryURL (directoryToSearch:NSSearchPathDirectory) -> NSURL {
-    return NSURL(string: ApplicationDirectoryPath(directoryToSearch))!
+public func FSApplicationDirectoryURL (directoryToSearch:NSSearchPathDirectory) -> NSURL {
+    return NSURL(string: FSApplicationDirectoryPath(directoryToSearch))!
 }
 
 //MARK: - Interface
 
-let ScreenBounds: CGRect = UIScreen.mainScreen().bounds
+public let FSScreenBounds: CGRect = UIScreen.mainScreen().bounds
 
-func IsIPad () -> Bool {
+public func FSIsIPad () -> Bool {
     return UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
 }
 
-func IsIPhone () -> Bool {
+public func FSIsIPhone () -> Bool {
     return UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone
 }
 
-func ScaleFactor () -> CGFloat {
+public func FSScaleFactor () -> CGFloat {
     return UIScreen.mainScreen().scale
 }
 
-func IsRetina () -> Bool {
-    return ScaleFactor() == 2
+public func FSIsRetina () -> Bool {
+    return FSScaleFactor() == 2
 }
 
-func DeviceOrientation () -> UIDeviceOrientation {
+public func FSDeviceOrientation () -> UIDeviceOrientation {
     return UIDevice.currentDevice().orientation
 }
 
 //MARK: - System Version
 
-func SystemVersionEqualTo(version: String) -> Bool {
+public func FSSystemVersionEqualTo(version: String) -> Bool {
     return UIDevice.currentDevice().systemVersion.compare(version,
         options: NSStringCompareOptions.NumericSearch) == NSComparisonResult.OrderedSame
 }
 
-func SystemVersionGreatherThan(version: String) -> Bool {
+public func FSSystemVersionGreatherThan(version: String) -> Bool {
     return UIDevice.currentDevice().systemVersion.compare(version,
         options: NSStringCompareOptions.NumericSearch) == NSComparisonResult.OrderedDescending
 }
 
-func SystemVersionGreatherThanOrEqualTo(version: String) -> Bool {
+public func FSSystemVersionGreatherThanOrEqualTo(version: String) -> Bool {
     return UIDevice.currentDevice().systemVersion.compare(version,
         options: NSStringCompareOptions.NumericSearch) != NSComparisonResult.OrderedAscending
 }
 
-func SystemVersionLessThan(version: String) -> Bool {
+public func FSSystemVersionLessThan(version: String) -> Bool {
     return UIDevice.currentDevice().systemVersion.compare(version,
         options: NSStringCompareOptions.NumericSearch) == NSComparisonResult.OrderedAscending
 }
 
-func SystemVersionLessThanOrEqualTo(version: String) -> Bool {
+public func FSSystemVersionLessThanOrEqualTo(version: String) -> Bool {
     return UIDevice.currentDevice().systemVersion.compare(version,
         options: NSStringCompareOptions.NumericSearch) != NSComparisonResult.OrderedDescending
 }
 
 //MARK: - Images and colors
 
-func RGBA (r:CGFloat, g:CGFloat, b:CGFloat, a:CGFloat) -> UIColor {    
-    return UIColor(red: r/255.0, green: g/255.0, blue: b/255.0, alpha: a)
+public func FSRGBA (r:CGFloat, _ g:CGFloat, _ b:CGFloat, _ a:CGFloat) -> UIColor {
+    return UIColor(red: r/255, green: g/255, blue: b/255, alpha: a)
 }
 
-func ImageFromColor (color:UIColor) -> UIImage {
+public func FSImageFromColor (color:UIColor) -> UIImage {
     
-    var rect:CGRect = CGRectMake(0, 0, 1, 1)
+    let rect:CGRect = CGRectMake(0, 0, 1, 1)
     UIGraphicsBeginImageContext(rect.size)
-    var context:CGContextRef = UIGraphicsGetCurrentContext()
+    let context:CGContextRef = UIGraphicsGetCurrentContext()!
     
     CGContextSetFillColorWithColor(context, color.CGColor)
     CGContextFillRect(context, rect)
     
-    var image:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+    let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()
     UIGraphicsEndImageContext()
     
     return image
 }
 
-func RandomColor () -> UIColor {
-    var red:CGFloat = CGFloat(arc4random_uniform(255))/255.0
-    var green:CGFloat = CGFloat(arc4random_uniform(255))/255.0
-    var blue:CGFloat = CGFloat(arc4random_uniform(255))/255.0
+public func FSRandomColor () -> UIColor {
+    let red     = CGFloat(arc4random_uniform(255))/255.0
+    let green   = CGFloat(arc4random_uniform(255))/255.0
+    let blue    = CGFloat(arc4random_uniform(255))/255.0
     
     return UIColor(red: red, green: green, blue: blue, alpha: 1)
 }
 
 //MARK: - GCD
 
-func dispatch_after_short (delay:Double, block:dispatch_block_t) {
+public func FSDispatch_after_short (delay:Double, block:dispatch_block_t) {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), block);
 }
 
 //MARK: - Other
 
-func DLog(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
+public func FSDLog(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
     #if DEBUG
-        println("Message \"\(message)\" (File: \(file), Function: \(function), Line: \(line))")
+        print("Message \"\(message)\" (File: \(file), Function: \(function), Line: \(line))")
     #endif
 }
 
 //MARK: - Enumerations
 
-enum ScreenTypeInch {
+public enum FSScreenTypeInch {
     case _3_5
     case _4
     case _4_7
     case _5_5
     
-    var size:CGSize {
+    public var size:CGSize {
         switch self {
         case ._3_5: return CGSizeMake(320, 480)
         case ._4:   return CGSizeMake(320, 568)
@@ -130,31 +130,29 @@ enum ScreenTypeInch {
         }
     }
     
-    init () {
-        let size = UIScreen.mainScreen().bounds.size
+    public init () {
+        self = FSScreenTypeInch.typeForSize(UIScreen.mainScreen().bounds.size)
+    }
+    
+    public init (size: CGSize) {
+        self = FSScreenTypeInch.typeForSize(size)
+    }
+    
+    static private func typeForSize (size: CGSize) -> FSScreenTypeInch {
         let width = min(size.width, size.height)
         let height = max(size.width, size.height)
         
         switch CGSizeMake(width, height) {
-        case ScreenTypeInch._3_5.size:
-            self = ScreenTypeInch._3_5
-            
-        case ScreenTypeInch._4.size:
-            self = ScreenTypeInch._4
-            
-        case ScreenTypeInch._4_7.size:
-            self = ScreenTypeInch._4_7
-            
-        case ScreenTypeInch._5_5.size:
-            self = ScreenTypeInch._5_5
-            
-        default:
-            self = ScreenTypeInch._5_5
+        case FSScreenTypeInch._3_5.size:  return FSScreenTypeInch._3_5
+        case FSScreenTypeInch._4.size:    return FSScreenTypeInch._4
+        case FSScreenTypeInch._4_7.size:  return FSScreenTypeInch._4_7
+        case FSScreenTypeInch._5_5.size:  return FSScreenTypeInch._5_5
+        default:                          return FSScreenTypeInch._4
         }
     }
     
-    func getScreenValue (#value3_5:Any, value4:Any, value4_7:Any, value5_5:Any) -> Any {
-        switch ScreenTypeInch() {
+    public func getScreenValue (value3_5 value3_5:Any, value4:Any, value4_7:Any, value5_5:Any) -> Any {
+        switch self {
         case ._3_5:     return value3_5
         case ._4:       return value4
         case ._4_7:     return value4_7
@@ -162,11 +160,11 @@ enum ScreenTypeInch {
         }
     }
     
-    func getScreenCGFloat (#value3_5:CGFloat, value4:CGFloat, value4_7:CGFloat, value5_5:CGFloat) -> CGFloat {
+    public func getScreenCGFloat (value3_5 value3_5:CGFloat, value4:CGFloat, value4_7:CGFloat, value5_5:CGFloat) -> CGFloat {
         return self.getScreenValue(value3_5:value3_5, value4: value4, value4_7: value4_7, value5_5: value5_5) as! CGFloat
     }
     
-    func getScreenCGFloat (#value4:CGFloat, value4_7:CGFloat, value5_5:CGFloat) -> CGFloat {
+    public func getScreenCGFloat (value4 value4:CGFloat, value4_7:CGFloat, value5_5:CGFloat) -> CGFloat {
         return self.getScreenCGFloat(value3_5:value4, value4: value4, value4_7: value4_7, value5_5: value5_5)
     }
 }
