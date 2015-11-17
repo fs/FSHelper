@@ -13,8 +13,7 @@
 		210C528B1BFA3C6400F6C390 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210C528A1BFA3C6400F6C390 /* Assets.xcassets */; };
 		210C528E1BFA3C6400F6C390 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210C528C1BFA3C6400F6C390 /* LaunchScreen.storyboard */; };
 		210C52991BFA3C6500F6C390 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C52981BFA3C6500F6C390 /* ExampleTests.swift */; };
-		210C52E01BFA3CD600F6C390 /* FSHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210C52DF1BFA3CD600F6C390 /* FSHelpers.framework */; };
-		210C52E11BFA3CD600F6C390 /* FSHelpers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 210C52DF1BFA3CD600F6C390 /* FSHelpers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E7F384A71BFB2EA30086EB70 /* FSHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F384A61BFB2EA20086EB70 /* FSHelpers.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +33,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				210C52E11BFA3CD600F6C390 /* FSHelpers.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -52,7 +50,7 @@
 		210C52941BFA3C6500F6C390 /* ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		210C52981BFA3C6500F6C390 /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
 		210C529A1BFA3C6500F6C390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		210C52DF1BFA3CD600F6C390 /* FSHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = FSHelpers.framework; path = "/Users/kruperfone/Library/Developer/Xcode/DerivedData/HelpersWorkspace-gjysagpeaieifugybecjfimberso/Build/Products/Debug-iphoneos/FSHelpers.framework"; sourceTree = "<absolute>"; };
+		E7F384A61BFB2EA20086EB70 /* FSHelpers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FSHelpers.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/HelpersWorkspace-hdfhcxcvydtgpmegzsuahvoiduuh/Build/Products/Debug-iphoneos/FSHelpers.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				210C52E01BFA3CD600F6C390 /* FSHelpers.framework in Frameworks */,
+				E7F384A71BFB2EA30086EB70 /* FSHelpers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +75,7 @@
 		210C52771BFA3C6400F6C390 = {
 			isa = PBXGroup;
 			children = (
-				210C52DF1BFA3CD600F6C390 /* FSHelpers.framework */,
+				E7F384A61BFB2EA20086EB70 /* FSHelpers.framework */,
 				210C52821BFA3C6400F6C390 /* Example */,
 				210C52971BFA3C6500F6C390 /* ExampleTests */,
 				210C52811BFA3C6400F6C390 /* Products */,
