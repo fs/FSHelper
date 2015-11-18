@@ -35,7 +35,7 @@ class FSE_DoubleTests: XCTestCase {
                 expectation.fulfill()
             })
             
-            self.waitForExpectationsWithTimeout(delay+0.01, handler: { (error: NSError?) -> Void in
+            self.waitForExpectationsWithTimeout(delay+0.1, handler: { (error: NSError?) -> Void in
                 if error == nil {
                     XCTAssertGreaterThanOrEqual(interval, delay, "Too fast")
                 } else {
