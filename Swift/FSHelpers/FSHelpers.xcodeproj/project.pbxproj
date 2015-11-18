@@ -7,9 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210B0E481BFB38760073F2FF /* FSE+ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B0E3D1BFB38760073F2FF /* FSE+ArrayTests.swift */; };
+		210B0E491BFB38760073F2FF /* FSE+DictionaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B0E3E1BFB38760073F2FF /* FSE+DictionaryTests.swift */; };
+		210B0E4A1BFB38760073F2FF /* FSE+DoubleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B0E3F1BFB38760073F2FF /* FSE+DoubleTests.swift */; };
+		210B0E4B1BFB38760073F2FF /* FSE+NSDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B0E401BFB38760073F2FF /* FSE+NSDateTests.swift */; };
+		210B0E4C1BFB38760073F2FF /* FSE+StringTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B0E411BFB38760073F2FF /* FSE+StringTests.swift */; };
+		210B0E4D1BFB38760073F2FF /* FSE+UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B0E421BFB38760073F2FF /* FSE+UIColorTests.swift */; };
+		210B0E4E1BFB38760073F2FF /* FSE+UIImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B0E431BFB38760073F2FF /* FSE+UIImageTests.swift */; };
+		210B0E4F1BFB38760073F2FF /* FSE+UITableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B0E441BFB38760073F2FF /* FSE+UITableViewTests.swift */; };
+		210B0E501BFB38760073F2FF /* FSE+UITextViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B0E451BFB38760073F2FF /* FSE+UITextViewTests.swift */; };
+		210B0E511BFB38760073F2FF /* FSE+UIViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B0E461BFB38760073F2FF /* FSE+UIViewTests.swift */; };
+		210B0E521BFB38760073F2FF /* FSHelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210B0E471BFB38760073F2FF /* FSHelpersTests.swift */; };
 		210C52B11BFA3C8100F6C390 /* FSHelpers.h in Headers */ = {isa = PBXBuildFile; fileRef = 210C52B01BFA3C8100F6C390 /* FSHelpers.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		210C52B81BFA3C8100F6C390 /* FSHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 210C52AD1BFA3C8100F6C390 /* FSHelpers.framework */; };
-		210C52BD1BFA3C8100F6C390 /* FSHelpersTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C52BC1BFA3C8100F6C390 /* FSHelpersTests.swift */; };
 		210C52D41BFA3C8D00F6C390 /* FSE+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C52C91BFA3C8D00F6C390 /* FSE+Array.swift */; };
 		210C52D51BFA3C8D00F6C390 /* FSE+Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C52CA1BFA3C8D00F6C390 /* FSE+Dictionary.swift */; };
 		210C52D61BFA3C8D00F6C390 /* FSE+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C52CB1BFA3C8D00F6C390 /* FSE+Double.swift */; };
@@ -34,11 +44,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		210B0E3D1BFB38760073F2FF /* FSE+ArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+ArrayTests.swift"; sourceTree = "<group>"; };
+		210B0E3E1BFB38760073F2FF /* FSE+DictionaryTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+DictionaryTests.swift"; sourceTree = "<group>"; };
+		210B0E3F1BFB38760073F2FF /* FSE+DoubleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+DoubleTests.swift"; sourceTree = "<group>"; };
+		210B0E401BFB38760073F2FF /* FSE+NSDateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+NSDateTests.swift"; sourceTree = "<group>"; };
+		210B0E411BFB38760073F2FF /* FSE+StringTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+StringTests.swift"; sourceTree = "<group>"; };
+		210B0E421BFB38760073F2FF /* FSE+UIColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UIColorTests.swift"; sourceTree = "<group>"; };
+		210B0E431BFB38760073F2FF /* FSE+UIImageTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UIImageTests.swift"; sourceTree = "<group>"; };
+		210B0E441BFB38760073F2FF /* FSE+UITableViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UITableViewTests.swift"; sourceTree = "<group>"; };
+		210B0E451BFB38760073F2FF /* FSE+UITextViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UITextViewTests.swift"; sourceTree = "<group>"; };
+		210B0E461BFB38760073F2FF /* FSE+UIViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UIViewTests.swift"; sourceTree = "<group>"; };
+		210B0E471BFB38760073F2FF /* FSHelpersTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSHelpersTests.swift; sourceTree = "<group>"; };
 		210C52AD1BFA3C8100F6C390 /* FSHelpers.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FSHelpers.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		210C52B01BFA3C8100F6C390 /* FSHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FSHelpers.h; sourceTree = "<group>"; };
 		210C52B21BFA3C8100F6C390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		210C52B71BFA3C8100F6C390 /* FSHelpersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FSHelpersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		210C52BC1BFA3C8100F6C390 /* FSHelpersTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSHelpersTests.swift; sourceTree = "<group>"; };
 		210C52BE1BFA3C8100F6C390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		210C52C91BFA3C8D00F6C390 /* FSE+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+Array.swift"; sourceTree = "<group>"; };
 		210C52CA1BFA3C8D00F6C390 /* FSE+Dictionary.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+Dictionary.swift"; sourceTree = "<group>"; };
@@ -72,6 +92,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		210B0E3B1BFB38760073F2FF /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				210B0E3C1BFB38760073F2FF /* Extensions */,
+				210B0E471BFB38760073F2FF /* FSHelpersTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		210B0E3C1BFB38760073F2FF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				210B0E3D1BFB38760073F2FF /* FSE+ArrayTests.swift */,
+				210B0E3E1BFB38760073F2FF /* FSE+DictionaryTests.swift */,
+				210B0E3F1BFB38760073F2FF /* FSE+DoubleTests.swift */,
+				210B0E401BFB38760073F2FF /* FSE+NSDateTests.swift */,
+				210B0E411BFB38760073F2FF /* FSE+StringTests.swift */,
+				210B0E421BFB38760073F2FF /* FSE+UIColorTests.swift */,
+				210B0E431BFB38760073F2FF /* FSE+UIImageTests.swift */,
+				210B0E441BFB38760073F2FF /* FSE+UITableViewTests.swift */,
+				210B0E451BFB38760073F2FF /* FSE+UITextViewTests.swift */,
+				210B0E461BFB38760073F2FF /* FSE+UIViewTests.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		210C52A31BFA3C8100F6C390 = {
 			isa = PBXGroup;
 			children = (
@@ -103,7 +149,7 @@
 		210C52BB1BFA3C8100F6C390 /* FSHelpersTests */ = {
 			isa = PBXGroup;
 			children = (
-				210C52BC1BFA3C8100F6C390 /* FSHelpersTests.swift */,
+				210B0E3B1BFB38760073F2FF /* Tests */,
 				210C52BE1BFA3C8100F6C390 /* Info.plist */,
 			);
 			path = FSHelpersTests;
@@ -262,7 +308,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				210C52BD1BFA3C8100F6C390 /* FSHelpersTests.swift in Sources */,
+				210B0E4E1BFB38760073F2FF /* FSE+UIImageTests.swift in Sources */,
+				210B0E4D1BFB38760073F2FF /* FSE+UIColorTests.swift in Sources */,
+				210B0E4F1BFB38760073F2FF /* FSE+UITableViewTests.swift in Sources */,
+				210B0E521BFB38760073F2FF /* FSHelpersTests.swift in Sources */,
+				210B0E511BFB38760073F2FF /* FSE+UIViewTests.swift in Sources */,
+				210B0E491BFB38760073F2FF /* FSE+DictionaryTests.swift in Sources */,
+				210B0E501BFB38760073F2FF /* FSE+UITextViewTests.swift in Sources */,
+				210B0E4A1BFB38760073F2FF /* FSE+DoubleTests.swift in Sources */,
+				210B0E4C1BFB38760073F2FF /* FSE+StringTests.swift in Sources */,
+				210B0E481BFB38760073F2FF /* FSE+ArrayTests.swift in Sources */,
+				210B0E4B1BFB38760073F2FF /* FSE+NSDateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +493,7 @@
 				210C52C31BFA3C8100F6C390 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		210C52C41BFA3C8100F6C390 /* Build configuration list for PBXNativeTarget "FSHelpersTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +502,7 @@
 				210C52C61BFA3C8100F6C390 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
