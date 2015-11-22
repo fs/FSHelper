@@ -174,5 +174,9 @@ class FSE_StringTests: XCTestCase {
         XCTAssertEqual(result1, "EXAMPLE_1",                "Wrong localized format")
         XCTAssertEqual(result2, "EXAMPLE_2",                "Wrong localized format")
         XCTAssertEqual(result3, "EXAMPLE_ONE_TWO_THREE",    "Wrong localized format")
+        
+        XCTAssertEqual(test1, "eXamPle 1",                "Must not change original string")
+        XCTAssertEqual(test2, "EXAMPLE_2",                "Must not change original string")
+        XCTAssertEqual(test3, "example one two_three",    "Must not change original string")
     }
 }
