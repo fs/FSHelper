@@ -167,16 +167,24 @@ class FSE_StringTests: XCTestCase {
         let test2 = "EXAMPLE_2"
         let test3 = "example one two_three"
         
-        let result1 = test1.fs_localizedStringFormat
-        let result2 = test2.fs_localizedStringFormat
-        let result3 = test3.fs_localizedStringFormat
+        var string1 = ""
+        var string2 = ""
+        var string3 = ""
+        
+        string1 = test1
+        string2 = test2
+        string3 = test3
+        
+        let result1 = string1.fs_localizedStringFormat
+        let result2 = string2.fs_localizedStringFormat
+        let result3 = string3.fs_localizedStringFormat
         
         XCTAssertEqual(result1, "EXAMPLE_1",                "Wrong localized format")
         XCTAssertEqual(result2, "EXAMPLE_2",                "Wrong localized format")
         XCTAssertEqual(result3, "EXAMPLE_ONE_TWO_THREE",    "Wrong localized format")
         
-        XCTAssertEqual(test1, "eXamPle 1",                "Must not change original string")
-        XCTAssertEqual(test2, "EXAMPLE_2",                "Must not change original string")
-        XCTAssertEqual(test3, "example one two_three",    "Must not change original string")
+        XCTAssertEqual(string1, test1, "Must not change original string")
+        XCTAssertEqual(string2, test2, "Must not change original string")
+        XCTAssertEqual(string3, test3, "Must not change original string")
     }
 }
