@@ -70,4 +70,19 @@ public extension String {
         
         return ceil(rect.size.height)
     }
+    
+    public var fs_localizedString: String {
+        
+        let localized = NSLocalizedString(self.fs_localizedStringFormat, comment: "")
+        
+        return localized
+    }
+    
+    internal var fs_localizedStringFormat: String {
+        
+        let uppercase = self.uppercaseString
+        let str = uppercase.stringByReplacingOccurrencesOfString(" ", withString: "_", options: NSStringCompareOptions.LiteralSearch, range: nil)
+        
+        return str
+    }
 }
