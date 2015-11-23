@@ -160,4 +160,31 @@ class FSE_StringTests: XCTestCase {
             XCTAssertEqual(height, string.fs_getStringHeight(font, width: width), "Height must be equal")
         }
     }
+    
+    func testLocalizedStringFormat () {
+        
+        let test1 = "eXamPle 1"
+        let test2 = "EXAMPLE_2"
+        let test3 = "example one two_three"
+        
+        var string1 = ""
+        var string2 = ""
+        var string3 = ""
+        
+        string1 = test1
+        string2 = test2
+        string3 = test3
+        
+        let result1 = string1.fs_localizedStringFormat
+        let result2 = string2.fs_localizedStringFormat
+        let result3 = string3.fs_localizedStringFormat
+        
+        XCTAssertEqual(result1, "EXAMPLE_1",                "Wrong localized format")
+        XCTAssertEqual(result2, "EXAMPLE_2",                "Wrong localized format")
+        XCTAssertEqual(result3, "EXAMPLE_ONE_TWO_THREE",    "Wrong localized format")
+        
+        XCTAssertEqual(string1, test1, "Must not change original string")
+        XCTAssertEqual(string2, test2, "Must not change original string")
+        XCTAssertEqual(string3, test3, "Must not change original string")
+    }
 }

@@ -70,4 +70,17 @@ public extension String {
         
         return ceil(rect.size.height)
     }
+    
+    public var fs_localizedString: String {
+        let localized = NSLocalizedString(self.fs_localizedStringFormat, comment: "")
+        return localized
+    }
+    
+    internal var fs_localizedStringFormat: String {
+        
+        let uppercase = self.uppercaseString
+        let formatted = uppercase.stringByReplacingOccurrencesOfString(" ", withString: "_", options: .LiteralSearch, range: nil)
+        
+        return formatted
+    }
 }
