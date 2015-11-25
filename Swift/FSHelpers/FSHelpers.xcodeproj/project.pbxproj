@@ -31,6 +31,7 @@
 		210C52DC1BFA3C8D00F6C390 /* FSE+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C52D11BFA3C8D00F6C390 /* FSE+UITextView.swift */; };
 		210C52DD1BFA3C8D00F6C390 /* FSE+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C52D21BFA3C8D00F6C390 /* FSE+UIView.swift */; };
 		210C52DE1BFA3C8D00F6C390 /* FSHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C52D31BFA3C8D00F6C390 /* FSHelpers.swift */; };
+		21794A991C021ABA001E7E57 /* FSKeyboardScrollSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21794A981C021ABA001E7E57 /* FSKeyboardScrollSupport.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		210C52D11BFA3C8D00F6C390 /* FSE+UITextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UITextView.swift"; sourceTree = "<group>"; };
 		210C52D21BFA3C8D00F6C390 /* FSE+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UIView.swift"; sourceTree = "<group>"; };
 		210C52D31BFA3C8D00F6C390 /* FSHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSHelpers.swift; sourceTree = "<group>"; };
+		21794A981C021ABA001E7E57 /* FSKeyboardScrollSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSKeyboardScrollSupport.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 		210C52C71BFA3C8D00F6C390 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				21794A971C021ABA001E7E57 /* FSProtocols */,
 				210C52C81BFA3C8D00F6C390 /* FSExtensions */,
 				210C52D31BFA3C8D00F6C390 /* FSHelpers.swift */,
 			);
@@ -180,6 +183,14 @@
 				210C52D21BFA3C8D00F6C390 /* FSE+UIView.swift */,
 			);
 			path = FSExtensions;
+			sourceTree = "<group>";
+		};
+		21794A971C021ABA001E7E57 /* FSProtocols */ = {
+			isa = PBXGroup;
+			children = (
+				21794A981C021ABA001E7E57 /* FSKeyboardScrollSupport.swift */,
+			);
+			path = FSProtocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +303,7 @@
 			files = (
 				210C52DA1BFA3C8D00F6C390 /* FSE+UIImage.swift in Sources */,
 				210C52D51BFA3C8D00F6C390 /* FSE+Dictionary.swift in Sources */,
+				21794A991C021ABA001E7E57 /* FSKeyboardScrollSupport.swift in Sources */,
 				210C52DB1BFA3C8D00F6C390 /* FSE+UITableView.swift in Sources */,
 				210C52D61BFA3C8D00F6C390 /* FSE+Double.swift in Sources */,
 				210C52D91BFA3C8D00F6C390 /* FSE+UIColor.swift in Sources */,
