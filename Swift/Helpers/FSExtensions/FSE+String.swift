@@ -71,6 +71,29 @@ public extension String {
         return ceil(rect.size.height)
     }
     
+    public func fs_stringBetweenString (firstString: String, secondString: String) -> String? {
+        var string: String?
+        var range: Range<Index>? = nil
+        
+        range = self.rangeOfString(firstString)
+        if let lRange = range {
+            let strinBefore = self.substringToIndex(lRange.endIndex)
+            string = self.stringByReplacingOccurrencesOfString(strinBefore, withString: "")
+        } else {
+            return nil
+        }
+        
+        range = string?.rangeOfString(secondString)
+        if let lRange = range {
+            let stringAfter = string?.substringFromIndex(lRange.startIndex)
+            string = string?.stringByReplacingOccurrencesOfString(stringAfter!, withString: "")
+        } else {
+            return nil
+        }
+        
+        return string
+    }
+    
     public var fs_localizedString: String {
         let localized = NSLocalizedString(self.fs_localizedStringFormat, comment: "")
         return localized

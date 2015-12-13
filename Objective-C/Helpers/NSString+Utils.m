@@ -11,6 +11,30 @@
     return [result copy];
 }
 
+- (NSString *)stringBetweenString:(NSString *)first secondString:(NSString *)second
+{
+    NSString *string = nil;
+    NSRange range;
+    
+    range = [self rangeOfString:first];
+    if (range.location != NSNotFound) {
+        NSString *strinBefore = [self substringToIndex:(range.location + range.length)];
+        string = [self stringByReplacingOccurrencesOfString:strinBefore withString:@""];
+    } else {
+        return nil;
+    }
+    
+    range = [string rangeOfString:second];
+    if (range.location != NSNotFound) {
+        NSString *strinAfter = [string substringFromIndex:range.location];
+        string = [string stringByReplacingOccurrencesOfString:strinAfter withString:@""];
+    } else {
+        return nil;
+    }
+    
+    return string;
+}
+
 @end
 
 
