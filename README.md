@@ -10,4 +10,7 @@ it, simply add the following line to your Podfile:
 
 or
 
-    pod "FSHelper+ObjectiveC"
+    pod "FSHelper"
+
+## License
+FSHelper is released under the MIT license. See [LICENSE](LICENSE) for details.
