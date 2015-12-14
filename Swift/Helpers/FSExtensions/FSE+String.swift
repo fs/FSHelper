@@ -72,24 +72,15 @@ public extension String {
     }
     
     public func fs_stringBetweenString (firstString: String, secondString: String) -> String? {
-        var string: String?
-        var range: Range<Index>? = nil
+        var string = self
         
-        range = self.rangeOfString(firstString)
-        if let lRange = range {
-            let strinBefore = self.substringToIndex(lRange.endIndex)
-            string = self.stringByReplacingOccurrencesOfString(strinBefore, withString: "")
-        } else {
-            return nil
-        }
+        guard let lFirstRange = self.rangeOfString(firstString) else {return nil}
+        let strinBefore = self.substringToIndex(lFirstRange.endIndex)
+        string = self.stringByReplacingOccurrencesOfString(strinBefore, withString: "")
         
-        range = string?.rangeOfString(secondString)
-        if let lRange = range {
-            let stringAfter = string?.substringFromIndex(lRange.startIndex)
-            string = string?.stringByReplacingOccurrencesOfString(stringAfter!, withString: "")
-        } else {
-            return nil
-        }
+        guard let lSecondRange = string.rangeOfString(secondString) else {return nil}
+        let stringAfter = string.substringFromIndex(lSecondRange.startIndex)
+        string = string.stringByReplacingOccurrencesOfString(stringAfter, withString: "")
         
         return string
     }
