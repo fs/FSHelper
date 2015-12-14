@@ -14,6 +14,14 @@
  */
 - (NSString *)stringByReplaceWithParametrs:(NSArray *)parametrs;
 
+/**
+ @descr Search first part of string between two given strings
+ @param first After that string begins string we are looking for
+ @param second Right before this string ends string we are looking for
+ @returns Returns first part of string between two given strings or nil if there are no first or second string
+ */
+- (NSString *)stringBetweenString:(NSString *)first secondString:(NSString *)second;
+
 @end
 
 
