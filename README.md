@@ -10,4 +10,4 @@ it, simply add the following line to your Podfile:
 
 or
 
-    pod "FSHelper+ObjectiveC"
+    pod "FSHelper"
