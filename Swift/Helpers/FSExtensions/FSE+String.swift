@@ -71,7 +71,7 @@ public extension String {
         return ceil(rect.size.height)
     }
     
-    public func fs_stringBetweenString (firstString: String, secondString: String) -> String? {
+    public func fs_getStringBetweenString (firstString: String, secondString: String) -> String? {
         var string = self
         
         guard let lFirstRange = self.rangeOfString(firstString) else {return nil}

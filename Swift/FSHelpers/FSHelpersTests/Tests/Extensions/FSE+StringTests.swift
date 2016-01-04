@@ -161,6 +161,33 @@ class FSE_StringTests: XCTestCase {
         }
     }
     
+    func testGetStringBetweenString () {
+        
+        let string          = "|searching_string|"
+        let firstString     = "|first_string|"
+        let secondString    = "|second_string|"
+        
+        //Success
+        let fullString = "Random text prefix \(firstString)\(string)\(secondString) Random text postfix"
+        let result = fullString.fs_getStringBetweenString(firstString, secondString: secondString)
+        XCTAssertEqual(string, result)
+        
+        //First string not found
+        let fullString2 = "Random text prefix other_first\(string)\(secondString) Random text postfix"
+        let result2 = fullString2.fs_getStringBetweenString(firstString, secondString: secondString)
+        XCTAssertNil(result2)
+        
+        //Second string not found
+        let fullString3 = "Random text prefix\(firstString)\(string)other_second Random text postfix"
+        let result3 = fullString3.fs_getStringBetweenString(firstString, secondString: secondString)
+        XCTAssertNil(result3)
+        
+        //Searching string not found
+        let fullString4 = "Random text prefix \(firstString)\(secondString) Random text postfix"
+        let result4 = fullString4.fs_getStringBetweenString(firstString, secondString: secondString)
+        XCTAssertEqual(0, result4!.characters.count)
+    }
+    
     func testLocalizedStringFormat () {
         
         let test1 = "eXamPle 1"
