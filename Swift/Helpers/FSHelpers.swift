@@ -107,6 +107,10 @@ public func FSDispatch_after_short (delay:Double, block:dispatch_block_t) {
 
 //MARK: - Other
 
+public func FSGetInfoDictionaryValue (key: String) -> AnyObject? {
+    return NSBundle.mainBundle().infoDictionary?[key]
+}
+
 public func FSDLog(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
     #if DEBUG
         print("Message \"\(message)\" (File: \(file), Function: \(function), Line: \(line))")
