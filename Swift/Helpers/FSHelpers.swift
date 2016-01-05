@@ -44,8 +44,8 @@ public func FSDeviceOrientation () -> UIDeviceOrientation {
 }
 
 //MARK: - App Version
-let FSAppVersion      = NSBundle.mainBundle().infoDictionary?.fs_objectForKey("CFBundleShortVersionString", orDefault: "0") as! String
-let FSBuildNumber     = NSBundle.mainBundle().infoDictionary?.fs_objectForKey("CFBundleVersion", orDefault: "0") as! String
+public let FSAppVersion      = NSBundle.mainBundle().infoDictionary?.fs_objectForKey("CFBundleShortVersionString", orDefault: "0") as! String
+public let FSBuildNumber     = NSBundle.mainBundle().infoDictionary?.fs_objectForKey("CFBundleVersion", orDefault: "0") as! String
 
 //MARK: - System Version
 
