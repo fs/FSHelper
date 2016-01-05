@@ -262,8 +262,4 @@ class FSHelperTests: XCTestCase {
             })
         }
     }
-    
-    func testDLog () {
-        FSDLog("It's a test")
-    }
 }
