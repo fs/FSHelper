@@ -43,6 +43,10 @@ public func FSDeviceOrientation () -> UIDeviceOrientation {
     return UIDevice.currentDevice().orientation
 }
 
+//MARK: - App Version
+let FSAppVersion      = NSBundle.mainBundle().infoDictionary?.fs_objectForKey("CFBundleShortVersionString", orDefault: "0") as! String
+let FSBuildNumber     = NSBundle.mainBundle().infoDictionary?.fs_objectForKey("CFBundleVersion", orDefault: "0") as! String
+
 //MARK: - System Version
 
 public func FSSystemVersionEqualTo(version: String) -> Bool {
