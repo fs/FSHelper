@@ -115,3 +115,33 @@ public extension UIView {
         get { return self.layer.masksToBounds }
     }
 }
+
+//MARK: - Collection View Animated Reload {
+extension UICollectionView {
+    
+    func reloadDataWithAnimation(duration: NSTimeInterval = 0.2, options: UIViewAnimationOptions, completion: ((Bool) -> Void)?) {
+        
+        UIView.transitionWithView(self,
+            duration: duration,
+            options: options,
+            animations: { [weak self] () -> Void in
+                self?.reloadData()
+            },
+            completion: completion)
+    }
+}
+
+//MARK: - Table View Animated Reload {
+extension UITableView {
+    
+    func reloadDataWithAnimation(duration: NSTimeInterval = 0.2, options: UIViewAnimationOptions, completion: ((Bool) -> Void)?) {
+        
+        UIView.transitionWithView(self,
+            duration: duration,
+            options: options,
+            animations: { [weak self] () -> Void in
+                self?.reloadData()
+            },
+            completion: completion)
+    }
+}
