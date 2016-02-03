@@ -71,3 +71,47 @@ public extension UIView {
         return arr
     }
 }
+
+//MARK: - Extensions for Storyboard
+public extension UIView {
+    
+    @IBInspectable var cornerRadius: CGFloat {
+        set(newValue) { self.layer.cornerRadius = newValue }
+        get { return self.layer.cornerRadius }
+    }
+    
+    @IBInspectable var borderColor: UIColor {
+        set(newValue) { self.layer.borderColor = newValue.CGColor }
+        get { return UIColor(CGColor: self.layer.borderColor!) }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat {
+        set(newValue) { self.layer.borderWidth = newValue }
+        get { return self.layer.borderWidth }
+    }
+    
+    @IBInspectable var shadowColor: UIColor {
+        set(newValue) { self.layer.shadowColor = newValue.CGColor }
+        get { return UIColor(CGColor: self.layer.shadowColor!) }
+    }
+    
+    @IBInspectable var shadowOffset: CGSize {
+        set(newValue) { self.layer.shadowOffset = newValue }
+        get { return  self.layer.shadowOffset}
+    }
+    
+    @IBInspectable var shadowOpacity: Float {
+        set(newValue) { self.layer.shadowOpacity = newValue }
+        get { return  self.layer.shadowOpacity}
+    }
+    
+    @IBInspectable var shadowRadius: CGFloat {
+        set(newValue) { self.layer.shadowRadius = newValue }
+        get { return  self.layer.shadowRadius}
+    }
+    
+    @IBInspectable var masksToBounds: Bool {
+        set(newValue) { self.layer.masksToBounds = newValue }
+        get { return self.layer.masksToBounds }
+    }
+}

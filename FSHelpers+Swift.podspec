@@ -75,7 +75,7 @@ Pod::Spec.new do |s|
   #
 
   s.source       = { :git => "https://github.com/fs/FSHelper.git", :tag => s.version.to_s }
-
+  s.exclude_files = "Swift/Test classes"
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
