@@ -75,42 +75,42 @@ public extension UIView {
 //MARK: - Extensions for Storyboard
 public extension UIView {
     
-    @IBInspectable var cornerRadius: CGFloat {
+    @IBInspectable var fs_cornerRadius: CGFloat {
         set(newValue) { self.layer.cornerRadius = newValue }
         get { return self.layer.cornerRadius }
     }
     
-    @IBInspectable var borderColor: UIColor {
+    @IBInspectable var fs_borderColor: UIColor {
         set(newValue) { self.layer.borderColor = newValue.CGColor }
         get { return UIColor(CGColor: self.layer.borderColor!) }
     }
     
-    @IBInspectable var borderWidth: CGFloat {
+    @IBInspectable var fs_borderWidth: CGFloat {
         set(newValue) { self.layer.borderWidth = newValue }
         get { return self.layer.borderWidth }
     }
     
-    @IBInspectable var shadowColor: UIColor {
+    @IBInspectable var fs_shadowColor: UIColor {
         set(newValue) { self.layer.shadowColor = newValue.CGColor }
         get { return UIColor(CGColor: self.layer.shadowColor!) }
     }
     
-    @IBInspectable var shadowOffset: CGSize {
+    @IBInspectable var fs_shadowOffset: CGSize {
         set(newValue) { self.layer.shadowOffset = newValue }
         get { return  self.layer.shadowOffset}
     }
     
-    @IBInspectable var shadowOpacity: Float {
+    @IBInspectable var fs_shadowOpacity: Float {
         set(newValue) { self.layer.shadowOpacity = newValue }
         get { return  self.layer.shadowOpacity}
     }
     
-    @IBInspectable var shadowRadius: CGFloat {
+    @IBInspectable var fs_shadowRadius: CGFloat {
         set(newValue) { self.layer.shadowRadius = newValue }
         get { return  self.layer.shadowRadius}
     }
     
-    @IBInspectable var masksToBounds: Bool {
+    @IBInspectable var fs_masksToBounds: Bool {
         set(newValue) { self.layer.masksToBounds = newValue }
         get { return self.layer.masksToBounds }
     }
@@ -119,7 +119,7 @@ public extension UIView {
 //MARK: - Collection View Animated Reload {
 extension UICollectionView {
     
-    func reloadDataWithAnimation(duration: NSTimeInterval = 0.2, options: UIViewAnimationOptions, completion: ((Bool) -> Void)?) {
+    func fs_reloadDataWithAnimation(duration: NSTimeInterval = 0.2, options: UIViewAnimationOptions, completion: ((Bool) -> Void)?) {
         
         UIView.transitionWithView(self,
             duration: duration,
@@ -134,7 +134,7 @@ extension UICollectionView {
 //MARK: - Table View Animated Reload {
 extension UITableView {
     
-    func reloadDataWithAnimation(duration: NSTimeInterval = 0.2, options: UIViewAnimationOptions, completion: ((Bool) -> Void)?) {
+    func fs_reloadDataWithAnimation(duration: NSTimeInterval = 0.2, options: UIViewAnimationOptions, completion: ((Bool) -> Void)?) {
         
         UIView.transitionWithView(self,
             duration: duration,
