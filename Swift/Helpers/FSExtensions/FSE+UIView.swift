@@ -116,9 +116,12 @@ public extension UIView {
     }
 }
 
-//MARK: - Collection View Animated Reload {
-extension UICollectionView {
+//MARK: - Collection View Animated Reload
+public extension UICollectionView {
     
+    /**
+     - parameter options: UIViewAnimationOptionTransition's only available
+     */
     func fs_reloadDataWithAnimation(duration: NSTimeInterval = 0.2, options: UIViewAnimationOptions, completion: ((Bool) -> Void)?) {
         
         UIView.transitionWithView(self,
@@ -131,9 +134,12 @@ extension UICollectionView {
     }
 }
 
-//MARK: - Table View Animated Reload {
-extension UITableView {
+//MARK: - Table View Animated Reload
+public extension UITableView {
     
+    /**
+     - parameter options: UIViewAnimationOptionTransition's only available
+     */
     func fs_reloadDataWithAnimation(duration: NSTimeInterval = 0.2, options: UIViewAnimationOptions, completion: ((Bool) -> Void)?) {
         
         UIView.transitionWithView(self,
