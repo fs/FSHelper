@@ -84,4 +84,21 @@ class FSE_UIViewTests: XCTestCase {
         
         XCTAssertEqual(view.frame.origin.y, newY, "Must be equal")
     }
+    
+    func testStoryboardExtensions() {
+        
+        let storyboard = UIStoryboard(name: "TestStoryboard", bundle: NSBundle(forClass: self.dynamicType))
+
+        let controller = storyboard.instantiateViewControllerWithIdentifier("ViewController")
+            
+        XCTAssertEqual(controller.view.layer.cornerRadius, 5, "Must be equal")
+        XCTAssertEqual(UIColor(CGColor: controller.view.layer.borderColor!), UIColor.redColor(), "Must be equal")
+        XCTAssertEqual(controller.view.layer.borderWidth, 5, "Must be equal")
+        XCTAssertEqual(UIColor(CGColor: controller.view.layer.shadowColor!), UIColor.greenColor(), "Must be equal")
+        XCTAssertEqual(controller.view.layer.shadowOffset, CGSize(width: 2, height: 2), "Must be equal")
+        XCTAssertEqual(controller.view.layer.shadowOpacity, 0.5, "Must be equal")
+        XCTAssertEqual(controller.view.layer.shadowRadius, 3, "Must be equal")
+        XCTAssertEqual(controller.view.layer.masksToBounds, false, "Must be equal")
+        
+    }
 }
