@@ -43,6 +43,10 @@ public func FSDeviceOrientation () -> UIDeviceOrientation {
     return UIDevice.currentDevice().orientation
 }
 
+//MARK: - App Version
+public let FSAppVersion      = NSBundle.mainBundle().infoDictionary?.fs_objectForKey("CFBundleShortVersionString", orDefault: "0") as! String
+public let FSBuildNumber     = NSBundle.mainBundle().infoDictionary?.fs_objectForKey("CFBundleVersion", orDefault: "0") as! String
+
 //MARK: - System Version
 
 public func FSSystemVersionEqualTo(version: String) -> Bool {
@@ -114,5 +118,13 @@ public func FSGetInfoDictionaryValue (key: String) -> AnyObject? {
 public func FSDLog(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
     #if DEBUG
         print("Message \"\(message)\" (File: \(file), Function: \(function), Line: \(line))")
+    #endif
+}
+
+public func FSLog(format: String, _ args: CVarArgType...) {
+    #if DEBUG
+        withVaList(args) { (pointer: CVaListPointer) -> Void in
+            NSLogv(format, pointer)
+        }
     #endif
 }

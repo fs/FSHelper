@@ -12,7 +12,7 @@ import UIKit
     You must did not forget to call KeyboardScrollSupportKeyboardWillHide: method in your `deinit`
 */
 
-protocol FSKeyboardScrollSupport {
+public protocol FSKeyboardScrollSupport {
     /// Scroll view with content that can be under keyboard
     var fs_keyboardScrollSupportScrollView   : UIScrollView?   {get}
     /// Active editable view on the ScrollView
@@ -25,13 +25,13 @@ protocol FSKeyboardScrollSupport {
     func fs_keyboardScrollSupportKeyboardWillHide (notif: NSNotification)
 }
 
-extension FSKeyboardScrollSupport {
+public extension FSKeyboardScrollSupport {
     var fs_keyboardScrollSupportActiveField  : UIView? {
         return nil
     }
 }
 
-extension FSKeyboardScrollSupport where Self: AnyObject {
+public extension FSKeyboardScrollSupport where Self: AnyObject {
     
     func fs_keyboardScrollSupportRegisterForNotifications () {
         
@@ -50,7 +50,7 @@ extension FSKeyboardScrollSupport where Self: AnyObject {
     }
 }
 
-extension FSKeyboardScrollSupport where Self: UIViewController {
+public extension FSKeyboardScrollSupport where Self: UIViewController {
     
     func fs_keyboardScrollSupportKeyboardWillShow (notif: NSNotification) {
         
@@ -93,13 +93,13 @@ extension FSKeyboardScrollSupport where Self: UIViewController {
     }
 }
 
-extension FSKeyboardScrollSupport where Self: UITableViewController {
+public extension FSKeyboardScrollSupport where Self: UITableViewController {
     var fs_keyboardScrollSupportScrollView: UIScrollView? {
         return self.tableView
     }
 }
 
-extension FSKeyboardScrollSupport where Self: UICollectionViewController {
+public extension FSKeyboardScrollSupport where Self: UICollectionViewController {
     var fs_keyboardScrollSupportScrollView: UIScrollView? {
         return self.collectionView
     }
