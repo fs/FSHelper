@@ -33,6 +33,8 @@
 		210C52DE1BFA3C8D00F6C390 /* FSHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C52D31BFA3C8D00F6C390 /* FSHelpers.swift */; };
 		21794A991C021ABA001E7E57 /* FSKeyboardScrollSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21794A981C021ABA001E7E57 /* FSKeyboardScrollSupport.swift */; };
 		21B0014F1C3C1357004235FF /* FSE+UIAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0014E1C3C1357004235FF /* FSE+UIAlertView.swift */; };
+		4F6C2B8A1C628D97000C3F27 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6C2B891C628D97000C3F27 /* TestStoryboard.storyboard */; };
+		4F6C2B8B1C6296D0000C3F27 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6C2B891C628D97000C3F27 /* TestStoryboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,7 @@
 		210C52D31BFA3C8D00F6C390 /* FSHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSHelpers.swift; sourceTree = "<group>"; };
 		21794A981C021ABA001E7E57 /* FSKeyboardScrollSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSKeyboardScrollSupport.swift; sourceTree = "<group>"; };
 		21B0014E1C3C1357004235FF /* FSE+UIAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UIAlertView.swift"; sourceTree = "<group>"; };
+		4F6C2B891C628D97000C3F27 /* TestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TestStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +102,7 @@
 		210B0E3B1BFB38760073F2FF /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				4F6C2B881C628D5E000C3F27 /* Test classes */,
 				210B0E3C1BFB38760073F2FF /* Extensions */,
 				210B0E471BFB38760073F2FF /* FSHelpersTests.swift */,
 			);
@@ -196,6 +200,15 @@
 			path = FSProtocols;
 			sourceTree = "<group>";
 		};
+		4F6C2B881C628D5E000C3F27 /* Test classes */ = {
+			isa = PBXGroup;
+			children = (
+				4F6C2B891C628D97000C3F27 /* TestStoryboard.storyboard */,
+			);
+			name = "Test classes";
+			path = ../../FSHelpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -287,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F6C2B8A1C628D97000C3F27 /* TestStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,6 +308,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F6C2B8B1C6296D0000C3F27 /* TestStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
