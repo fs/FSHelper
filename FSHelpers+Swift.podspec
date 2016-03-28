@@ -76,7 +76,6 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/fs/FSHelper.git", :tag => s.version.to_s }
 
-
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
   #  CocoaPods is smart about how it includes source code. For source files

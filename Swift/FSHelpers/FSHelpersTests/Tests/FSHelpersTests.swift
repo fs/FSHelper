@@ -71,7 +71,6 @@ class FSHelperTests: XCTestCase {
     }
     
     //MARK: - System Version
-    
     func testSystemVersionEqualTo() {
         for i in 7 ... 9 {
             let version = "\(i)"
@@ -261,9 +260,5 @@ class FSHelperTests: XCTestCase {
                 }
             })
         }
-    }
-    
-    func testDLog () {
-        FSDLog("It's a test")
     }
 }
