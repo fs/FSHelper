@@ -32,7 +32,7 @@ public extension String {
         
         let regExPredicate:NSPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         
-        return regExPredicate.evaluateWithObject(self)
+        return regExPredicate.evaluateWithObject(self.lowercaseString)
     }
     
     public func fs_getStringWidth (font: UIFont, height: CGFloat) -> CGFloat {
