@@ -10,6 +10,13 @@ import UIKit
 
 public extension String {
     
+    public func fs_toDouble   () -> Double?   {return Double(self)}
+    public func fs_toInt      () -> Int?      {return Int(self)}
+    
+    public var fs_lenght: Int {
+        return self.characters.count
+    }
+    
     public func fs_getRowHeight (font: UIFont) -> CGFloat {
         return self.fs_getStringHeight(font, width: CGFloat.max)
     }
@@ -96,5 +103,17 @@ public extension String {
         let formatted = uppercase.stringByReplacingOccurrencesOfString(" ", withString: "_", options: .LiteralSearch, range: nil)
         
         return formatted
+    }
+    
+    public subscript (i: Int) -> Character {
+        return self[self.startIndex.advancedBy(i)]
+    }
+    
+    public subscript (i: Int) -> String {
+        return String(self[i] as Character)
+    }
+    
+    public subscript (range: Range<Int>) -> String {
+        return self.substringWithRange(Range(self.startIndex.advancedBy(range.startIndex) ..< self.startIndex.advancedBy(range.endIndex)))
     }
 }

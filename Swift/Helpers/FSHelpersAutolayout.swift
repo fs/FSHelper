@@ -8,7 +8,7 @@
 
 import UIKit
 
-func FSVisualConstraints (
+public func FSVisualConstraints (
     format  : String,
     options : NSLayoutFormatOptions = .DirectionLeadingToTrailing,
     metrics : [String : AnyObject]? = nil,
@@ -18,7 +18,7 @@ func FSVisualConstraints (
     return constraints
 }
 
-func FSEdgesConstraints (view: UIView, edges: UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)) -> [NSLayoutConstraint] {
+public func FSEdgesConstraints (view: UIView, edges: UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)) -> [NSLayoutConstraint] {
     
     let dict = ["view": view]
     let metrics = ["LEFT": edges.left, "TOP": edges.top, "RIGHT": edges.right, "BOTTOM": edges.bottom]
@@ -31,7 +31,7 @@ func FSEdgesConstraints (view: UIView, edges: UIEdgeInsets = UIEdgeInsetsMake(0,
     return constraints
 }
 
-func FSSizeConstraints (view:UIView, size:CGSize) -> [NSLayoutConstraint] {
+public func FSSizeConstraints (view:UIView, size:CGSize) -> [NSLayoutConstraint] {
     let dict = ["view":view]
     let metrics = ["WIDTH":size.width, "HEIGHT":size.height]
     
@@ -43,33 +43,33 @@ func FSSizeConstraints (view:UIView, size:CGSize) -> [NSLayoutConstraint] {
     return constraints
 }
 
-func FSCenterConstraints (view: UIView, centerOffset: CGPoint = CGPointZero) -> [NSLayoutConstraint] {
+public func FSCenterConstraints (view: UIView, centerOffset: CGPoint = CGPointZero) -> [NSLayoutConstraint] {
     return [
         NSLayoutConstraint(item: view, attribute: .CenterX, relatedBy: .Equal, toItem: view.superview!, attribute: .CenterX, multiplier: 1, constant: centerOffset.x),
         NSLayoutConstraint(item: view, attribute: .CenterY, relatedBy: .Equal, toItem: view.superview!, attribute: .CenterY, multiplier: 1, constant: centerOffset.y)
     ]
 }
 
-func FSCenterYConstraint (view: UIView, offset: CGFloat = 0) -> NSLayoutConstraint {
+public func FSCenterYConstraint (view: UIView, offset: CGFloat = 0) -> NSLayoutConstraint {
     return NSLayoutConstraint(item: view, attribute: .CenterY, relatedBy: .Equal, toItem: view.superview, attribute: .CenterY, multiplier: 1, constant: offset)
 }
 
-func FSCenterXConstraint (view: UIView, offset: CGFloat = 0) -> NSLayoutConstraint {
+public func FSCenterXConstraint (view: UIView, offset: CGFloat = 0) -> NSLayoutConstraint {
     return NSLayoutConstraint(item: view, attribute: .CenterX, relatedBy: .Equal, toItem: view.superview, attribute: .CenterX, multiplier: 1, constant: offset)
 }
 
-func FSProportionalWidthConstraint (firstView: UIView, secondView: UIView, multipler: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
+public func FSProportionalWidthConstraint (firstView: UIView, secondView: UIView, multipler: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
     return NSLayoutConstraint(item: firstView, attribute: .Width, relatedBy: .Equal, toItem: secondView, attribute: .Width, multiplier: multipler, constant: constant)
 }
 
-func FSProportionalHeightConstraint (firstView: UIView, secondView: UIView, multipler: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
+public func FSProportionalHeightConstraint (firstView: UIView, secondView: UIView, multipler: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
     return NSLayoutConstraint(item: firstView, attribute: .Height, relatedBy: .Equal, toItem: secondView, attribute: .Height, multiplier: multipler, constant: constant)
 }
 
-func FSProportionalHeightToWidthConstraint (firstView: UIView, secondView: UIView, multipler: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
+public func FSProportionalHeightToWidthConstraint (firstView: UIView, secondView: UIView, multipler: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
     return NSLayoutConstraint(item: firstView, attribute: .Height, relatedBy: .Equal, toItem: secondView, attribute: .Width, multiplier: multipler, constant: constant)
 }
 
-func FSProportionalWidthToHeightConstraint (firstView: UIView, secondView: UIView, multipler: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
+public func FSProportionalWidthToHeightConstraint (firstView: UIView, secondView: UIView, multipler: CGFloat, constant: CGFloat) -> NSLayoutConstraint {
     return NSLayoutConstraint(item: firstView, attribute: .Width, relatedBy: .Equal, toItem: secondView, attribute: .Height, multiplier: multipler, constant: constant)
 }

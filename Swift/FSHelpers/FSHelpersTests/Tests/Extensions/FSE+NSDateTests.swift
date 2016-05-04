@@ -37,6 +37,42 @@ class FSE_NSDateTests: XCTestCase {
         super.tearDown()
     }
     
+    func testIntegerTimePeriod() {
+        for _ in 0 ..< 100 {
+            let value = Int(arc4random_uniform(100))
+            
+            let seconds     = NSTimeInterval(value)
+            let minutes     = seconds*60
+            let hours       = minutes*60
+            let days        = hours*24
+            let weeks       = days*7
+            
+            XCTAssertEqual(value.fs_seconds , seconds)
+            XCTAssertEqual(value.fs_minutes , minutes)
+            XCTAssertEqual(value.fs_hours   , hours)
+            XCTAssertEqual(value.fs_days    , days)
+            XCTAssertEqual(value.fs_weeks   , weeks)
+        }
+    }
+    
+    func testFloatTimePeriod () {
+        for _ in 0 ..< 100 {
+            let value = Double(arc4random_uniform(100))
+            
+            let seconds     = NSTimeInterval(value)
+            let minutes     = seconds*60
+            let hours       = minutes*60
+            let days        = hours*24
+            let weeks       = days*7
+            
+            XCTAssertEqual(value.fs_seconds , seconds)
+            XCTAssertEqual(value.fs_minutes , minutes)
+            XCTAssertEqual(value.fs_hours   , hours)
+            XCTAssertEqual(value.fs_days    , days)
+            XCTAssertEqual(value.fs_weeks   , weeks)
+        }
+    }
+    
     func testDatePeriodInit () {
         for _ in 0 ..< 5 {
             let timestamp = NSDate().timeIntervalSince1970

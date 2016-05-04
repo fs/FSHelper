@@ -11,14 +11,14 @@ import XCTest
 
 class FSE_DictionaryTests: XCTestCase {
     
-    private let dict: [Int : Int] = {
+    private func generateDict() -> [Int : Int] {
         var dict: [Int : Int] = [:]
         for i in 0 ..< 1000 {
             let random = Int(arc4random_uniform(100))
             dict.updateValue(random, forKey: i)
         }
         return dict
-        }()
+    }
     
     override func setUp() {
         super.setUp()
@@ -28,8 +28,22 @@ class FSE_DictionaryTests: XCTestCase {
         super.tearDown()
     }
     
-    func testfs_ObjectForKeyOrDefault () {
-        let dict = self.dict
+    func testUpdateIfExist () {
+        var dict = self.generateDict()
+        
+        for i in 0 ..< 100 {
+            let valueOrNil: Int? = arc4random()%2 == 0 ? Int(arc4random()) : nil
+            let key = 1000+i
+            dict.fs_updateIfExist(valueOrNil, forKey: key)
+            
+            if let value = valueOrNil {
+                XCTAssertEqual(dict[key], value)
+            }
+        }
+    }
+    
+    func testObjectForKeyOrDefault () {
+        let dict = self.generateDict()
         
         let defaultValue = -1
         

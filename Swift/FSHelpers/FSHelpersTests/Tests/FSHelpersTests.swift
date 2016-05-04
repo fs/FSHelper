@@ -223,7 +223,7 @@ class FSHelperTests: XCTestCase {
                             XCTAssertEqual(UInt32(imageGreen),  green,  "Green must be equal")
                             XCTAssertEqual(UInt32(imageBlue),   blue,   "Blue must be equal")
                             
-                            currentPixel++
+                            currentPixel += 1
                         }
                     }
                 }
@@ -235,6 +235,16 @@ class FSHelperTests: XCTestCase {
     func testRandomColor () {
         let color: UIColor = FSRandomColor()
         XCTAssertNotNil(color, "Must not be nil")
+    }
+    
+    func testGetRandomBool () {
+        var values: [Bool] = []
+        for _ in 0 ..< 100 {
+            values.append(FSGetRandomBool())
+        }
+        let trueValues = values.filter({$0})
+        XCTAssert(trueValues.count != 0)
+        XCTAssert(trueValues.count != values.count)
     }
     
     //MARK: - GCD

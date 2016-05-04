@@ -19,6 +19,10 @@ public func FSApplicationDirectoryURL (directoryToSearch:NSSearchPathDirectory) 
     return NSURL(string: FSApplicationDirectoryPath(directoryToSearch))!
 }
 
+public func FSPrintDocumentsPath () {
+    print("\n*******************************************\nDOCUMENTS\n\(NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0])\n*******************************************\n")
+}
+
 //MARK: - Interface
 
 public let FSScreenBounds: CGRect = UIScreen.mainScreen().bounds
@@ -109,13 +113,82 @@ public func FSDispatch_after_short (delay:Double, block:dispatch_block_t) {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), block);
 }
 
+//MARK: - iOS settings
+
+// App settigns
+public func APP_SETTINGS_URL() -> NSURL? {
+    return NSURL(string: UIApplicationOpenSettingsURLString)
+}
+
+public func CAN_OPEN_SETTINGS_APP() -> Bool {
+    if let url = APP_SETTINGS_URL() {
+        return UIApplication.sharedApplication().canOpenURL(url)
+    }
+    
+    return false
+}
+
+public func OPEN_SETTINGS_APP() -> Bool {
+    if let url = APP_SETTINGS_URL() where CAN_OPEN_SETTINGS_APP() {
+        return UIApplication.sharedApplication().openURL(url)
+    }
+    
+    return false
+}
+
+// WIFI settings
+public func WIFI_SETTINGS_URL() -> NSURL? {
+    return NSURL(string: "prefs:root=WIFI")
+}
+
+public func CAN_OPEN_WIFI_SETTINGS() -> Bool {
+    if let url = WIFI_SETTINGS_URL() {
+        return UIApplication.sharedApplication().canOpenURL(url)
+    }
+    
+    return false
+}
+
+public func OPEN_WIFI_SETTINGS() -> Bool {
+    if let url = WIFI_SETTINGS_URL() where CAN_OPEN_WIFI_SETTINGS() {
+        return UIApplication.sharedApplication().openURL(url)
+    }
+    
+    return false
+}
+
 //MARK: - Other
+
+public var FSGregorianCalendar: NSCalendar {return NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!}
+
+/**
+ Try to make call with input number
+ 
+ - parameter number: phone number (string)
+ 
+ - returns: 'true' if can open URL and 'false' if not or if can't initialize URL from input number
+ */
+public func FSMakePhoneCall (number: String) -> Bool {
+    let callURLString = "tel://\(number)"
+    guard let URL = NSURL(string: callURLString) else {return false}
+    
+    guard UIApplication.sharedApplication().canOpenURL(URL) else {
+        return false
+    }
+    
+    UIApplication.sharedApplication().openURL(URL)
+    return true
+}
+
+public func FSGetRandomBool() -> Bool {
+    return arc4random()%2 == 0
+}
 
 public func FSGetInfoDictionaryValue (key: String) -> AnyObject? {
     return NSBundle.mainBundle().infoDictionary?[key]
 }
 
-public func FSDLog(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
+public func FSDLog(message: String, function: String = #function, file: String = #file, line: Int = #line) {
     #if DEBUG
         print("Message \"\(message)\" (File: \(file), Function: \(function), Line: \(line))")
     #endif
