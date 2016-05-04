@@ -47,27 +47,27 @@ class FSHelperTests: XCTestCase {
     
     func testIsIPad () {
         let etalon = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
-        XCTAssertEqual(etalon, FSIsIPad(), "Must be equal")
+        XCTAssertEqual(etalon, FSIsIPad, "Must be equal")
     }
     
     func testIsIPhone () {
         let etalon = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone
-        XCTAssertEqual(etalon, FSIsIPhone(), "Must be equal")
+        XCTAssertEqual(etalon, FSIsIPhone, "Must be equal")
     }
     
     func testScaleFactor () {
         let etalon = UIScreen.mainScreen().scale
-        XCTAssertEqual(etalon, FSScaleFactor(), "Must be equal")
+        XCTAssertEqual(etalon, FSScaleFactor, "Must be equal")
     }
     
     func testIsRetina () {
-        let etalon = FSScaleFactor() == 2
-        XCTAssertEqual(etalon, FSIsRetina(), "Must be equal")
+        let etalon = FSScaleFactor == 2
+        XCTAssertEqual(etalon, FSIsRetina, "Must be equal")
     }
     
     func testDeviceOrientation () {
         let etalon = UIDevice.currentDevice().orientation
-        XCTAssertEqual(etalon, FSDeviceOrientation(), "Must be equal")
+        XCTAssertEqual(etalon, FSDeviceOrientation, "Must be equal")
     }
     
     //MARK: - System Version
