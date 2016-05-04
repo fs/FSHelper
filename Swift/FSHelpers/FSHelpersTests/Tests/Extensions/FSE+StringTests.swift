@@ -36,6 +36,14 @@ class FSE_StringTests: XCTestCase {
         super.tearDown()
     }
     
+    func testStringLenght () {
+        for _ in 0 ..< 5 {
+            let string = self.generateRandomString()
+            let stringLenght = string.characters.count
+            XCTAssertEqual(stringLenght, string.fs_lenght)
+        }
+    }
+    
     func testGetRowHeight () {
         for _ in 0 ..< 5 {
             let string = self.generateRandomString()
@@ -213,5 +221,35 @@ class FSE_StringTests: XCTestCase {
         XCTAssertEqual(string1, test1, "Must not change original string")
         XCTAssertEqual(string2, test2, "Must not change original string")
         XCTAssertEqual(string3, test3, "Must not change original string")
+    }
+    
+    func testSubscriptCharacter () {
+        let text = self.generateRandomString()
+        for i in 0 ..< Int(text.characters.count) {
+            let character: Character = text[i]
+            XCTAssertEqual(character, text[text.startIndex.advancedBy(i)])
+        }
+    }
+    
+    func testSubscriptString () {
+        let text = self.generateRandomString()
+        for i in 0 ..< Int(text.characters.count) {
+            let string: String = text[i]
+            XCTAssertEqual(string, String(text[text.startIndex.advancedBy(i)]))
+        }
+    }
+    
+    func testSubscriptRange () {
+        let start = Int(arc4random_uniform(50))
+        let lenght = Int(arc4random_uniform(50))
+        let end = (start+lenght)
+        
+        let text = self.generateRandomString()
+        
+        let range = Range(start ..< end)
+        let substring = text[start ..< end]
+        let etalon = text.substringWithRange(Range(text.startIndex.advancedBy(range.startIndex) ..< text.startIndex.advancedBy(range.endIndex)))
+        
+        XCTAssertEqual(substring, etalon)
     }
 }

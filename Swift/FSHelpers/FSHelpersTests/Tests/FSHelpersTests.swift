@@ -47,27 +47,27 @@ class FSHelperTests: XCTestCase {
     
     func testIsIPad () {
         let etalon = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
-        XCTAssertEqual(etalon, FSIsIPad(), "Must be equal")
+        XCTAssertEqual(etalon, FSIsIPad, "Must be equal")
     }
     
     func testIsIPhone () {
         let etalon = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone
-        XCTAssertEqual(etalon, FSIsIPhone(), "Must be equal")
+        XCTAssertEqual(etalon, FSIsIPhone, "Must be equal")
     }
     
     func testScaleFactor () {
         let etalon = UIScreen.mainScreen().scale
-        XCTAssertEqual(etalon, FSScaleFactor(), "Must be equal")
+        XCTAssertEqual(etalon, FSScaleFactor, "Must be equal")
     }
     
     func testIsRetina () {
-        let etalon = FSScaleFactor() == 2
-        XCTAssertEqual(etalon, FSIsRetina(), "Must be equal")
+        let etalon = FSScaleFactor == 2
+        XCTAssertEqual(etalon, FSIsRetina, "Must be equal")
     }
     
     func testDeviceOrientation () {
         let etalon = UIDevice.currentDevice().orientation
-        XCTAssertEqual(etalon, FSDeviceOrientation(), "Must be equal")
+        XCTAssertEqual(etalon, FSDeviceOrientation, "Must be equal")
     }
     
     //MARK: - System Version
@@ -223,7 +223,7 @@ class FSHelperTests: XCTestCase {
                             XCTAssertEqual(UInt32(imageGreen),  green,  "Green must be equal")
                             XCTAssertEqual(UInt32(imageBlue),   blue,   "Blue must be equal")
                             
-                            currentPixel++
+                            currentPixel += 1
                         }
                     }
                 }
@@ -235,6 +235,16 @@ class FSHelperTests: XCTestCase {
     func testRandomColor () {
         let color: UIColor = FSRandomColor()
         XCTAssertNotNil(color, "Must not be nil")
+    }
+    
+    func testGetRandomBool () {
+        var values: [Bool] = []
+        for _ in 0 ..< 100 {
+            values.append(FSGetRandomBool())
+        }
+        let trueValues = values.filter({$0})
+        XCTAssert(trueValues.count != 0)
+        XCTAssert(trueValues.count != values.count)
     }
     
     //MARK: - GCD

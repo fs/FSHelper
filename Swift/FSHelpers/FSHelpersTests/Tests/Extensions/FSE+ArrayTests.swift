@@ -28,6 +28,23 @@ class FSE_ArrayTests: XCTestCase {
         super.tearDown()
     }
     
+    func testAppendIfExist () {
+        var array = self.array
+        
+        for _ in 0 ..< 100 {
+            let oldCount = array.count
+            let valueOrNil: Int? = arc4random()%2 == 0 ? Int(arc4random()) : nil
+            array.fs_appendIfExist(valueOrNil)
+            
+            let newCount = (valueOrNil == nil) ? oldCount : (oldCount + 1)
+            XCTAssertEqual(array.count, newCount)
+            if let value = valueOrNil {
+                XCTAssertEqual(array.last!, value)
+            }
+        }
+        
+    }
+    
     func testObjectAtIndexOrNil () {
         let array = self.array
         

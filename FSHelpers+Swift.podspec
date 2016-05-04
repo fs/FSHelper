@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "FSHelpers+Swift"
-  s.version      = "2.0"
+  s.version      = "2.1"
   s.summary      = "Helpers and extensions for iOS"
 
   # This description is used to generate tags and improve search results.

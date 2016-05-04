@@ -32,9 +32,18 @@
 		210C52DD1BFA3C8D00F6C390 /* FSE+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C52D21BFA3C8D00F6C390 /* FSE+UIView.swift */; };
 		210C52DE1BFA3C8D00F6C390 /* FSHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C52D31BFA3C8D00F6C390 /* FSHelpers.swift */; };
 		21794A991C021ABA001E7E57 /* FSKeyboardScrollSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21794A981C021ABA001E7E57 /* FSKeyboardScrollSupport.swift */; };
+		21B0014F1C3C1357004235FF /* FSE+UIAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0014E1C3C1357004235FF /* FSE+UIAlertView.swift */; };
 		21C0B7B91C3A9F0900F1C0AB /* FSHelpersAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C0B7B81C3A9F0900F1C0AB /* FSHelpersAutolayout.swift */; };
 		21C0B7BB1C3A9FF400F1C0AB /* FSHelpersAutolayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C0B7BA1C3A9FF400F1C0AB /* FSHelpersAutolayoutTests.swift */; };
-		21B0014F1C3C1357004235FF /* FSE+UIAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21B0014E1C3C1357004235FF /* FSE+UIAlertView.swift */; };
+		2BB333261CD9DB3600191166 /* FSE+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB333251CD9DB3600191166 /* FSE+UITextField.swift */; };
+		2BB333281CD9DBC400191166 /* FSE+UITextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB333271CD9DBC400191166 /* FSE+UITextFieldTests.swift */; };
+		2BB3332B1CD9DC9200191166 /* FSE+NSURLSessionTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB333291CD9DC8400191166 /* FSE+NSURLSessionTask.swift */; };
+		2BB3332E1CD9DE1400191166 /* FSE+Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB3332D1CD9DE1400191166 /* FSE+Enumerations.swift */; };
+		2BB333311CD9DE5400191166 /* FSE+EnumerationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB333301CD9DE5400191166 /* FSE+EnumerationsTests.swift */; };
+		2BB333331CD9E13300191166 /* FSE+Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB333321CD9E13300191166 /* FSE+Range.swift */; };
+		2BB333351CD9E15500191166 /* FSE+RangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB333341CD9E15500191166 /* FSE+RangeTests.swift */; };
+		2BB333371CD9E52800191166 /* FSE+NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB333361CD9E52800191166 /* FSE+NSObject.swift */; };
+		2BB333391CD9E54100191166 /* FSE+NSObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB333381CD9E54100191166 /* FSE+NSObjectTests.swift */; };
 		4F6C2B8A1C628D97000C3F27 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6C2B891C628D97000C3F27 /* TestStoryboard.storyboard */; };
 		4F6C2B8B1C6296D0000C3F27 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6C2B891C628D97000C3F27 /* TestStoryboard.storyboard */; };
 /* End PBXBuildFile section */
@@ -78,9 +87,18 @@
 		210C52D21BFA3C8D00F6C390 /* FSE+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UIView.swift"; sourceTree = "<group>"; };
 		210C52D31BFA3C8D00F6C390 /* FSHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSHelpers.swift; sourceTree = "<group>"; };
 		21794A981C021ABA001E7E57 /* FSKeyboardScrollSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSKeyboardScrollSupport.swift; sourceTree = "<group>"; };
+		21B0014E1C3C1357004235FF /* FSE+UIAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UIAlertView.swift"; sourceTree = "<group>"; };
 		21C0B7B81C3A9F0900F1C0AB /* FSHelpersAutolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSHelpersAutolayout.swift; sourceTree = "<group>"; };
 		21C0B7BA1C3A9FF400F1C0AB /* FSHelpersAutolayoutTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FSHelpersAutolayoutTests.swift; sourceTree = "<group>"; };
-		21B0014E1C3C1357004235FF /* FSE+UIAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UIAlertView.swift"; sourceTree = "<group>"; };
+		2BB333251CD9DB3600191166 /* FSE+UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UITextField.swift"; sourceTree = "<group>"; };
+		2BB333271CD9DBC400191166 /* FSE+UITextFieldTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UITextFieldTests.swift"; sourceTree = "<group>"; };
+		2BB333291CD9DC8400191166 /* FSE+NSURLSessionTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FSE+NSURLSessionTask.swift"; path = "../../FSHelpers/FSHelpersTests/Tests/Extensions/FSE+NSURLSessionTask.swift"; sourceTree = "<group>"; };
+		2BB3332D1CD9DE1400191166 /* FSE+Enumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+Enumerations.swift"; sourceTree = "<group>"; };
+		2BB333301CD9DE5400191166 /* FSE+EnumerationsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+EnumerationsTests.swift"; sourceTree = "<group>"; };
+		2BB333321CD9E13300191166 /* FSE+Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+Range.swift"; sourceTree = "<group>"; };
+		2BB333341CD9E15500191166 /* FSE+RangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+RangeTests.swift"; sourceTree = "<group>"; };
+		2BB333361CD9E52800191166 /* FSE+NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+NSObject.swift"; sourceTree = "<group>"; };
+		2BB333381CD9E54100191166 /* FSE+NSObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+NSObjectTests.swift"; sourceTree = "<group>"; };
 		4F6C2B891C628D97000C3F27 /* TestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TestStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,16 +135,15 @@
 		210B0E3C1BFB38760073F2FF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				2BB333381CD9E54100191166 /* FSE+NSObjectTests.swift */,
 				210B0E3D1BFB38760073F2FF /* FSE+ArrayTests.swift */,
 				210B0E3E1BFB38760073F2FF /* FSE+DictionaryTests.swift */,
 				210B0E3F1BFB38760073F2FF /* FSE+DoubleTests.swift */,
 				210B0E401BFB38760073F2FF /* FSE+NSDateTests.swift */,
 				210B0E411BFB38760073F2FF /* FSE+StringTests.swift */,
-				210B0E421BFB38760073F2FF /* FSE+UIColorTests.swift */,
-				210B0E431BFB38760073F2FF /* FSE+UIImageTests.swift */,
-				210B0E441BFB38760073F2FF /* FSE+UITableViewTests.swift */,
-				210B0E451BFB38760073F2FF /* FSE+UITextViewTests.swift */,
-				210B0E461BFB38760073F2FF /* FSE+UIViewTests.swift */,
+				2BB333301CD9DE5400191166 /* FSE+EnumerationsTests.swift */,
+				2BB333341CD9E15500191166 /* FSE+RangeTests.swift */,
+				2BB3332F1CD9DE4100191166 /* UI Extensions Tests */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -183,17 +200,16 @@
 		210C52C81BFA3C8D00F6C390 /* FSExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				2BB333361CD9E52800191166 /* FSE+NSObject.swift */,
 				210C52C91BFA3C8D00F6C390 /* FSE+Array.swift */,
 				210C52CA1BFA3C8D00F6C390 /* FSE+Dictionary.swift */,
 				210C52CB1BFA3C8D00F6C390 /* FSE+Double.swift */,
 				210C52CC1BFA3C8D00F6C390 /* FSE+NSDate.swift */,
 				210C52CD1BFA3C8D00F6C390 /* FSE+String.swift */,
-				210C52CE1BFA3C8D00F6C390 /* FSE+UIColor.swift */,
-				210C52CF1BFA3C8D00F6C390 /* FSE+UIImage.swift */,
-				210C52D01BFA3C8D00F6C390 /* FSE+UITableView.swift */,
-				210C52D11BFA3C8D00F6C390 /* FSE+UITextView.swift */,
-				210C52D21BFA3C8D00F6C390 /* FSE+UIView.swift */,
-				21B0014E1C3C1357004235FF /* FSE+UIAlertView.swift */,
+				2BB333291CD9DC8400191166 /* FSE+NSURLSessionTask.swift */,
+				2BB3332D1CD9DE1400191166 /* FSE+Enumerations.swift */,
+				2BB333321CD9E13300191166 /* FSE+Range.swift */,
+				2BB3332C1CD9DE0000191166 /* UI Extensions */,
 			);
 			path = FSExtensions;
 			sourceTree = "<group>";
@@ -204,6 +220,33 @@
 				21794A981C021ABA001E7E57 /* FSKeyboardScrollSupport.swift */,
 			);
 			path = FSProtocols;
+			sourceTree = "<group>";
+		};
+		2BB3332C1CD9DE0000191166 /* UI Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				210C52CE1BFA3C8D00F6C390 /* FSE+UIColor.swift */,
+				210C52CF1BFA3C8D00F6C390 /* FSE+UIImage.swift */,
+				210C52D01BFA3C8D00F6C390 /* FSE+UITableView.swift */,
+				210C52D11BFA3C8D00F6C390 /* FSE+UITextView.swift */,
+				210C52D21BFA3C8D00F6C390 /* FSE+UIView.swift */,
+				21B0014E1C3C1357004235FF /* FSE+UIAlertView.swift */,
+				2BB333251CD9DB3600191166 /* FSE+UITextField.swift */,
+			);
+			name = "UI Extensions";
+			sourceTree = "<group>";
+		};
+		2BB3332F1CD9DE4100191166 /* UI Extensions Tests */ = {
+			isa = PBXGroup;
+			children = (
+				210B0E421BFB38760073F2FF /* FSE+UIColorTests.swift */,
+				210B0E431BFB38760073F2FF /* FSE+UIImageTests.swift */,
+				210B0E441BFB38760073F2FF /* FSE+UITableViewTests.swift */,
+				210B0E451BFB38760073F2FF /* FSE+UITextViewTests.swift */,
+				210B0E461BFB38760073F2FF /* FSE+UIViewTests.swift */,
+				2BB333271CD9DBC400191166 /* FSE+UITextFieldTests.swift */,
+			);
+			name = "UI Extensions Tests";
 			sourceTree = "<group>";
 		};
 		4F6C2B881C628D5E000C3F27 /* Test classes */ = {
@@ -326,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21B0014F1C3C1357004235FF /* FSE+UIAlertView.swift in Sources */,
+				2BB333261CD9DB3600191166 /* FSE+UITextField.swift in Sources */,
 				210C52DA1BFA3C8D00F6C390 /* FSE+UIImage.swift in Sources */,
 				210C52D51BFA3C8D00F6C390 /* FSE+Dictionary.swift in Sources */,
 				21794A991C021ABA001E7E57 /* FSKeyboardScrollSupport.swift in Sources */,
@@ -333,12 +377,16 @@
 				210C52D61BFA3C8D00F6C390 /* FSE+Double.swift in Sources */,
 				210C52D91BFA3C8D00F6C390 /* FSE+UIColor.swift in Sources */,
 				210C52DD1BFA3C8D00F6C390 /* FSE+UIView.swift in Sources */,
+				2BB3332B1CD9DC9200191166 /* FSE+NSURLSessionTask.swift in Sources */,
+				2BB333331CD9E13300191166 /* FSE+Range.swift in Sources */,
 				210C52D41BFA3C8D00F6C390 /* FSE+Array.swift in Sources */,
 				210C52DC1BFA3C8D00F6C390 /* FSE+UITextView.swift in Sources */,
 				210C52D81BFA3C8D00F6C390 /* FSE+String.swift in Sources */,
 				21C0B7B91C3A9F0900F1C0AB /* FSHelpersAutolayout.swift in Sources */,
 				210C52DE1BFA3C8D00F6C390 /* FSHelpers.swift in Sources */,
+				2BB333371CD9E52800191166 /* FSE+NSObject.swift in Sources */,
 				210C52D71BFA3C8D00F6C390 /* FSE+NSDate.swift in Sources */,
+				2BB3332E1CD9DE1400191166 /* FSE+Enumerations.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,8 +400,12 @@
 				210B0E521BFB38760073F2FF /* FSHelpersTests.swift in Sources */,
 				210B0E511BFB38760073F2FF /* FSE+UIViewTests.swift in Sources */,
 				210B0E491BFB38760073F2FF /* FSE+DictionaryTests.swift in Sources */,
+				2BB333391CD9E54100191166 /* FSE+NSObjectTests.swift in Sources */,
 				210B0E501BFB38760073F2FF /* FSE+UITextViewTests.swift in Sources */,
+				2BB333281CD9DBC400191166 /* FSE+UITextFieldTests.swift in Sources */,
+				2BB333311CD9DE5400191166 /* FSE+EnumerationsTests.swift in Sources */,
 				210B0E4A1BFB38760073F2FF /* FSE+DoubleTests.swift in Sources */,
+				2BB333351CD9E15500191166 /* FSE+RangeTests.swift in Sources */,
 				210B0E4C1BFB38760073F2FF /* FSE+StringTests.swift in Sources */,
 				210B0E481BFB38760073F2FF /* FSE+ArrayTests.swift in Sources */,
 				210B0E4B1BFB38760073F2FF /* FSE+NSDateTests.swift in Sources */,
