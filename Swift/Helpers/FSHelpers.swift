@@ -25,25 +25,27 @@ public func FSPrintDocumentsPath () {
 
 //MARK: - Interface
 
-public let FSScreenBounds: CGRect = UIScreen.mainScreen().bounds
+public var FSScreenBounds: CGRect {
+    return UIScreen.mainScreen().bounds
+}
 
-public func FSIsIPad () -> Bool {
+public var FSIsIPad: Bool {
     return UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
 }
 
-public func FSIsIPhone () -> Bool {
+public var FSIsIPhone: Bool {
     return UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone
 }
 
-public func FSScaleFactor () -> CGFloat {
+public var FSScaleFactor: CGFloat {
     return UIScreen.mainScreen().scale
 }
 
-public func FSIsRetina () -> Bool {
-    return FSScaleFactor() == 2
+public var FSIsRetina: Bool {
+    return FSScaleFactor == 2
 }
 
-public func FSDeviceOrientation () -> UIDeviceOrientation {
+public var FSDeviceOrientation: UIDeviceOrientation {
     return UIDevice.currentDevice().orientation
 }
 
