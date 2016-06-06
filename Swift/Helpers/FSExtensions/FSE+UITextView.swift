@@ -63,7 +63,7 @@ public class FSTextView :UITextView {
     }
     
     private func setupInsets () {
-        self.textContainerInset = UIEdgeInsetsMake(-4,0,0,0)
+        self.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
         self.textContainer.lineFragmentPadding = 0
     }
     
