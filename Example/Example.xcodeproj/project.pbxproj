@@ -13,6 +13,7 @@
 		210C528B1BFA3C6400F6C390 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210C528A1BFA3C6400F6C390 /* Assets.xcassets */; };
 		210C528E1BFA3C6400F6C390 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210C528C1BFA3C6400F6C390 /* LaunchScreen.storyboard */; };
 		210C52991BFA3C6500F6C390 /* ExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C52981BFA3C6500F6C390 /* ExampleTests.swift */; };
+		21C54FC81D17D5F200D318E9 /* FSHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21C54FC71D17D5F200D318E9 /* FSHelpers.framework */; };
 		4F6C2B851C628B1F000C3F27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C52851BFA3C6400F6C390 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		210C52941BFA3C6500F6C390 /* ExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		210C52981BFA3C6500F6C390 /* ExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTests.swift; sourceTree = "<group>"; };
 		210C529A1BFA3C6500F6C390 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21C54FC71D17D5F200D318E9 /* FSHelpers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FSHelpers.framework; path = "../build/Debug-iphoneos/FSHelpers.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21C54FC81D17D5F200D318E9 /* FSHelpers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,6 +76,7 @@
 		210C52771BFA3C6400F6C390 = {
 			isa = PBXGroup;
 			children = (
+				21C54FC71D17D5F200D318E9 /* FSHelpers.framework */,
 				210C52821BFA3C6400F6C390 /* Example */,
 				210C52971BFA3C6500F6C390 /* ExampleTests */,
 				210C52811BFA3C6400F6C390 /* Products */,
