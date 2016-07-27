@@ -33,10 +33,6 @@ public extension Array {
         
         return array
     }
-    
-    public func fs_uniqValues() -> Array {
-        
-    }
 }
 
 public func + <ValueType> (left: Array<ValueType>, right: Array<ValueType>) -> Array<ValueType> {
