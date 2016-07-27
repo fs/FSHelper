@@ -166,9 +166,45 @@ public extension UIImage {
         return FSBitmap(data: bitmapData, size: (pixelsWide, pixelsHigh))
     }
     
+    convenience public init(color: UIColor) {
+        let rect = CGRectMake(0.0, 0.0, 1.0, 1.0)
+        UIGraphicsBeginImageContext(rect.size)
+        let context: CGContextRef = UIGraphicsGetCurrentContext()
+        
+        CGContextSetFillColorWithColor(context, color.CGColor)
+        CGContextFillRect(context, rect)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        super.init()
+    }
+    
+    public func aspectFillImageWithSize(size: CGSize) -> UIImage{
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        let scale = fmaxf(size.width / self.size.width, size.height / self.size.height)
+        let newSize = CGSizeMake(ceilf(self.size.width * scale), ceilf(self.size.height * scale))
+        let frame = CGRectMake(ceilf((size.width - newSize.width) / 2.0),
+                               ceilf((size.height - newSize.height) / 2.0),
+                               newSize.width,
+                               newSize.height)
+        self.drawInRect(frame)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return image
+    }
+    
+    public func aspectFitImageWithSize(size: CGSize){
+        let scale = fminf(size.width / self.size.width, size.height / self.size.height)
+        let targetSize = CGSizeMake(ceilf(self.size.width * scale), ceilf(self.size.height * scale))
+        
+        return self.aspectFillImageWithSize(targetSize)
+    }
+    
     public var fs_base64: String {
         let imageData = UIImagePNGRepresentation(self)!
         let base64String = imageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
         return base64String
     }
+    
 }
