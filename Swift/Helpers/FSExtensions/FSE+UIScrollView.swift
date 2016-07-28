@@ -11,7 +11,7 @@ import UIKit
 public extension UIScrollView{
     
     var fs_contentWidth: CGFloat {
-        set (contentWidht) {self.contentSize = CGSizeMake(contentWidht, self.contentSize.height)}
+        set (contentWidth) {self.contentSize = CGSizeMake(contentWidth, self.contentSize.height)}
         get         {return self.contentSize.width}
     }
     
