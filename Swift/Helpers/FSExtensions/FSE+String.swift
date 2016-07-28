@@ -92,6 +92,13 @@ public extension String {
         return string
     }
     
+    public func fs_trim() -> String{
+        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+    }
+    public func fs_toURL() -> NSURL{
+        return NSURL(string: self)
+    }
+    
     public var fs_localizedString: String {
         let localized = NSLocalizedString(self.fs_localizedStringFormat, comment: "")
         return localized

@@ -46,6 +46,8 @@
 		2BB333391CD9E54100191166 /* FSE+NSObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB333381CD9E54100191166 /* FSE+NSObjectTests.swift */; };
 		4F6C2B8A1C628D97000C3F27 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6C2B891C628D97000C3F27 /* TestStoryboard.storyboard */; };
 		4F6C2B8B1C6296D0000C3F27 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6C2B891C628D97000C3F27 /* TestStoryboard.storyboard */; };
+		7C353DA81D48E9F1001E7A57 /* FSE+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C353DA71D48E9F1001E7A57 /* FSE+UIButton.swift */; };
+		7C353DAA1D48EB93001E7A57 /* FSE+UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C353DA91D48EB93001E7A57 /* FSE+UIScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +102,8 @@
 		2BB333361CD9E52800191166 /* FSE+NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+NSObject.swift"; sourceTree = "<group>"; };
 		2BB333381CD9E54100191166 /* FSE+NSObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+NSObjectTests.swift"; sourceTree = "<group>"; };
 		4F6C2B891C628D97000C3F27 /* TestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TestStoryboard.storyboard; sourceTree = "<group>"; };
+		7C353DA71D48E9F1001E7A57 /* FSE+UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UIButton.swift"; sourceTree = "<group>"; };
+		7C353DA91D48EB93001E7A57 /* FSE+UIScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UIScrollView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +236,8 @@
 				210C52D21BFA3C8D00F6C390 /* FSE+UIView.swift */,
 				21B0014E1C3C1357004235FF /* FSE+UIAlertView.swift */,
 				2BB333251CD9DB3600191166 /* FSE+UITextField.swift */,
+				7C353DA71D48E9F1001E7A57 /* FSE+UIButton.swift */,
+				7C353DA91D48EB93001E7A57 /* FSE+UIScrollView.swift */,
 			);
 			name = "UI Extensions";
 			sourceTree = "<group>";
@@ -372,6 +378,7 @@
 				2BB333261CD9DB3600191166 /* FSE+UITextField.swift in Sources */,
 				210C52DA1BFA3C8D00F6C390 /* FSE+UIImage.swift in Sources */,
 				210C52D51BFA3C8D00F6C390 /* FSE+Dictionary.swift in Sources */,
+				7C353DA81D48E9F1001E7A57 /* FSE+UIButton.swift in Sources */,
 				21794A991C021ABA001E7E57 /* FSKeyboardScrollSupport.swift in Sources */,
 				210C52DB1BFA3C8D00F6C390 /* FSE+UITableView.swift in Sources */,
 				210C52D61BFA3C8D00F6C390 /* FSE+Double.swift in Sources */,
@@ -387,6 +394,7 @@
 				2BB333371CD9E52800191166 /* FSE+NSObject.swift in Sources */,
 				210C52D71BFA3C8D00F6C390 /* FSE+NSDate.swift in Sources */,
 				2BB3332E1CD9DE1400191166 /* FSE+Enumerations.swift in Sources */,
+				7C353DAA1D48EB93001E7A57 /* FSE+UIScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
