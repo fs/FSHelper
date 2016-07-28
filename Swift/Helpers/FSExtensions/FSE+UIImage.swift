@@ -179,7 +179,7 @@ public extension UIImage {
         super.init()
     }
     
-    public func aspectFillImageWithSize(size: CGSize) -> UIImage{
+    public func fs_aspectFillImageWithSize(size: CGSize) -> UIImage{
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         let scale = fmaxf(size.width / self.size.width, size.height / self.size.height)
         let newSize = CGSizeMake(ceilf(self.size.width * scale), ceilf(self.size.height * scale))
@@ -194,11 +194,11 @@ public extension UIImage {
         return image
     }
     
-    public func aspectFitImageWithSize(size: CGSize){
+    public func fs_aspectFitImageWithSize(size: CGSize){
         let scale = fminf(size.width / self.size.width, size.height / self.size.height)
         let targetSize = CGSizeMake(ceilf(self.size.width * scale), ceilf(self.size.height * scale))
         
-        return self.aspectFillImageWithSize(targetSize)
+        return self.fs_aspectFillImageWithSize(targetSize)
     }
     
     public var fs_base64: String {
