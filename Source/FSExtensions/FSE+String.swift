@@ -95,7 +95,7 @@ public extension String {
     public func fs_trim() -> String{
         return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
     }
-    public func fs_toURL() -> NSURL{
+    public func fs_toURL() -> NSURL? {
         return NSURL(string: self)
     }
     

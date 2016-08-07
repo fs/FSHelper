@@ -166,25 +166,25 @@ public extension UIImage {
         return FSBitmap(data: bitmapData, size: (pixelsWide, pixelsHigh))
     }
     
-    convenience public init(color: UIColor) {
+    convenience public init(fs_color color: UIColor) {
         let rect = CGRectMake(0.0, 0.0, 1.0, 1.0)
         UIGraphicsBeginImageContext(rect.size)
-        let context: CGContextRef = UIGraphicsGetCurrentContext()
+        let context: CGContextRef = UIGraphicsGetCurrentContext()!
         
         CGContextSetFillColorWithColor(context, color.CGColor)
         CGContextFillRect(context, rect)
         
-        let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        super.init()
+        let image = CGBitmapContextCreateImage(context)!
+        self.init(CGImage: image)
     }
     
     public func fs_aspectFillImageWithSize(size: CGSize) -> UIImage{
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        let scale = fmaxf(size.width / self.size.width, size.height / self.size.height)
-        let newSize = CGSizeMake(ceilf(self.size.width * scale), ceilf(self.size.height * scale))
-        let frame = CGRectMake(ceilf((size.width - newSize.width) / 2.0),
-                               ceilf((size.height - newSize.height) / 2.0),
+        let scale = max(size.width / self.size.width, size.height / self.size.height)
+        let newSize = CGSizeMake(ceil(self.size.width * scale), ceil(self.size.height * scale))
+        let frame = CGRectMake(ceil((size.width - newSize.width) / 2.0),
+                               ceil((size.height - newSize.height) / 2.0),
                                newSize.width,
                                newSize.height)
         self.drawInRect(frame)
@@ -194,9 +194,9 @@ public extension UIImage {
         return image
     }
     
-    public func fs_aspectFitImageWithSize(size: CGSize){
-        let scale = fminf(size.width / self.size.width, size.height / self.size.height)
-        let targetSize = CGSizeMake(ceilf(self.size.width * scale), ceilf(self.size.height * scale))
+    public func fs_aspectFitImageWithSize(size: CGSize) -> UIImage {
+        let scale = min(size.width / self.size.width, size.height / self.size.height)
+        let targetSize = CGSizeMake(ceil(self.size.width * scale), ceil(self.size.height * scale))
         
         return self.fs_aspectFillImageWithSize(targetSize)
     }
