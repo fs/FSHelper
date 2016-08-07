@@ -24,7 +24,7 @@ class FSHelperAutolayoutTests: XCTestCase {
         let bottom  : CGFloat = 3
         let right   : CGFloat = 4
         
-        let constraints = FSEdgesConstraints(view, edges: UIEdgeInsets(top: top, left: left, bottom: bottom, right: right))
+        let constraints = FSConstraint.Edges(view, edges: UIEdgeInsets(top: top, left: left, bottom: bottom, right: right))
         
         for constraint in constraints {
             
@@ -50,7 +50,7 @@ class FSHelperAutolayoutTests: XCTestCase {
         let size = CGSize(width: 100, height: 200)
         let view        = UIView(frame: CGRectZero)
         
-        let constraints = FSSizeConstraints(view, size: size)
+        let constraints = FSConstraint.Size(view, size: size)
         
         for constraint in constraints {
             
@@ -80,7 +80,7 @@ class FSHelperAutolayoutTests: XCTestCase {
         let xOffset: CGFloat = -10
         let yOffset: CGFloat = 20
         
-        let constraints = FSCenterConstraints(view, centerOffset: CGPoint(x: xOffset, y: yOffset))
+        let constraints = FSConstraint.Center(view, centerOffset: CGPoint(x: xOffset, y: yOffset))
         
         for constraint in constraints {
             
@@ -109,7 +109,7 @@ class FSHelperAutolayoutTests: XCTestCase {
         
         let offset: CGFloat = -10
         
-        let constraint = FSCenterXConstraint(view, offset: offset)
+        let constraint = FSConstraint.CenterX(view, offset: offset)
         
         XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.CenterX)
         XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.CenterX)
@@ -130,7 +130,7 @@ class FSHelperAutolayoutTests: XCTestCase {
         
         let offset: CGFloat = -10
         
-        let constraint = FSCenterYConstraint(view, offset: offset)
+        let constraint = FSConstraint.CenterY(view, offset: offset)
         
         XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.CenterY)
         XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.CenterY)
@@ -149,7 +149,7 @@ class FSHelperAutolayoutTests: XCTestCase {
         let multipler   : CGFloat = 2
         let constant    : CGFloat = 10
         
-        let constraint = FSProportionalWidthConstraint(view1, secondView: view2, multipler: multipler, constant: constant)
+        let constraint = FSConstraint.ProportionalWidth(view1, secondView: view2, multipler: multipler, constant: constant)
         
         XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.Width)
         XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.Width)
@@ -166,7 +166,7 @@ class FSHelperAutolayoutTests: XCTestCase {
         let multipler   : CGFloat = 2
         let constant    : CGFloat = 10
         
-        let constraint = FSProportionalHeightConstraint(view1, secondView: view2, multipler: multipler, constant: constant)
+        let constraint = FSConstraint.ProportionalHeight(view1, secondView: view2, multipler: multipler, constant: constant)
         
         XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.Height)
         XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.Height)
@@ -183,7 +183,7 @@ class FSHelperAutolayoutTests: XCTestCase {
         let multipler   : CGFloat = 2
         let constant    : CGFloat = 10
         
-        let constraint = FSProportionalHeightToWidthConstraint(view1, secondView: view2, multipler: multipler, constant: constant)
+        let constraint = FSConstraint.ProportionalHeightToWidth(view1, secondView: view2, multipler: multipler, constant: constant)
         
         XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.Height)
         XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.Width)
@@ -200,7 +200,7 @@ class FSHelperAutolayoutTests: XCTestCase {
         let multipler   : CGFloat = 2
         let constant    : CGFloat = 10
         
-        let constraint = FSProportionalWidthToHeightConstraint(view1, secondView: view2, multipler: multipler, constant: constant)
+        let constraint = FSConstraint.ProportionalWidthToHeight(view1, secondView: view2, multipler: multipler, constant: constant)
         
         XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.Width)
         XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.Height)
