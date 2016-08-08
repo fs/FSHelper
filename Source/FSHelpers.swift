@@ -11,42 +11,18 @@ import UIKit
 
 //MARK: - Application Directory
 
-public func FSApplicationDirectoryPath (directoryToSearch:NSSearchPathDirectory) -> String {
-    return NSSearchPathForDirectoriesInDomains(directoryToSearch, NSSearchPathDomainMask.UserDomainMask, true).first!
-}
-
-public func FSApplicationDirectoryURL (directoryToSearch:NSSearchPathDirectory) -> NSURL {
-    return NSURL(string: FSApplicationDirectoryPath(directoryToSearch))!
-}
-
-public func FSPrintDocumentsPath () {
-    print("\n*******************************************\nDOCUMENTS\n\(NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0])\n*******************************************\n")
-}
-
-//MARK: - Interface
-
-public var FSScreenBounds: CGRect {
-    return UIScreen.mainScreen().bounds
-}
-
-public var FSIsIPad: Bool {
-    return UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
-}
-
-public var FSIsIPhone: Bool {
-    return UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone
-}
-
-public var FSScaleFactor: CGFloat {
-    return UIScreen.mainScreen().scale
-}
-
-public var FSIsRetina: Bool {
-    return FSScaleFactor == 2
-}
-
-public var FSDeviceOrientation: UIDeviceOrientation {
-    return UIDevice.currentDevice().orientation
+public enum FSAppDirectory {
+    public static func Path (directoryToSearch: NSSearchPathDirectory) -> String {
+        return NSSearchPathForDirectoriesInDomains(directoryToSearch, NSSearchPathDomainMask.UserDomainMask, true).first!
+    }
+    
+    public static func URL (directoryToSearch: NSSearchPathDirectory) -> NSURL {
+        return NSURL(string: Path(directoryToSearch))!
+    }
+    
+    public static func PrintDocumentsPath () {
+        print("\n*******************************************\nDOCUMENTS\n\(NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true)[0])\n*******************************************\n")
+    }
 }
 
 //MARK: - App Version
@@ -55,29 +31,27 @@ public let FSBuildNumber     = NSBundle.mainBundle().infoDictionary?.fs_objectFo
 
 //MARK: - System Version
 
-public func FSSystemVersionEqualTo(version: String) -> Bool {
-    return UIDevice.currentDevice().systemVersion.compare(version,
-        options: NSStringCompareOptions.NumericSearch) == NSComparisonResult.OrderedSame
-}
-
-public func FSSystemVersionGreatherThan(version: String) -> Bool {
-    return UIDevice.currentDevice().systemVersion.compare(version,
-        options: NSStringCompareOptions.NumericSearch) == NSComparisonResult.OrderedDescending
-}
-
-public func FSSystemVersionGreatherThanOrEqualTo(version: String) -> Bool {
-    return UIDevice.currentDevice().systemVersion.compare(version,
-        options: NSStringCompareOptions.NumericSearch) != NSComparisonResult.OrderedAscending
-}
-
-public func FSSystemVersionLessThan(version: String) -> Bool {
-    return UIDevice.currentDevice().systemVersion.compare(version,
-        options: NSStringCompareOptions.NumericSearch) == NSComparisonResult.OrderedAscending
-}
-
-public func FSSystemVersionLessThanOrEqualTo(version: String) -> Bool {
-    return UIDevice.currentDevice().systemVersion.compare(version,
-        options: NSStringCompareOptions.NumericSearch) != NSComparisonResult.OrderedDescending
+public enum FSSystemVersion {
+    
+    public static func EqualTo(version: String) -> Bool {
+        return UIDevice.currentDevice().systemVersion.compare(version, options: .NumericSearch) == .OrderedSame
+    }
+    
+    public static func GreatherThan(version: String) -> Bool {
+        return UIDevice.currentDevice().systemVersion.compare(version, options: .NumericSearch) == .OrderedDescending
+    }
+    
+    public static func GreatherThanOrEqualTo(version: String) -> Bool {
+        return UIDevice.currentDevice().systemVersion.compare(version, options: .NumericSearch) != .OrderedAscending
+    }
+    
+    public static func LessThan(version: String) -> Bool {
+        return UIDevice.currentDevice().systemVersion.compare(version, options: .NumericSearch) == .OrderedAscending
+    }
+    
+    public static func LessThanOrEqualTo(version: String) -> Bool {
+        return UIDevice.currentDevice().systemVersion.compare(version, options: .NumericSearch) != .OrderedDescending
+    }
 }
 
 //MARK: - Images and colors
@@ -117,46 +91,34 @@ public func FSDispatch_after_short (delay:Double, block:dispatch_block_t) {
 
 //MARK: - iOS settings
 
-// App settigns
-public func APP_SETTINGS_URL() -> NSURL? {
-    return NSURL(string: UIApplicationOpenSettingsURLString)
+public protocol FSSettingsAppProtocol {
+    var URL: NSURL {get}
+    var canOpen: Bool {get}
+    func open () -> Bool
 }
 
-public func CAN_OPEN_SETTINGS_APP() -> Bool {
-    if let url = APP_SETTINGS_URL() {
-        return UIApplication.sharedApplication().canOpenURL(url)
+public extension FSSettingsAppProtocol {
+    public var canOpen: Bool {
+        return UIApplication.sharedApplication().canOpenURL(URL)
     }
     
-    return false
-}
-
-public func OPEN_SETTINGS_APP() -> Bool {
-    if let url = APP_SETTINGS_URL() where CAN_OPEN_SETTINGS_APP() {
-        return UIApplication.sharedApplication().openURL(url)
+    public func open () -> Bool {
+        guard canOpen else {return false}
+        return UIApplication.sharedApplication().openURL(URL)
     }
+}
+
+public enum FSSettingsApp: FSSettingsAppProtocol {
     
-    return false
-}
-
-// WIFI settings
-public func WIFI_SETTINGS_URL() -> NSURL? {
-    return NSURL(string: "prefs:root=WIFI")
-}
-
-public func CAN_OPEN_WIFI_SETTINGS() -> Bool {
-    if let url = WIFI_SETTINGS_URL() {
-        return UIApplication.sharedApplication().canOpenURL(url)
+    case Settings
+    case WiFi
+    
+    public var URL: NSURL {
+        switch self {
+        case .Settings: return NSURL(string: UIApplicationOpenSettingsURLString)!
+        case .WiFi: return NSURL(string: "prefs:root=WIFI")!
+        }
     }
-    
-    return false
-}
-
-public func OPEN_WIFI_SETTINGS() -> Bool {
-    if let url = WIFI_SETTINGS_URL() where CAN_OPEN_WIFI_SETTINGS() {
-        return UIApplication.sharedApplication().openURL(url)
-    }
-    
-    return false
 }
 
 //MARK: - Other
@@ -178,8 +140,7 @@ public func FSMakePhoneCall (number: String) -> Bool {
         return false
     }
     
-    UIApplication.sharedApplication().openURL(URL)
-    return true
+    return UIApplication.sharedApplication().openURL(URL)
 }
 
 public func FSGetRandomBool() -> Bool {
