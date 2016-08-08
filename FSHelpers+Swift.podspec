@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "FSHelpers+Swift"
-  s.version      = "2.1"
+  s.version      = "2.2"
   s.summary      = "Helpers and extensions for iOS"
 
   # This description is used to generate tags and improve search results.
@@ -84,7 +84,7 @@ Pod::Spec.new do |s|
   #  Not including the public_header_files will make all headers public.
   #
 
-  s.source_files  = "Helpers", "Helpers/**/*.{swift}"
+  s.source_files  = "Source", "Source/**/*.{swift}"
   #s.exclude_files = "Classes/Exclude"
 
   # s.public_header_files = "Classes/**/*.h"
