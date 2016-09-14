@@ -33,14 +33,6 @@ public extension FSKeyboardScrollSupport {
 
 public extension FSKeyboardScrollSupport where Self: AnyObject {
     
-    func fs_keyboardScrollSupportRegisterForNotifications () {
-        
-        let center = NSNotificationCenter.defaultCenter()
-        
-        center.addObserver(self, selector: "fs_keyboardScrollSupportKeyboardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
-        center.addObserver(self, selector: "fs_keyboardScrollSupportKeyboardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
-    }
-    
     func fs_keyboardScrollSupportRemoveNotifications () {
         
         let center = NSNotificationCenter.defaultCenter()

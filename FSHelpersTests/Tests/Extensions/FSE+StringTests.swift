@@ -40,7 +40,7 @@ class FSE_StringTests: XCTestCase {
         for _ in 0 ..< 5 {
             let string = self.generateRandomString()
             let stringLenght = string.characters.count
-            XCTAssertEqual(stringLenght, string.fs_lenght)
+            XCTAssertEqual(stringLenght, string.fs_length)
         }
     }
     

@@ -27,47 +27,16 @@ class FSHelperTests: XCTestCase {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!
         let cashesPath = NSSearchPathForDirectoriesInDomains(.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!
         
-        XCTAssertEqual(documentsPath, FSApplicationDirectoryPath(.DocumentDirectory), "Must be equal")
-        XCTAssertEqual(cashesPath, FSApplicationDirectoryPath(.CachesDirectory), "Must be equal")
+        XCTAssertEqual(documentsPath, FSAppDirectory.Path(.DocumentDirectory), "Must be equal")
+        XCTAssertEqual(cashesPath, FSAppDirectory.Path(.CachesDirectory), "Must be equal")
     }
     
     func testApplicationDirectoryURL () {
         let documentsPathURL = NSURL(string: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!)
         let cashesPathURL = NSURL(string: NSSearchPathForDirectoriesInDomains(.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!)!
         
-        XCTAssertEqual(documentsPathURL, FSApplicationDirectoryURL(.DocumentDirectory), "Must be equal")
-        XCTAssertEqual(cashesPathURL, FSApplicationDirectoryURL(.CachesDirectory), "Must be equal")
-    }
-    
-    //MARK: - Interface
-    
-    func testScreenBounds () {
-        XCTAssertEqual(UIScreen.mainScreen().bounds, FSScreenBounds, "Must be equal")
-    }
-    
-    func testIsIPad () {
-        let etalon = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Pad
-        XCTAssertEqual(etalon, FSIsIPad, "Must be equal")
-    }
-    
-    func testIsIPhone () {
-        let etalon = UIDevice.currentDevice().userInterfaceIdiom == UIUserInterfaceIdiom.Phone
-        XCTAssertEqual(etalon, FSIsIPhone, "Must be equal")
-    }
-    
-    func testScaleFactor () {
-        let etalon = UIScreen.mainScreen().scale
-        XCTAssertEqual(etalon, FSScaleFactor, "Must be equal")
-    }
-    
-    func testIsRetina () {
-        let etalon = FSScaleFactor == 2
-        XCTAssertEqual(etalon, FSIsRetina, "Must be equal")
-    }
-    
-    func testDeviceOrientation () {
-        let etalon = UIDevice.currentDevice().orientation
-        XCTAssertEqual(etalon, FSDeviceOrientation, "Must be equal")
+        XCTAssertEqual(documentsPathURL, FSAppDirectory.URL(.DocumentDirectory), "Must be equal")
+        XCTAssertEqual(cashesPathURL, FSAppDirectory.URL(.CachesDirectory), "Must be equal")
     }
     
     //MARK: - System Version
@@ -75,7 +44,7 @@ class FSHelperTests: XCTestCase {
         for i in 7 ... 9 {
             let version = "\(i)"
             let etalon = UIDevice.currentDevice().systemVersion.compare(version, options: NSStringCompareOptions.NumericSearch) == NSComparisonResult.OrderedSame
-            XCTAssertEqual(etalon, FSSystemVersionEqualTo(version), "Must be equal")
+            XCTAssertEqual(etalon, FSSystemVersion.EqualTo(version), "Must be equal")
         }
     }
     
@@ -83,7 +52,7 @@ class FSHelperTests: XCTestCase {
         for i in 7 ... 9 {
             let version = "\(i)"
             let etalon = UIDevice.currentDevice().systemVersion.compare(version, options: NSStringCompareOptions.NumericSearch) == NSComparisonResult.OrderedDescending
-            XCTAssertEqual(etalon, FSSystemVersionGreatherThan(version), "Must be equal")
+            XCTAssertEqual(etalon, FSSystemVersion.GreatherThan(version), "Must be equal")
         }
     }
     
@@ -91,7 +60,7 @@ class FSHelperTests: XCTestCase {
         for i in 7 ... 9 {
             let version = "\(i)"
             let etalon = UIDevice.currentDevice().systemVersion.compare(version, options: NSStringCompareOptions.NumericSearch) != NSComparisonResult.OrderedAscending
-            XCTAssertEqual(etalon, FSSystemVersionGreatherThanOrEqualTo(version), "Must be equal")
+            XCTAssertEqual(etalon, FSSystemVersion.GreatherThanOrEqualTo(version), "Must be equal")
         }
     }
     
@@ -99,7 +68,7 @@ class FSHelperTests: XCTestCase {
         for i in 7 ... 9 {
             let version = "\(i)"
             let etalon = UIDevice.currentDevice().systemVersion.compare(version, options: NSStringCompareOptions.NumericSearch) == NSComparisonResult.OrderedAscending
-            XCTAssertEqual(etalon, FSSystemVersionLessThan(version), "Must be equal")
+            XCTAssertEqual(etalon, FSSystemVersion.LessThan(version), "Must be equal")
         }
     }
     
@@ -107,7 +76,7 @@ class FSHelperTests: XCTestCase {
         for i in 7 ... 9 {
             let version = "\(i)"
             let etalon = UIDevice.currentDevice().systemVersion.compare(version, options: NSStringCompareOptions.NumericSearch) != NSComparisonResult.OrderedDescending
-            XCTAssertEqual(etalon, FSSystemVersionLessThanOrEqualTo(version), "Must be equal")
+            XCTAssertEqual(etalon, FSSystemVersion.LessThanOrEqualTo(version), "Must be equal")
         }
     }
     

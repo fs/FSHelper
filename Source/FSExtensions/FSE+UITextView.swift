@@ -57,9 +57,9 @@ public class FSTextView :UITextView {
         
         self.addObserver(self, forKeyPath: "text", options: NSKeyValueObservingOptions.New, context: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textViewDidBeginEditing:", name: UITextViewTextDidBeginEditingNotification, object: self)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textViewDidChange:", name: UITextViewTextDidChangeNotification, object: self)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "textViewDidEndEditing:", name: UITextViewTextDidEndEditingNotification, object: self)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(textViewDidBeginEditing(_:)), name: UITextViewTextDidBeginEditingNotification, object: self)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(textViewDidChange(_:)), name: UITextViewTextDidChangeNotification, object: self)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(textViewDidEndEditing(_:)), name: UITextViewTextDidEndEditingNotification, object: self)
     }
     
     private func setupInsets () {
