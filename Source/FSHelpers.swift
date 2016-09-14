@@ -69,7 +69,7 @@ public func FSImageFromColor (color:UIColor) -> UIImage {
     CGContextSetFillColorWithColor(context, color.CGColor)
     CGContextFillRect(context, rect)
     
-    let image:UIImage = UIGraphicsGetImageFromCurrentImageContext()
+    let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
     UIGraphicsEndImageContext()
     
     return image

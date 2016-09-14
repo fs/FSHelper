@@ -110,10 +110,9 @@ public class FSBitmap: NSObject {
         let bitmapData = self.data
         
         let bufferLength = width * height * bytesPerPixel
-        let provider = CGDataProviderCreateWithData(nil, bitmapData, bufferLength, nil)
+        let provider = CGDataProviderCreateWithData(nil, bitmapData, bufferLength) { (info: UnsafeMutablePointer<Void>, data: UnsafePointer<Void>, size: Int) in}!
         
         let image = CGImageCreate(width, height, bitsPerComponent, bitsPerPixel, bytesPerRow, colorSpace, bitmapInfo, provider, nil, true, renderingIntent)
-        
         return image!
     }
     
@@ -138,7 +137,7 @@ public class FSBitmap: NSObject {
 public extension UIImage {
     
     public func fs_getBitmap () -> FSBitmap {
-        let imageRef: CGImageRef? = self.CGImage
+        let imageRef: CGImageRef = self.CGImage!
         
         //Get image width, height
         let pixelsWide = CGImageGetWidth(imageRef)
@@ -160,7 +159,7 @@ public extension UIImage {
         
         let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue).rawValue | CGBitmapInfo.ByteOrder32Big.rawValue
         
-        let context = CGBitmapContextCreate(bitmapData, pixelsWide, pixelsHigh, bitsPerComponent, bitmapBytesPerRow, colorSpace, bitmapInfo)
+        let context = CGBitmapContextCreate(bitmapData, pixelsWide, pixelsHigh, bitsPerComponent, bitmapBytesPerRow, colorSpace, bitmapInfo)!
         CGContextDrawImage(context, CGRectMake(0, 0, CGFloat(pixelsWide), CGFloat(pixelsHigh)), imageRef)
         
         return FSBitmap(data: bitmapData, size: (pixelsWide, pixelsHigh))
@@ -188,7 +187,7 @@ public extension UIImage {
                                newSize.width,
                                newSize.height)
         self.drawInRect(frame)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
+        let image = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
         return image
