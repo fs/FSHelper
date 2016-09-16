@@ -11,7 +11,7 @@ import XCTest
 
 class FSE_DictionaryTests: XCTestCase {
     
-    private func generateDict() -> [Int : Int] {
+    fileprivate func generateDict() -> [Int : Int] {
         var dict: [Int : Int] = [:]
         for i in 0 ..< 1000 {
             let random = Int(arc4random_uniform(100))

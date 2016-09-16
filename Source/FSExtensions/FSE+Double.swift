@@ -9,9 +9,9 @@
 import Foundation
 
 public extension Double {
-    public var fs_dispatchTime: dispatch_time_t {
+    public var fs_dispatchTime: DispatchTime {
         get {
-            return dispatch_time(DISPATCH_TIME_NOW,Int64(self * Double(NSEC_PER_SEC)))
+            return DispatchTime.now() + Double(Int64(self * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         }
     }
 }

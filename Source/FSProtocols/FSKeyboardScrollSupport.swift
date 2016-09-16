@@ -21,8 +21,8 @@ public protocol FSKeyboardScrollSupport {
     func fs_keyboardScrollSupportRegisterForNotifications  ()
     func fs_keyboardScrollSupportRemoveNotifications       ()
     
-    func fs_keyboardScrollSupportKeyboardWillShow (notif: NSNotification)
-    func fs_keyboardScrollSupportKeyboardWillHide (notif: NSNotification)
+    func fs_keyboardScrollSupportKeyboardWillShow (_ notif: Notification)
+    func fs_keyboardScrollSupportKeyboardWillHide (_ notif: Notification)
 }
 
 public extension FSKeyboardScrollSupport {
@@ -35,23 +35,23 @@ public extension FSKeyboardScrollSupport where Self: AnyObject {
     
     func fs_keyboardScrollSupportRemoveNotifications () {
         
-        let center = NSNotificationCenter.defaultCenter()
+        let center = NotificationCenter.default
         
-        center.removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
-        center.removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+        center.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        center.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
 }
 
 public extension FSKeyboardScrollSupport where Self: UIViewController {
     
-    func fs_keyboardScrollSupportKeyboardWillShow (notif: NSNotification) {
+    func fs_keyboardScrollSupportKeyboardWillShow (_ notif: Notification) {
         
         guard let scrollView = self.fs_keyboardScrollSupportScrollView else {return}
         
-        guard let info = notif.userInfo else {return}
+        guard let info = (notif as NSNotification).userInfo else {return}
         guard let value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue else {return}
         
-        let keyboardFrame = value.CGRectValue()
+        let keyboardFrame = value.cgRectValue
         let contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardFrame.height, 0.0)
         
         scrollView.contentInset             = contentInsets
@@ -68,18 +68,18 @@ public extension FSKeyboardScrollSupport where Self: UIViewController {
         var viewRect = self.view.frame
         viewRect.size.height -= keyboardFrame.height
         
-        let convertedRect = superview.convertRect(activeField.frame, toView: self.view)
+        let convertedRect = superview.convert(activeField.frame, to: self.view)
         
-        if !CGRectContainsPoint(viewRect, convertedRect.origin)  {
+        if !viewRect.contains(convertedRect.origin)  {
             scrollView.scrollRectToVisible(activeField.frame, animated: true)
         }
     }
     
-    func fs_keyboardScrollSupportKeyboardWillHide (notif: NSNotification) {
+    func fs_keyboardScrollSupportKeyboardWillHide (_ notif: Notification) {
         
         guard let scrollView = self.fs_keyboardScrollSupportScrollView else {return}
         
-        let contentInsets = UIEdgeInsetsZero
+        let contentInsets = UIEdgeInsets.zero
         scrollView.contentInset = contentInsets
         scrollView.scrollIndicatorInsets = contentInsets
     }

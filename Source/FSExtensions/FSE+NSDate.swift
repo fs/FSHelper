@@ -8,128 +8,128 @@
 
 import Foundation
 
-public enum FSTimePeriod:NSTimeInterval {
-    case Second     = 1
-    case Minute     = 60
-    case Hour       = 3600
-    case Day        = 86400
-    case Week       = 604800
+public enum FSTimePeriod:TimeInterval {
+    case second     = 1
+    case minute     = 60
+    case hour       = 3600
+    case day        = 86400
+    case week       = 604800
 }
 
 // MARK: Time Period
-private func FS_ConvertToInterval (value: Any, period: FSTimePeriod) -> NSTimeInterval {
+private func FS_ConvertToInterval (_ value: Any, period: FSTimePeriod) -> TimeInterval {
     guard let number = value as? NSNumber else {return 0}
-    let interval = NSTimeInterval(number.doubleValue)
+    let interval = TimeInterval(number.doubleValue)
     return interval * period.rawValue
 }
 
-public extension IntegerType {
-    public var fs_seconds  : NSTimeInterval {return FS_ConvertToInterval(self, period: .Second)}
-    public var fs_minutes  : NSTimeInterval {return FS_ConvertToInterval(self, period: .Minute)}
-    public var fs_hours    : NSTimeInterval {return FS_ConvertToInterval(self, period: .Hour)}
-    public var fs_days     : NSTimeInterval {return FS_ConvertToInterval(self, period: .Day)}
-    public var fs_weeks    : NSTimeInterval {return FS_ConvertToInterval(self, period: .Week)}
+public extension Integer {
+    public var fs_seconds  : TimeInterval {return FS_ConvertToInterval(self, period: .second)}
+    public var fs_minutes  : TimeInterval {return FS_ConvertToInterval(self, period: .minute)}
+    public var fs_hours    : TimeInterval {return FS_ConvertToInterval(self, period: .hour)}
+    public var fs_days     : TimeInterval {return FS_ConvertToInterval(self, period: .day)}
+    public var fs_weeks    : TimeInterval {return FS_ConvertToInterval(self, period: .week)}
 }
 
-public extension FloatingPointType {
-    public var fs_seconds  : NSTimeInterval {return FS_ConvertToInterval(self, period: .Second)}
-    public var fs_minutes  : NSTimeInterval {return FS_ConvertToInterval(self, period: .Minute)}
-    public var fs_hours    : NSTimeInterval {return FS_ConvertToInterval(self, period: .Hour)}
-    public var fs_days     : NSTimeInterval {return FS_ConvertToInterval(self, period: .Day)}
-    public var fs_weeks    : NSTimeInterval {return FS_ConvertToInterval(self, period: .Week)}
+public extension FloatingPoint {
+    public var fs_seconds  : TimeInterval {return FS_ConvertToInterval(self, period: .second)}
+    public var fs_minutes  : TimeInterval {return FS_ConvertToInterval(self, period: .minute)}
+    public var fs_hours    : TimeInterval {return FS_ConvertToInterval(self, period: .hour)}
+    public var fs_days     : TimeInterval {return FS_ConvertToInterval(self, period: .day)}
+    public var fs_weeks    : TimeInterval {return FS_ConvertToInterval(self, period: .week)}
 }
 
 public enum FSDatePeriod:Int {
-    case Unknow     = -1
-    case Today      = 0
-    case Tomorrow   = 1
-    case ThisWeek   = 2
+    case unknow     = -1
+    case today      = 0
+    case tomorrow   = 1
+    case thisWeek   = 2
     
-    public init (date:NSDate) {
+    public init (date:Date) {
         
         if date.fs_isDateToday() {
-            self = .Today
+            self = .today
             return
         }
         
         if date.fs_isTomorrow() {
-            self = .Tomorrow
+            self = .tomorrow
             return
         }
         
         if date.fs_isThisWeek() {
-            self = .ThisWeek
+            self = .thisWeek
             return
         }
         
-        self = .Unknow
+        self = .unknow
     }
 }
 
-public extension NSTimeInterval {
-    public var fs_timezone: NSTimeInterval {
-        let calendar = NSCalendar.currentCalendar()
-        let date = NSDate(timeIntervalSince1970: self)
+public extension TimeInterval {
+    public var fs_timezone: TimeInterval {
+        let calendar = Calendar.current
+        let date = Date(timeIntervalSince1970: self)
         
-        let timezoneOffset = NSTimeInterval(calendar.timeZone.secondsFromGMT)
-        let daylightOffset = calendar.timeZone.isDaylightSavingTimeForDate(date) ? calendar.timeZone.daylightSavingTimeOffset : 0
+        let timezoneOffset = TimeInterval(calendar.timeZone.secondsFromGMT())
+        let daylightOffset = calendar.timeZone.isDaylightSavingTime(for: date) ? calendar.timeZone.daylightSavingTimeOffset() : 0
         
         return timezoneOffset + daylightOffset
     }
 }
 
-public extension NSDate {
+public extension Date {
     
-    public var fs_timezone: NSTimeInterval {
+    public var fs_timezone: TimeInterval {
         return self.timeIntervalSince1970.fs_timezone
     }
     
     public func fs_isDateToday () -> Bool {
-        return NSDate().fs_midnightDate() == self.fs_midnightDate()
+        return Date().fs_midnightDate() == self.fs_midnightDate()
     }
     
     public func fs_isTomorrow () -> Bool {
-        return self.fs_isEqualToDateIgnoringTime(NSDate().fs_tomorrow)
+        return self.fs_isEqualToDateIgnoringTime(Date().fs_tomorrow)
     }
     
     public func fs_isThisWeek () -> Bool {
-        return self.fs_isSameWeekAsDate(NSDate())
+        return self.fs_isSameWeekAsDate(Date())
     }
     
-    public func fs_midnightDate () -> NSDate {
+    public func fs_midnightDate () -> Date {
         
         let timestamp = self.timeIntervalSince1970 + self.fs_timezone
-        let midnightTimestamp = timestamp - timestamp%(FSTimePeriod.Day.rawValue)
+        let midnightTimestamp = timestamp - timestamp.truncatingRemainder(dividingBy: (FSTimePeriod.day.rawValue))
         
-        let result = NSDate(timeIntervalSince1970: midnightTimestamp - midnightTimestamp.fs_timezone)
+        let result = Date(timeIntervalSince1970: midnightTimestamp - midnightTimestamp.fs_timezone)
         return result
     }
     
-    public func fs_isSameWeekAsDate(date:NSDate) -> Bool
+    public func fs_isSameWeekAsDate(_ date:Date) -> Bool
     {
         //Compare by date components is not working becouse it's start week from monday
         
-        let calendar = NSCalendar.currentCalendar()
-        let timezone = NSTimeInterval(calendar.timeZone.secondsFromGMT)
-        let daylight = {(date: NSDate) -> NSTimeInterval in
-            return calendar.timeZone.isDaylightSavingTimeForDate(date) ? calendar.timeZone.daylightSavingTimeOffset : 0
+        let calendar = Calendar.current
+        let timezone = TimeInterval(calendar.timeZone.secondsFromGMT())
+        let daylight = {(date: Date) -> TimeInterval in
+            return calendar.timeZone.isDaylightSavingTime(for: date) ? calendar.timeZone.daylightSavingTimeOffset() : 0
         }
         
         //Getting interval without timezones
         let greenwichInterval = self.timeIntervalSince1970 + timezone + daylight(self)
         //Getting midnight +0 interval
-        let interval = greenwichInterval - greenwichInterval%(24*60*60)
+        let interval = greenwichInterval - greenwichInterval.truncatingRemainder(dividingBy: (24*60*60))
         
         //Calculate number of week (since 1 January 1970 (Thursday))
         let numberOfWeeks: Int = {
             
-            let wholeWeeks = Int(interval/FSTimePeriod.Week.rawValue)
+            let wholeWeeks = Int(interval/FSTimePeriod.week.rawValue)
             
             //Getting previous thursday interval
-            let thursday = NSTimeInterval(wholeWeeks)*FSTimePeriod.Week.rawValue
+            let thursday = TimeInterval(wholeWeeks)*FSTimePeriod.week.rawValue
             
             //Calculate difference (in days) between current time and previous Thursday
-            let differenseDays = Int((interval - thursday)/FSTimePeriod.Day.rawValue)
+            let differenseDays = Int((interval - thursday)/FSTimePeriod.day.rawValue)
             //Calculate max difference in days. Based on calendar firstday index (1-7 where 1 is Sunday). Thursday index is 4.
             let maxDifference = 1 + calendar.firstWeekday
             
@@ -143,25 +143,25 @@ public extension NSDate {
         }()
         
         //Get timestamp of current week Thursday
-        let weekInterval = NSTimeInterval(numberOfWeeks) * FSTimePeriod.Week.rawValue
+        let weekInterval = TimeInterval(numberOfWeeks) * FSTimePeriod.week.rawValue
         //Calculate days which we must deduct to get first weekday
-        let correctionDays: NSTimeInterval = 5 - NSTimeInterval(calendar.firstWeekday)
+        let correctionDays: TimeInterval = 5 - TimeInterval(calendar.firstWeekday)
         //Convert correction days to time interval in seconds
-        let correctionInterval = correctionDays*FSTimePeriod.Day.rawValue
+        let correctionInterval = correctionDays*FSTimePeriod.day.rawValue
         //Get first weekday timestamp (Sunday for USA and Monday for Russia for example)
         let firstWeekday = weekInterval - correctionInterval
         
         //Get timestamp of the first weekday and last weekday
         let minMidnightInterval = firstWeekday
-        let maxMidnightInterval = minMidnightInterval + FSTimePeriod.Week.rawValue - 1
+        let maxMidnightInterval = minMidnightInterval + FSTimePeriod.week.rawValue - 1
         
         //Calculate timezone modifiers
-        let minTimezoneOffset: NSTimeInterval = {
-            let date = NSDate(timeIntervalSince1970: minMidnightInterval)
+        let minTimezoneOffset: TimeInterval = {
+            let date = Date(timeIntervalSince1970: minMidnightInterval)
             return -(timezone + daylight(date))
         }()
-        let maxTimezoneOffset: NSTimeInterval = {
-            let date = NSDate(timeIntervalSince1970: maxMidnightInterval)
+        let maxTimezoneOffset: TimeInterval = {
+            let date = Date(timeIntervalSince1970: maxMidnightInterval)
             return -(timezone + daylight(date))
         }()
         
@@ -176,17 +176,17 @@ public extension NSDate {
         return dateInterval >= minInterval && dateInterval <= maxInterval
     }
     
-    public func fs_isEqualToDateIgnoringTime (date:NSDate) -> Bool {
+    public func fs_isEqualToDateIgnoringTime (_ date:Date) -> Bool {
         return self.fs_midnightDate() == date.fs_midnightDate()
     }
     
-    public func fs_dateByAddingDays (days: Int) -> NSDate {
-        let timeInterval:NSTimeInterval = self.timeIntervalSinceReferenceDate + FSTimePeriod.Day.rawValue * NSTimeInterval(days)
-        let newDate = NSDate(timeIntervalSinceReferenceDate: timeInterval)
+    public func fs_dateByAddingDays (_ days: Int) -> Date {
+        let timeInterval:TimeInterval = self.timeIntervalSinceReferenceDate + FSTimePeriod.day.rawValue * TimeInterval(days)
+        let newDate = Date(timeIntervalSinceReferenceDate: timeInterval)
         return newDate
     }
     
-    public var fs_tomorrow: NSDate {
+    public var fs_tomorrow: Date {
         return self.fs_dateByAddingDays(1)
     }
 }

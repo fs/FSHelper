@@ -17,21 +17,21 @@ public extension String {
         return self.characters.count
     }
     
-    public func fs_getRowHeight (font: UIFont) -> CGFloat {
-        return self.fs_getStringHeight(font, width: CGFloat.max)
+    public func fs_getRowHeight (_ font: UIFont) -> CGFloat {
+        return self.fs_getStringHeight(font, width: CGFloat.greatestFiniteMagnitude)
     }
     
-    public func fs_getLineCount (font: UIFont) -> Int {
+    public func fs_getLineCount (_ font: UIFont) -> Int {
         let rowHeight = self.fs_getRowHeight(font)
         return Int(ceil(rowHeight / font.lineHeight))
     }
     
     public func fs_URLEncodedString () -> String? {
-        return self.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())
+        return self.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)
     }
     
     public func fs_URLDecodedString () -> String? {
-        return self.stringByRemovingPercentEncoding
+        return self.removingPercentEncoding
     }
     
     public func fs_emailValidate () -> Bool {
@@ -39,64 +39,64 @@ public extension String {
         
         let regExPredicate:NSPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         
-        return regExPredicate.evaluateWithObject(self.lowercaseString)
+        return regExPredicate.evaluate(with: self.lowercased())
     }
     
-    public func fs_getStringWidth (font: UIFont, height: CGFloat) -> CGFloat {
+    public func fs_getStringWidth (_ font: UIFont, height: CGFloat) -> CGFloat {
         
-        let boundingSize:CGSize = CGSizeMake(CGFloat.max, height)
+        let boundingSize:CGSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: height)
         
         let attributes = [NSFontAttributeName:font]
         
         let options : NSStringDrawingOptions = unsafeBitCast(
-            NSStringDrawingOptions.UsesLineFragmentOrigin.rawValue |
-                NSStringDrawingOptions.UsesFontLeading.rawValue,
-            NSStringDrawingOptions.self)
+            NSStringDrawingOptions.usesLineFragmentOrigin.rawValue |
+                NSStringDrawingOptions.usesFontLeading.rawValue,
+            to: NSStringDrawingOptions.self)
         
         let text = self as NSString
         
-        let rect = text.boundingRectWithSize(boundingSize, options:options, attributes: attributes, context:nil)
+        let rect = text.boundingRect(with: boundingSize, options:options, attributes: attributes, context:nil)
         
         return ceil(rect.size.width)
     }
     
-    public func fs_getStringHeight (font: UIFont, width: CGFloat) -> CGFloat {
+    public func fs_getStringHeight (_ font: UIFont, width: CGFloat) -> CGFloat {
         
-        let boundingSize:CGSize = CGSizeMake(width, CGFloat.max)
+        let boundingSize:CGSize = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
         
         let attributes = [NSFontAttributeName:font]
         
         let options : NSStringDrawingOptions = unsafeBitCast(
-            NSStringDrawingOptions.UsesLineFragmentOrigin.rawValue |
-                NSStringDrawingOptions.UsesFontLeading.rawValue,
-            NSStringDrawingOptions.self)
+            NSStringDrawingOptions.usesLineFragmentOrigin.rawValue |
+                NSStringDrawingOptions.usesFontLeading.rawValue,
+            to: NSStringDrawingOptions.self)
         
         let text = self as NSString
         
-        let rect = text.boundingRectWithSize(boundingSize, options:options, attributes: attributes, context:nil)
+        let rect = text.boundingRect(with: boundingSize, options:options, attributes: attributes, context:nil)
         
         return ceil(rect.size.height)
     }
     
-    public func fs_getStringBetweenString (firstString: String, secondString: String) -> String? {
+    public func fs_getStringBetweenString (_ firstString: String, secondString: String) -> String? {
         var string = self
         
-        guard let lFirstRange = self.rangeOfString(firstString) else {return nil}
-        let strinBefore = self.substringToIndex(lFirstRange.endIndex)
-        string = self.stringByReplacingOccurrencesOfString(strinBefore, withString: "")
+        guard let lFirstRange = self.range(of: firstString) else {return nil}
+        let strinBefore = self.substring(to: lFirstRange.upperBound)
+        string = self.replacingOccurrences(of: strinBefore, with: "")
         
-        guard let lSecondRange = string.rangeOfString(secondString) else {return nil}
-        let stringAfter = string.substringFromIndex(lSecondRange.startIndex)
-        string = string.stringByReplacingOccurrencesOfString(stringAfter, withString: "")
+        guard let lSecondRange = string.range(of: secondString) else {return nil}
+        let stringAfter = string.substring(from: lSecondRange.lowerBound)
+        string = string.replacingOccurrences(of: stringAfter, with: "")
         
         return string
     }
     
     public func fs_trim() -> String{
-        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        return self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
-    public func fs_toURL() -> NSURL? {
-        return NSURL(string: self)
+    public func fs_toURL() -> URL? {
+        return URL(string: self)
     }
     
     public var fs_localizedString: String {
@@ -106,14 +106,14 @@ public extension String {
     
     internal var fs_localizedStringFormat: String {
         
-        let uppercase = self.uppercaseString
-        let formatted = uppercase.stringByReplacingOccurrencesOfString(" ", withString: "_", options: .LiteralSearch, range: nil)
+        let uppercase = self.uppercased()
+        let formatted = uppercase.replacingOccurrences(of: " ", with: "_", options: .literal, range: nil)
         
         return formatted
     }
     
     public subscript (i: Int) -> Character {
-        return self[self.startIndex.advancedBy(i)]
+        return self[self.characters.index(self.startIndex, offsetBy: i)]
     }
     
     public subscript (i: Int) -> String {
@@ -121,6 +121,6 @@ public extension String {
     }
     
     public subscript (range: Range<Int>) -> String {
-        return self.substringWithRange(Range(self.startIndex.advancedBy(range.startIndex) ..< self.startIndex.advancedBy(range.endIndex)))
+        return self.substring(with: Range(self.characters.index(self.startIndex, offsetBy: range.lowerBound) ..< self.characters.index(self.startIndex, offsetBy: range.upperBound)))
     }
 }

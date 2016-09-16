@@ -25,17 +25,17 @@ class FSE_DoubleTests: XCTestCase {
         for i in 0 ..< 3 {
             let delay: Double = Double(i)/10
             
-            let expectation = expectationWithDescription("Expectation")
+            let expectation = self.expectation(description: "Expectation")
             
-            let startDate = NSDate()
-            var interval: NSTimeInterval = 0
+            let startDate = Date()
+            var interval: TimeInterval = 0
             
-            dispatch_after(delay.fs_dispatchTime, dispatch_get_main_queue(), { () -> Void in
-                interval = abs(NSDate().timeIntervalSinceDate(startDate))
+            DispatchQueue.main.asyncAfter(deadline: delay.fs_dispatchTime, execute: { () -> Void in
+                interval = abs(Date().timeIntervalSince(startDate))
                 expectation.fulfill()
             })
             
-            self.waitForExpectationsWithTimeout(delay+0.1, handler: { (error: NSError?) -> Void in
+            self.waitForExpectations(timeout: delay + 0.1, handler: { (error: Error?) in
                 if error == nil {
                     XCTAssertGreaterThanOrEqual(interval, delay, "Too fast")
                 } else {

@@ -11,10 +11,10 @@ import Foundation
 public extension NSObject {
     
     public class var fs_className: String {
-        return NSStringFromClass(self).componentsSeparatedByString(".").last!
+        return NSStringFromClass(self).components(separatedBy: ".").last!
     }
     
     public var fs_className: String {
-        return self.dynamicType.fs_className
+        return type(of: self).fs_className
     }
 }

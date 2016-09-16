@@ -15,52 +15,7 @@ class FSE_UIImageTests: XCTestCase {
     */
     ///Using image 5x5 where in first row R, G and B from 0 to 255, in second only R, in third only G, in fourth B and in last Alpha. 
     ///Changing with rule: 0-64-128-191-255
-    let imageData = NSData(base64EncodedString: "iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAAXNSR0IArs4c6QAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAABxpRE9UAAAAAgAAAAAAAAADAAAAKAAAAAMAAAACAAAAYGZo4mwAAAAsSURBVBgZJMiBCQAwDAJBR3M0N3M0+6EJB/KSNNtLsra7oxERFJQfZUZQ8A8AAP//A9dvYgAAACFJREFUY2BgYPjPwOAAxA1AvB+I/wMxBDgAqQYg3g/E/wHtXSVfd7sjBgAAAABJRU5ErkJggg==", options: NSDataBase64DecodingOptions(rawValue: 0))!
-    
-    let smallValue: CGFloat      = 64
-    let mediumValue: CGFloat     = 128
-    let largeValue: CGFloat      = 191
-    
-    //Create etalon colors
-    var etalonColors: [[UIColor]] {
-        return [
-            [
-                FSRGBA(0, 0, 0, 1),
-                FSRGBA(self.smallValue,   self.smallValue,    self.smallValue,    1),
-                FSRGBA(self.mediumValue,  self.mediumValue,   self.mediumValue,   1),
-                FSRGBA(self.largeValue,   self.largeValue,    self.largeValue,    1),
-                FSRGBA(255, 255, 255, 1)
-            ],
-            [
-                FSRGBA(0, 0, 0, 1),
-                FSRGBA(self.smallValue,   0, 0, 1),
-                FSRGBA(self.mediumValue,  0, 0, 1),
-                FSRGBA(self.largeValue,   0, 0, 1),
-                FSRGBA(255, 0, 0, 1)
-            ],
-            [
-                FSRGBA(0, 0, 0, 1),
-                FSRGBA(0, self.smallValue,  0, 1),
-                FSRGBA(0, self.mediumValue, 0, 1),
-                FSRGBA(0, self.largeValue,  0, 1),
-                FSRGBA(0, 255, 0, 1)
-            ],
-            [
-                FSRGBA(0, 0, 0, 1),
-                FSRGBA(0, 0, self.smallValue,  1),
-                FSRGBA(0, 0, self.mediumValue, 1),
-                FSRGBA(0, 0, self.largeValue,  1),
-                FSRGBA(0, 0, 255, 1)
-            ],
-            [
-                FSRGBA(0, 0, 0, 0),
-                FSRGBA(0, 0, 0, 0.25098),
-                FSRGBA(0, 0, 0, 0.501961),
-                FSRGBA(0, 0, 0, 0.74902),
-                FSRGBA(0, 0, 0, 1)
-            ]
-        ]
-    }
+    let imageData = Data(base64Encoded: "iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAAXNSR0IArs4c6QAAAAlwSFlzAAAWJQAAFiUBSVIk8AAAABxpRE9UAAAAAgAAAAAAAAADAAAAKAAAAAMAAAACAAAAYGZo4mwAAAAsSURBVBgZJMiBCQAwDAJBR3M0N3M0+6EJB/KSNNtLsra7oxERFJQfZUZQ8A8AAP//A9dvYgAAACFJREFUY2BgYPjPwOAAxA1AvB+I/wMxBDgAqQYg3g/E/wHtXSVfd7sjBgAAAABJRU5ErkJggg==", options: NSData.Base64DecodingOptions(rawValue: 0))!
     
     override func setUp() {
         super.setUp()
@@ -86,47 +41,6 @@ class FSE_UIImageTests: XCTestCase {
             XCTAssertEqual(green,   pixel.g, "Green is wrong")
             XCTAssertEqual(blue,    pixel.b, "Blue is wrong")
             XCTAssertEqual(alpha,   pixel.a, "Alpha is wrong")
-        }
-    }
-    
-    func testInitColor () {
-        for _ in 0 ..< 5 {
-            let red     = UInt8(arc4random_uniform(255))
-            let green   = UInt8(arc4random_uniform(255))
-            let blue    = UInt8(arc4random_uniform(255))
-            let alpha   = UInt8(arc4random_uniform(255))
-            
-            let color = UIColor(red: CGFloat(red)/255, green: CGFloat(green)/255, blue: CGFloat(blue)/255, alpha: CGFloat(alpha)/255)
-            let pixel = FSBitmapPixel(color: color)
-            
-            XCTAssertEqual(red,     pixel.r, "Red is wrong")
-            XCTAssertEqual(green,   pixel.g, "Green is wrong")
-            XCTAssertEqual(blue,    pixel.b, "Blue is wrong")
-            XCTAssertEqual(alpha,   pixel.a, "Alpha is wrong")
-        }
-    }
-    
-    func testValue () {
-        for _ in 0 ..< 5 {
-            let value: UInt32 = arc4random()
-            
-            let pixel = FSBitmapPixel(value: value)
-            
-            XCTAssertEqual(value, pixel.value, "Value is wrong")
-        }
-    }
-    
-    func testColor () {
-        for _ in 0 ..< 5 {
-            let red     = UInt8(arc4random_uniform(255))
-            let green   = UInt8(arc4random_uniform(255))
-            let blue    = UInt8(arc4random_uniform(255))
-            let alpha   = UInt8(arc4random_uniform(255))
-            
-            let color = UIColor(red: CGFloat(red)/255, green: CGFloat(green)/255, blue: CGFloat(blue)/255, alpha: CGFloat(alpha)/255)
-            let pixel = FSBitmapPixel(color: color)
-            
-            XCTAssertEqual(color.description, pixel.color.description, "Color is wrong")
         }
     }
     
@@ -156,7 +70,7 @@ class FSE_UIImageTests: XCTestCase {
     func testInitWithDataAndSize () {
         let width   = 10
         let height  = 20
-        let data    = UnsafeMutablePointer<UInt32>(calloc(width*height, sizeof(UInt32)))
+        let data    = UnsafeMutablePointer<UInt32>.allocate(capacity: width*height)
         
         for y in 0 ..< height {
             for x in 0 ..< width {
@@ -192,7 +106,7 @@ class FSE_UIImageTests: XCTestCase {
         let width   = 10
         let height  = 20
         
-        let bitmap = FSBitmap(size: CGSizeMake(CGFloat(width), CGFloat(height)))
+        let bitmap = FSBitmap(size: CGSize(width: CGFloat(width), height: CGFloat(height)))
         
         XCTAssertEqual(width,   bitmap.size.width, "Width is wrong")
         XCTAssertEqual(height,  bitmap.size.height, "Height is wrong")
@@ -205,7 +119,7 @@ class FSE_UIImageTests: XCTestCase {
                 etalon.setPixel(FSBitmapPixel(color: self.etalonColors[y][x]), point: (x, y))
             }
         }
-        let image = UIImage(CGImage: etalon.getCGImage())
+        let image = UIImage(cgImage: etalon.getCGImage())
         
         let bitmap = image.fs_getBitmap()
         
@@ -229,22 +143,22 @@ class FSE_UIImageTests: XCTestCase {
         let scale1Image     = bitmap.getUIImage(1)
         let scale2Image     = bitmap.getUIImage(2)
         let scale3Image     = bitmap.getUIImage(3)
-        let downImage       = bitmap.getUIImage(orientation: .Down)
+        let downImage       = bitmap.getUIImage(orientation: .down)
         
-        XCTAssertEqual(UIScreen.mainScreen().scale, defaultImage.scale, "Scale is wrong")
-        XCTAssertEqual(UIImageOrientation.Up, defaultImage.imageOrientation, "Orientation is wrong")
+        XCTAssertEqual(UIScreen.main.scale, defaultImage.scale, "Scale is wrong")
+        XCTAssertEqual(UIImageOrientation.up, defaultImage.imageOrientation, "Orientation is wrong")
         
         XCTAssertEqual(1, scale1Image.scale, "Scale is wrong")
         XCTAssertEqual(2, scale2Image.scale, "Scale is wrong")
         XCTAssertEqual(3, scale3Image.scale, "Scale is wrong")
         
-        XCTAssertEqual(UIImageOrientation.Down, downImage.imageOrientation, "Image orientaion is wrong")
+        XCTAssertEqual(UIImageOrientation.down, downImage.imageOrientation, "Image orientaion is wrong")
     }
     
     func testGetPixel () {
         let width   = 10
         let height  = 20
-        let data    = UnsafeMutablePointer<UInt32>(calloc(width*height, sizeof(UInt32)))
+        let data    = UnsafeMutablePointer<UInt32>.allocate(capacity: width*height)
         
         for y in 0 ..< height {
             for x in 0 ..< width {
@@ -306,7 +220,7 @@ class FSE_UIImageTests: XCTestCase {
         let image = UIImage(data: self.imageData)!
         
         let imageData = UIImagePNGRepresentation(image)!
-        let etalon = imageData.base64EncodedStringWithOptions(NSDataBase64EncodingOptions(rawValue: 0))
+        let etalon = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
         
         XCTAssertEqual(etalon, image.fs_base64, "Must be equal")
     }

@@ -11,7 +11,7 @@ import XCTest
 
 class FSE_ArrayTests: XCTestCase {
     
-    private let array: [Int] = {
+    fileprivate let array: [Int] = {
         var arr: [Int] = []
         for i in 0 ..< 1000 {
             let random = Int(arc4random_uniform(100))
