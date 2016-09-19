@@ -18,12 +18,12 @@ public extension UIView {
     }
     
     var fs_width:CGFloat {
-        set (value) {self.fs_size = CGSizeMake(value, frame.size.height)}
+        set (value) {self.fs_size = CGSize(width: value, height: frame.size.height)}
         get         {return self.frame.size.width}
     }
     
     var fs_height:CGFloat {
-        set (value) {self.fs_size = CGSizeMake(frame.size.width, value)}
+        set (value) {self.fs_size = CGSize(width: frame.size.width, height: value)}
         get         {return self.frame.size.height}
     }
     
@@ -35,19 +35,19 @@ public extension UIView {
     }
     
     var fs_x: CGFloat {
-        set (value) {self.fs_origin = CGPointMake(value, frame.origin.y)}
+        set (value) {self.fs_origin = CGPoint(x: value, y: frame.origin.y)}
         get         {return self.frame.origin.x}
     }
     
     var fs_y: CGFloat {
-        set (value) {self.fs_origin = CGPointMake(frame.origin.x, value)}
+        set (value) {self.fs_origin = CGPoint(x: frame.origin.x, y: value)}
         get         {return self.frame.origin.y}
     }
     
     //MARK: - Other
     
     func fs_findAndResignFirstResponder () -> Bool {
-        if self.isFirstResponder() {
+        if self.isFirstResponder {
             self.resignFirstResponder()
             return true
         }
@@ -81,8 +81,8 @@ public extension UIView {
     }
     
     @IBInspectable var fs_borderColor: UIColor {
-        set(newValue) { self.layer.borderColor = newValue.CGColor }
-        get { return UIColor(CGColor: self.layer.borderColor!) }
+        set(newValue) { self.layer.borderColor = newValue.cgColor }
+        get { return UIColor(cgColor: self.layer.borderColor!) }
     }
     
     @IBInspectable var fs_borderWidth: CGFloat {
@@ -91,8 +91,8 @@ public extension UIView {
     }
     
     @IBInspectable var fs_shadowColor: UIColor {
-        set(newValue) { self.layer.shadowColor = newValue.CGColor }
-        get { return UIColor(CGColor: self.layer.shadowColor!) }
+        set(newValue) { self.layer.shadowColor = newValue.cgColor }
+        get { return UIColor(cgColor: self.layer.shadowColor!) }
     }
     
     @IBInspectable var fs_shadowOffset: CGSize {
@@ -122,9 +122,9 @@ public extension UICollectionView {
     /**
      - parameter options: UIViewAnimationOptionTransition's only available
      */
-    func fs_reloadDataWithAnimation(duration: NSTimeInterval = 0.2, options: UIViewAnimationOptions, completion: ((Bool) -> Void)?) {
+    func fs_reloadDataWithAnimation(_ duration: TimeInterval = 0.2, options: UIViewAnimationOptions, completion: ((Bool) -> Void)?) {
         
-        UIView.transitionWithView(self,
+        UIView.transition(with: self,
             duration: duration,
             options: options,
             animations: { [weak self] () -> Void in
@@ -140,9 +140,9 @@ public extension UITableView {
     /**
      - parameter options: UIViewAnimationOptionTransition's only available
      */
-    func fs_reloadDataWithAnimation(duration: NSTimeInterval = 0.2, options: UIViewAnimationOptions, completion: ((Bool) -> Void)?) {
+    func fs_reloadDataWithAnimation(_ duration: TimeInterval = 0.2, options: UIViewAnimationOptions, completion: ((Bool) -> Void)?) {
         
-        UIView.transitionWithView(self,
+        UIView.transition(with: self,
             duration: duration,
             options: options,
             animations: { [weak self] () -> Void in

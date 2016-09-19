@@ -10,12 +10,12 @@ import Foundation
 
 public extension Array {
     
-    public mutating func fs_appendIfExist (object: Element?) {
+    public mutating func fs_appendIfExist (_ object: Element?) {
         guard let lObject = object else {return}
         self.append(lObject)
     }
     
-    public func fs_objectAtIndexOrNil (index:Int) -> Element? {
+    public func fs_objectAtIndexOrNil (_ index:Int) -> Element? {
         guard index < self.count && index >= 0 else {return nil}
         return self[index]
     }
@@ -43,7 +43,7 @@ public func + <ValueType> (left: Array<ValueType>, right: Array<ValueType>) -> A
     return result
 }
 
-public func += <ValueType> (inout left: Array<ValueType>, right: Array<ValueType>) {
+public func += <ValueType> (left: inout Array<ValueType>, right: Array<ValueType>) {
     for value in right {
         left.append(value)
     }

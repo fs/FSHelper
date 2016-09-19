@@ -24,26 +24,26 @@ class FSHelperTests: XCTestCase {
     //MARK: - Application Directory
     
     func testApplicationDirectoryPath () {
-        let documentsPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!
-        let cashesPath = NSSearchPathForDirectoriesInDomains(.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!
+        let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
+        let cashesPath = NSSearchPathForDirectoriesInDomains(.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
         
-        XCTAssertEqual(documentsPath, FSAppDirectory.Path(.DocumentDirectory), "Must be equal")
-        XCTAssertEqual(cashesPath, FSAppDirectory.Path(.CachesDirectory), "Must be equal")
+        XCTAssertEqual(documentsPath, FSAppDirectory.Path(.documentDirectory), "Must be equal")
+        XCTAssertEqual(cashesPath, FSAppDirectory.Path(.cachesDirectory), "Must be equal")
     }
     
     func testApplicationDirectoryURL () {
-        let documentsPathURL = NSURL(string: NSSearchPathForDirectoriesInDomains(.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!)
-        let cashesPathURL = NSURL(string: NSSearchPathForDirectoriesInDomains(.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first!)!
+        let documentsPathURL = URL(string: NSSearchPathForDirectoriesInDomains(.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!)
+        let cashesPathURL = URL(string: NSSearchPathForDirectoriesInDomains(.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!)!
         
-        XCTAssertEqual(documentsPathURL, FSAppDirectory.URL(.DocumentDirectory), "Must be equal")
-        XCTAssertEqual(cashesPathURL, FSAppDirectory.URL(.CachesDirectory), "Must be equal")
+        XCTAssertEqual(documentsPathURL, FSAppDirectory.URL(.documentDirectory), "Must be equal")
+        XCTAssertEqual(cashesPathURL, FSAppDirectory.URL(.cachesDirectory), "Must be equal")
     }
     
     //MARK: - System Version
     func testSystemVersionEqualTo() {
         for i in 7 ... 9 {
             let version = "\(i)"
-            let etalon = UIDevice.currentDevice().systemVersion.compare(version, options: NSStringCompareOptions.NumericSearch) == NSComparisonResult.OrderedSame
+            let etalon = UIDevice.current.systemVersion.compare(version, options: NSString.CompareOptions.numeric) == ComparisonResult.orderedSame
             XCTAssertEqual(etalon, FSSystemVersion.EqualTo(version), "Must be equal")
         }
     }
@@ -51,7 +51,7 @@ class FSHelperTests: XCTestCase {
     func testSystemVersionGreatherThan() {
         for i in 7 ... 9 {
             let version = "\(i)"
-            let etalon = UIDevice.currentDevice().systemVersion.compare(version, options: NSStringCompareOptions.NumericSearch) == NSComparisonResult.OrderedDescending
+            let etalon = UIDevice.current.systemVersion.compare(version, options: NSString.CompareOptions.numeric) == ComparisonResult.orderedDescending
             XCTAssertEqual(etalon, FSSystemVersion.GreatherThan(version), "Must be equal")
         }
     }
@@ -59,7 +59,7 @@ class FSHelperTests: XCTestCase {
     func testSystemVersionGreatherThanOrEqualTo() {
         for i in 7 ... 9 {
             let version = "\(i)"
-            let etalon = UIDevice.currentDevice().systemVersion.compare(version, options: NSStringCompareOptions.NumericSearch) != NSComparisonResult.OrderedAscending
+            let etalon = UIDevice.current.systemVersion.compare(version, options: NSString.CompareOptions.numeric) != ComparisonResult.orderedAscending
             XCTAssertEqual(etalon, FSSystemVersion.GreatherThanOrEqualTo(version), "Must be equal")
         }
     }
@@ -67,7 +67,7 @@ class FSHelperTests: XCTestCase {
     func testSystemVersionLessThan() {
         for i in 7 ... 9 {
             let version = "\(i)"
-            let etalon = UIDevice.currentDevice().systemVersion.compare(version, options: NSStringCompareOptions.NumericSearch) == NSComparisonResult.OrderedAscending
+            let etalon = UIDevice.current.systemVersion.compare(version, options: NSString.CompareOptions.numeric) == ComparisonResult.orderedAscending
             XCTAssertEqual(etalon, FSSystemVersion.LessThan(version), "Must be equal")
         }
     }
@@ -75,7 +75,7 @@ class FSHelperTests: XCTestCase {
     func testSystemVersionLessThanOrEqualTo() {
         for i in 7 ... 9 {
             let version = "\(i)"
-            let etalon = UIDevice.currentDevice().systemVersion.compare(version, options: NSStringCompareOptions.NumericSearch) != NSComparisonResult.OrderedDescending
+            let etalon = UIDevice.current.systemVersion.compare(version, options: NSString.CompareOptions.numeric) != ComparisonResult.orderedDescending
             XCTAssertEqual(etalon, FSSystemVersion.LessThanOrEqualTo(version), "Must be equal")
         }
     }
@@ -144,13 +144,13 @@ class FSHelperTests: XCTestCase {
                     
                     let value = FSImageFromColor(color)
                     
-                    let imageRef: CGImageRef? = value.CGImage
+                    let imageRef: CGImage? = value.cgImage
                     
                     var bitmapBytesPerRow = 0
                     
                     //Get image width, height
-                    let pixelsWide = CGImageGetWidth(imageRef)
-                    let pixelsHigh = CGImageGetHeight(imageRef)
+                    let pixelsWide = imageRef?.width
+                    let pixelsHigh = imageRef?.height
                     
                     // Declare the number of bytes per row. Each pixel in the bitmap in this
                     // example is represented by 4 bytes; 8 bits each of red, green, blue, and
@@ -158,28 +158,28 @@ class FSHelperTests: XCTestCase {
                     let bytesPerPixel = 4
                     let bitsPerComponent = 8
                     
-                    bitmapBytesPerRow = Int(pixelsWide) * bytesPerPixel
+                    bitmapBytesPerRow = Int(pixelsWide!) * bytesPerPixel
                     
                     // Use the generic RGB color space.
                     let colorSpace = CGColorSpaceCreateDeviceRGB()
                     
                     // Allocate memory for image data. This is the destination in memory
                     // where any drawing to the bitmap context will be rendered.
-                    let bitmapData = UnsafeMutablePointer<UInt32>(calloc(pixelsWide*pixelsHigh, sizeof(UInt32)))
+                    let bitmapData = UnsafeMutablePointer<UInt32>.allocate(capacity: pixelsWide!*pixelsHigh!)
                     
                     
-                    let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.PremultipliedLast.rawValue).rawValue | CGBitmapInfo.ByteOrder32Big.rawValue
+                    let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue).rawValue | CGBitmapInfo.byteOrder32Big.rawValue
                     
-                    let context = CGBitmapContextCreate(bitmapData, pixelsWide, pixelsHigh, bitsPerComponent, bitmapBytesPerRow, colorSpace, bitmapInfo)
-                    CGContextDrawImage(context, CGRectMake(0, 0, CGFloat(pixelsWide), CGFloat(pixelsHigh)), imageRef)
+                    let context = CGContext(data: bitmapData, width: pixelsWide!, height: pixelsHigh!, bitsPerComponent: bitsPerComponent, bytesPerRow: bitmapBytesPerRow, space: colorSpace, bitmapInfo: bitmapInfo)!
+                    context.draw(imageRef!, in: CGRect(x: 0, y: 0, width: CGFloat(pixelsWide!), height: CGFloat(pixelsHigh!)))
                     
                     XCTAssertEqual(1, pixelsHigh, "Height must 1 pixel")
                     XCTAssertEqual(1, pixelsHigh, "Width must 1 pixel")
                     
                     var currentPixel: UnsafeMutablePointer<UInt32> = bitmapData
                     
-                    for _ in 0 ..< pixelsHigh {
-                        for _ in 0 ..< pixelsWide {
+                    for _ in 0 ..< pixelsHigh! {
+                        for _ in 0 ..< pixelsWide! {
                             
                             let currentColor: UInt32 = currentPixel[0]
                             
@@ -221,17 +221,17 @@ class FSHelperTests: XCTestCase {
         for i in 0 ..< 3 {
             let delay: Double = Double(i)/10
             
-            let expectation = expectationWithDescription("Expectation")
+            let expectation = self.expectation(description: "Expectation")
             
-            let startDate = NSDate()
-            var interval: NSTimeInterval = 0
+            let startDate = Date()
+            var interval: TimeInterval = 0
             
             FSDispatch_after_short(delay) { () -> Void in
-                interval = abs(NSDate().timeIntervalSinceDate(startDate))
+                interval = abs(Date().timeIntervalSince(startDate))
                 expectation.fulfill()
             }
             
-            self.waitForExpectationsWithTimeout(delay+0.1, handler: { (error: NSError?) -> Void in
+            self.waitForExpectations(timeout: delay + 0.1, handler: { (error: Error?) in
                 if error == nil {
                     XCTAssertGreaterThanOrEqual(interval, delay, "Too fast")
                 } else {

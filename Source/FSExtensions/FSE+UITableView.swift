@@ -9,9 +9,9 @@
 import UIKit
 
 public extension UITableView {
-    public func fs_deselectSelectedRow (animated:Bool) {
+    public func fs_deselectSelectedRow (_ animated:Bool) {
         if ((self.indexPathForSelectedRow) != nil) {
-            self.deselectRowAtIndexPath(self.indexPathForSelectedRow!, animated: animated)
+            self.deselectRow(at: self.indexPathForSelectedRow!, animated: animated)
         }
     }
 }

@@ -22,13 +22,13 @@ class FSE_UITextViewTests: XCTestCase {
     }
     
     func testGetTextHeight() {
-        var height =  UITextView.fs_getTextHeight(forText: "test test test", width: 20, font: UIFont.systemFontOfSize(15))
+        var height =  UITextView.fs_getTextHeight(forText: "test test test", width: 20, font: UIFont.systemFont(ofSize: 15))
         XCTAssertEqual(height, 232, "Must be equal")
-        height = UITextView.fs_getTextHeight(forText: "t", width: 20, font: UIFont.systemFontOfSize(15))
+        height = UITextView.fs_getTextHeight(forText: "t", width: 20, font: UIFont.systemFont(ofSize: 15))
         XCTAssertEqual(height, 35, "Must be equal")
-        height = UITextView.fs_getTextHeight(forText: "t", width: 1000, font: UIFont.systemFontOfSize(15))
+        height = UITextView.fs_getTextHeight(forText: "t", width: 1000, font: UIFont.systemFont(ofSize: 15))
         XCTAssertEqual(height, 35, "Must be equal")
-        height = UITextView.fs_getTextHeight(forText: "t", width: 10, font: UIFont.systemFontOfSize(15))
+        height = UITextView.fs_getTextHeight(forText: "t", width: 10, font: UIFont.systemFont(ofSize: 15))
         XCTAssertEqual(height, 35, "Must be equal")
     }
 }

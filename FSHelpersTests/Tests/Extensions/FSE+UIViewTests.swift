@@ -24,17 +24,17 @@ class FSE_UIViewTests: XCTestCase {
     //MARK: - Set size
     
     func testSize () {
-        let view = UIView(frame: CGRectMake(100, 200, 300, 400))
+        let view = UIView(frame: CGRect(x: 100, y: 200, width: 300, height: 400))
         XCTAssertEqual(view.frame.size, view.fs_size, "Must be equal")
         
-        let newSize = CGSizeMake(350, 450)
-        view.fs_size = CGSizeMake(350, 450)
+        let newSize = CGSize(width: 350, height: 450)
+        view.fs_size = CGSize(width: 350, height: 450)
         
         XCTAssertEqual(view.frame.size, newSize, "Must be equal")
     }
     
     func testWidth () {
-        let view = UIView(frame: CGRectMake(100, 200, 300, 400))
+        let view = UIView(frame: CGRect(x: 100, y: 200, width: 300, height: 400))
         XCTAssertEqual(view.frame.size.width, view.fs_width, "Must be equal")
         
         let newWidth: CGFloat = 350
@@ -44,7 +44,7 @@ class FSE_UIViewTests: XCTestCase {
     }
     
     func testHeight () {
-        let view = UIView(frame: CGRectMake(100, 200, 300, 400))
+        let view = UIView(frame: CGRect(x: 100, y: 200, width: 300, height: 400))
         XCTAssertEqual(view.frame.size.height, view.fs_height, "Must be equal")
         
         let newHeight: CGFloat = 450
@@ -56,7 +56,7 @@ class FSE_UIViewTests: XCTestCase {
     //MARK: - Set origin
     
     func testOrigin () {
-        let view = UIView(frame: CGRectMake(100, 200, 300, 400))
+        let view = UIView(frame: CGRect(x: 100, y: 200, width: 300, height: 400))
         XCTAssertEqual(view.frame.origin, view.fs_origin, "Must be equal")
         
         let newOrigin = CGPoint(x: 150, y: 250)
@@ -66,7 +66,7 @@ class FSE_UIViewTests: XCTestCase {
     }
     
     func testX () {
-        let view = UIView(frame: CGRectMake(100, 200, 300, 400))
+        let view = UIView(frame: CGRect(x: 100, y: 200, width: 300, height: 400))
         XCTAssertEqual(view.frame.origin.x, view.fs_x, "Must be equal")
         
         let newX: CGFloat = 150
@@ -76,7 +76,7 @@ class FSE_UIViewTests: XCTestCase {
     }
     
     func testY () {
-        let view = UIView(frame: CGRectMake(100, 200, 300, 400))
+        let view = UIView(frame: CGRect(x: 100, y: 200, width: 300, height: 400))
         XCTAssertEqual(view.frame.origin.y, view.fs_y, "Must be equal")
         
         let newY: CGFloat = 250
@@ -87,14 +87,14 @@ class FSE_UIViewTests: XCTestCase {
     
     func testStoryboardExtensions() {
         
-        let storyboard = UIStoryboard(name: "TestStoryboard", bundle: NSBundle(forClass: self.dynamicType))
+        let storyboard = UIStoryboard(name: "TestStoryboard", bundle: Bundle(for: type(of: self)))
 
-        let controller = storyboard.instantiateViewControllerWithIdentifier("ViewController")
+        let controller = storyboard.instantiateViewController(withIdentifier: "ViewController")
             
         XCTAssertEqual(controller.view.layer.cornerRadius, 5, "Must be equal")
-        XCTAssertEqual(UIColor(CGColor: controller.view.layer.borderColor!), UIColor.redColor(), "Must be equal")
+        XCTAssertEqual(UIColor(cgColor: controller.view.layer.borderColor!), UIColor.red, "Must be equal")
         XCTAssertEqual(controller.view.layer.borderWidth, 5, "Must be equal")
-        XCTAssertEqual(UIColor(CGColor: controller.view.layer.shadowColor!), UIColor.greenColor(), "Must be equal")
+        XCTAssertEqual(UIColor(cgColor: controller.view.layer.shadowColor!), UIColor.green, "Must be equal")
         XCTAssertEqual(controller.view.layer.shadowOffset, CGSize(width: 2, height: 2), "Must be equal")
         XCTAssertEqual(controller.view.layer.shadowOpacity, 0.5, "Must be equal")
         XCTAssertEqual(controller.view.layer.shadowRadius, 3, "Must be equal")

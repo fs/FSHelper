@@ -20,7 +20,7 @@ class FSE_StringTests: XCTestCase {
         
         for _ in 0 ..< lenght {
             let index = Int(arc4random_uniform(UInt32(letters.characters.count)))
-            let stringIndex = letters.startIndex.advancedBy(index)
+            let stringIndex = letters.characters.index(letters.startIndex, offsetBy: index)
             let char = letters[stringIndex]
             result.append(char)
         }
@@ -47,9 +47,9 @@ class FSE_StringTests: XCTestCase {
     func testGetRowHeight () {
         for _ in 0 ..< 5 {
             let string = self.generateRandomString()
-            let font = UIFont.systemFontOfSize(UIFont.systemFontSize())
+            let font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
             
-            let etalon = string.fs_getStringHeight(font, width: CGFloat.max)
+            let etalon = string.fs_getStringHeight(font, width: CGFloat.greatestFiniteMagnitude)
             
             XCTAssertEqual(etalon, string.fs_getRowHeight(font), "Must be equal")
         }
@@ -58,7 +58,7 @@ class FSE_StringTests: XCTestCase {
     func testGetLineCount () {
         for _ in 0 ..< 5 {
             let string = self.generateRandomString()
-            let font = UIFont.systemFontOfSize(UIFont.systemFontSize())
+            let font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
             
             let rowHeight = string.fs_getRowHeight(font)
             let etalon = Int(ceil(rowHeight / font.lineHeight))
@@ -73,7 +73,7 @@ class FSE_StringTests: XCTestCase {
         let test3 = "https://app.web/api/v1/people?name=флэт&family=стэк"
         
         let etalonFunc = {(string: String) -> String? in
-            let result = string.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLHostAllowedCharacterSet())
+            let result = string.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlHostAllowed)
             return result
         }
         
@@ -88,7 +88,7 @@ class FSE_StringTests: XCTestCase {
         let test3 = "https://app.web/api/v1/people?name=флэт&family=стэк"
         
         let etalonFunc = {(string: String) -> String? in
-            let result = string.stringByRemovingPercentEncoding
+            let result = string.removingPercentEncoding
             return result
         }
         
@@ -117,24 +117,24 @@ class FSE_StringTests: XCTestCase {
     
     func testGetStringWidth () {
         
-        let font = UIFont.systemFontOfSize(UIFont.systemFontSize())
+        let font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
         
         for _ in 0 ..< 5 {
             let height = CGFloat(50 + arc4random_uniform(200))
             let string = self.generateRandomString()
             
-            let boundingSize:CGSize = CGSizeMake(CGFloat.max, height)
+            let boundingSize:CGSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: height)
             
             let attributes = [NSFontAttributeName:font]
             
             let options : NSStringDrawingOptions = unsafeBitCast(
-                NSStringDrawingOptions.UsesLineFragmentOrigin.rawValue |
-                    NSStringDrawingOptions.UsesFontLeading.rawValue,
-                NSStringDrawingOptions.self)
+                NSStringDrawingOptions.usesLineFragmentOrigin.rawValue |
+                    NSStringDrawingOptions.usesFontLeading.rawValue,
+                to: NSStringDrawingOptions.self)
             
             let text = string as NSString
             
-            let rect = text.boundingRectWithSize(boundingSize, options:options, attributes: attributes, context:nil)
+            let rect = text.boundingRect(with: boundingSize, options:options, attributes: attributes, context:nil)
             
             let width = ceil(rect.size.width)
             
@@ -143,24 +143,24 @@ class FSE_StringTests: XCTestCase {
     }
     
     func testGetStringHeight () {
-        let font = UIFont.systemFontOfSize(UIFont.systemFontSize())
+        let font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
         
         for _ in 0 ..< 5 {
             let width = CGFloat(50 + arc4random_uniform(200))
             let string = self.generateRandomString()
             
-            let boundingSize:CGSize = CGSizeMake(width, CGFloat.max)
+            let boundingSize:CGSize = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
             
             let attributes = [NSFontAttributeName:font]
             
             let options : NSStringDrawingOptions = unsafeBitCast(
-                NSStringDrawingOptions.UsesLineFragmentOrigin.rawValue |
-                    NSStringDrawingOptions.UsesFontLeading.rawValue,
-                NSStringDrawingOptions.self)
+                NSStringDrawingOptions.usesLineFragmentOrigin.rawValue |
+                    NSStringDrawingOptions.usesFontLeading.rawValue,
+                to: NSStringDrawingOptions.self)
             
             let text = string as NSString
             
-            let rect = text.boundingRectWithSize(boundingSize, options:options, attributes: attributes, context:nil)
+            let rect = text.boundingRect(with: boundingSize, options:options, attributes: attributes, context:nil)
 
             
             let height = ceil(rect.size.height)
@@ -227,7 +227,7 @@ class FSE_StringTests: XCTestCase {
         let text = self.generateRandomString()
         for i in 0 ..< Int(text.characters.count) {
             let character: Character = text[i]
-            XCTAssertEqual(character, text[text.startIndex.advancedBy(i)])
+            XCTAssertEqual(character, text[text.characters.index(text.startIndex, offsetBy: i)])
         }
     }
     
@@ -235,7 +235,7 @@ class FSE_StringTests: XCTestCase {
         let text = self.generateRandomString()
         for i in 0 ..< Int(text.characters.count) {
             let string: String = text[i]
-            XCTAssertEqual(string, String(text[text.startIndex.advancedBy(i)]))
+            XCTAssertEqual(string, String(text[text.characters.index(text.startIndex, offsetBy: i)]))
         }
     }
     
@@ -248,7 +248,7 @@ class FSE_StringTests: XCTestCase {
         
         let range = Range(start ..< end)
         let substring = text[start ..< end]
-        let etalon = text.substringWithRange(Range(text.startIndex.advancedBy(range.startIndex) ..< text.startIndex.advancedBy(range.endIndex)))
+        let etalon = text.substring(with: Range(text.characters.index(text.startIndex, offsetBy: range.lowerBound) ..< text.characters.index(text.startIndex, offsetBy: range.upperBound)))
         
         XCTAssertEqual(substring, etalon)
     }

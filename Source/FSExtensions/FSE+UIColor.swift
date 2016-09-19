@@ -14,17 +14,17 @@ public extension UIColor {
         
         let regex: NSRegularExpression = try! NSRegularExpression(pattern: "[^a-fA-F|0-9]", options: [])
         
-        let match: Int = regex.numberOfMatchesInString(fs_hexString, options: NSMatchingOptions.ReportCompletion, range: NSMakeRange(0, fs_hexString.characters.count))
+        let match: Int = regex.numberOfMatches(in: fs_hexString, options: NSRegularExpression.MatchingOptions.reportCompletion, range: NSMakeRange(0, fs_hexString.characters.count))
         
         if (match != 0) {
             self.init()
             return nil
         }
         
-        var cString: String = fs_hexString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet() as NSCharacterSet).uppercaseString
+        var cString: String = fs_hexString.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).uppercased()
         
         if (cString.hasPrefix("#")) {
-            cString = cString.substringFromIndex(cString.startIndex.advancedBy(1))
+            cString = cString.substring(from: cString.characters.index(cString.startIndex, offsetBy: 1))
         }
         
         if (cString.characters.count != 6) {
@@ -33,7 +33,7 @@ public extension UIColor {
         }
         
         var rgbValue: UInt32 = 0
-        NSScanner(string: cString).scanHexInt(&rgbValue)
+        Scanner(string: cString).scanHexInt32(&rgbValue)
         
         self.init(
             red     : CGFloat((rgbValue & 0xFF0000) >> 16)  / 255,
@@ -46,7 +46,7 @@ public extension UIColor {
     public func fs_hexString () -> String {
         
         // Special case, as white doesn't fall into the RGB color space
-        if (self == UIColor.whiteColor()) {
+        if (self == UIColor.white) {
             return "ffffff"
         }
         

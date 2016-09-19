@@ -22,20 +22,16 @@ class FSE_NSObjectTests: XCTestCase {
     func testClassName_Class () {
         let stringClass     = NSString.self
         let arrayClass      = NSArray.self
-        let dateClass       = NSDate.self
         
-        XCTAssertEqual(stringClass.fs_className    , NSStringFromClass(stringClass).componentsSeparatedByString(".").last!)
-        XCTAssertEqual(arrayClass.fs_className     , NSStringFromClass(arrayClass).componentsSeparatedByString(".").last!)
-        XCTAssertEqual(dateClass.fs_className      , NSStringFromClass(dateClass).componentsSeparatedByString(".").last!)
+        XCTAssertEqual(stringClass.fs_className    , NSStringFromClass(stringClass).components(separatedBy: ".").last!)
+        XCTAssertEqual(arrayClass.fs_className     , NSStringFromClass(arrayClass).components(separatedBy: ".").last!)
     }
     
     func testClassName_Object () {
         let stringObject     = NSString()
         let arrayObject      = NSArray()
-        let dateObject       = NSDate()
         
-        XCTAssertEqual(stringObject.fs_className    , NSStringFromClass(stringObject.dynamicType).componentsSeparatedByString(".").last!)
-        XCTAssertEqual(arrayObject.fs_className     , NSStringFromClass(arrayObject.dynamicType).componentsSeparatedByString(".").last!)
-        XCTAssertEqual(dateObject.fs_className      , NSStringFromClass(dateObject.dynamicType).componentsSeparatedByString(".").last!)
+        XCTAssertEqual(stringObject.fs_className    , NSStringFromClass(type(of: stringObject)).components(separatedBy: ".").last!)
+        XCTAssertEqual(arrayObject.fs_className     , NSStringFromClass(type(of: arrayObject)).components(separatedBy: ".").last!)
     }
 }

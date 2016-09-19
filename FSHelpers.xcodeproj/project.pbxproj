@@ -34,7 +34,6 @@
 		21D52E251D571ACB00BC0872 /* FSE+Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D52E141D571ACB00BC0872 /* FSE+Enumerations.swift */; };
 		21D52E261D571ACB00BC0872 /* FSE+NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D52E151D571ACB00BC0872 /* FSE+NSDate.swift */; };
 		21D52E271D571ACB00BC0872 /* FSE+NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D52E161D571ACB00BC0872 /* FSE+NSObject.swift */; };
-		21D52E281D571ACB00BC0872 /* FSE+Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D52E171D571ACB00BC0872 /* FSE+Range.swift */; };
 		21D52E291D571ACB00BC0872 /* FSE+UIAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D52E181D571ACB00BC0872 /* FSE+UIAlertView.swift */; };
 		21D52E2A1D571ACB00BC0872 /* FSE+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D52E191D571ACB00BC0872 /* FSE+UITableView.swift */; };
 		21D52E2B1D571ACB00BC0872 /* FSE+UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D52E1A1D571ACB00BC0872 /* FSE+UITextField.swift */; };
@@ -43,7 +42,6 @@
 		21D52E301D571B1100BC0872 /* FSHelpersAutolayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D52E2E1D571B1100BC0872 /* FSHelpersAutolayout.swift */; };
 		2BB333281CD9DBC400191166 /* FSE+UITextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB333271CD9DBC400191166 /* FSE+UITextFieldTests.swift */; };
 		2BB333311CD9DE5400191166 /* FSE+EnumerationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB333301CD9DE5400191166 /* FSE+EnumerationsTests.swift */; };
-		2BB333351CD9E15500191166 /* FSE+RangeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB333341CD9E15500191166 /* FSE+RangeTests.swift */; };
 		2BB333391CD9E54100191166 /* FSE+NSObjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BB333381CD9E54100191166 /* FSE+NSObjectTests.swift */; };
 		4F6C2B8A1C628D97000C3F27 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6C2B891C628D97000C3F27 /* TestStoryboard.storyboard */; };
 		4F6C2B8B1C6296D0000C3F27 /* TestStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F6C2B891C628D97000C3F27 /* TestStoryboard.storyboard */; };
@@ -90,7 +88,6 @@
 		21D52E141D571ACB00BC0872 /* FSE+Enumerations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FSE+Enumerations.swift"; path = "Source/FSExtensions/FSE+Enumerations.swift"; sourceTree = SOURCE_ROOT; };
 		21D52E151D571ACB00BC0872 /* FSE+NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FSE+NSDate.swift"; path = "Source/FSExtensions/FSE+NSDate.swift"; sourceTree = SOURCE_ROOT; };
 		21D52E161D571ACB00BC0872 /* FSE+NSObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FSE+NSObject.swift"; path = "Source/FSExtensions/FSE+NSObject.swift"; sourceTree = SOURCE_ROOT; };
-		21D52E171D571ACB00BC0872 /* FSE+Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FSE+Range.swift"; path = "Source/FSExtensions/FSE+Range.swift"; sourceTree = SOURCE_ROOT; };
 		21D52E181D571ACB00BC0872 /* FSE+UIAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FSE+UIAlertView.swift"; path = "Source/FSExtensions/FSE+UIAlertView.swift"; sourceTree = SOURCE_ROOT; };
 		21D52E191D571ACB00BC0872 /* FSE+UITableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FSE+UITableView.swift"; path = "Source/FSExtensions/FSE+UITableView.swift"; sourceTree = SOURCE_ROOT; };
 		21D52E1A1D571ACB00BC0872 /* FSE+UITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FSE+UITextField.swift"; path = "Source/FSExtensions/FSE+UITextField.swift"; sourceTree = SOURCE_ROOT; };
@@ -99,7 +96,6 @@
 		21D52E2E1D571B1100BC0872 /* FSHelpersAutolayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FSHelpersAutolayout.swift; path = Source/FSHelpersAutolayout.swift; sourceTree = SOURCE_ROOT; };
 		2BB333271CD9DBC400191166 /* FSE+UITextFieldTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+UITextFieldTests.swift"; sourceTree = "<group>"; };
 		2BB333301CD9DE5400191166 /* FSE+EnumerationsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+EnumerationsTests.swift"; sourceTree = "<group>"; };
-		2BB333341CD9E15500191166 /* FSE+RangeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+RangeTests.swift"; sourceTree = "<group>"; };
 		2BB333381CD9E54100191166 /* FSE+NSObjectTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "FSE+NSObjectTests.swift"; sourceTree = "<group>"; };
 		4F6C2B891C628D97000C3F27 /* TestStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TestStoryboard.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,7 +140,6 @@
 				210B0E401BFB38760073F2FF /* FSE+NSDateTests.swift */,
 				210B0E411BFB38760073F2FF /* FSE+StringTests.swift */,
 				2BB333301CD9DE5400191166 /* FSE+EnumerationsTests.swift */,
-				2BB333341CD9E15500191166 /* FSE+RangeTests.swift */,
 				2BB3332F1CD9DE4100191166 /* UI Extensions Tests */,
 			);
 			path = Extensions;
@@ -209,7 +204,6 @@
 				21D52E141D571ACB00BC0872 /* FSE+Enumerations.swift */,
 				21D52E151D571ACB00BC0872 /* FSE+NSDate.swift */,
 				21D52E161D571ACB00BC0872 /* FSE+NSObject.swift */,
-				21D52E171D571ACB00BC0872 /* FSE+Range.swift */,
 				2BB3332C1CD9DE0000191166 /* UI Extensions */,
 			);
 			path = FSExtensions;
@@ -318,14 +312,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = FlatStack;
 				TargetAttributes = {
 					210C52AC1BFA3C8100F6C390 = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0800;
 					};
 					210C52B61BFA3C8100F6C390 = {
 						CreatedOnToolsVersion = 7.1.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -385,7 +381,6 @@
 				21D52E2F1D571B1100BC0872 /* FSHelpers.swift in Sources */,
 				21D52E1D1D571ACB00BC0872 /* FSE+UIButton.swift in Sources */,
 				21D52E301D571B1100BC0872 /* FSHelpersAutolayout.swift in Sources */,
-				21D52E281D571ACB00BC0872 /* FSE+Range.swift in Sources */,
 				21D52E211D571ACB00BC0872 /* FSE+UITextView.swift in Sources */,
 				21D52E2C1D571ACB00BC0872 /* FSE+UIView.swift in Sources */,
 				21D52E291D571ACB00BC0872 /* FSE+UIAlertView.swift in Sources */,
@@ -409,7 +404,6 @@
 				2BB333281CD9DBC400191166 /* FSE+UITextFieldTests.swift in Sources */,
 				2BB333311CD9DE5400191166 /* FSE+EnumerationsTests.swift in Sources */,
 				210B0E4A1BFB38760073F2FF /* FSE+DoubleTests.swift in Sources */,
-				2BB333351CD9E15500191166 /* FSE+RangeTests.swift in Sources */,
 				210B0E4C1BFB38760073F2FF /* FSE+StringTests.swift in Sources */,
 				210B0E481BFB38760073F2FF /* FSE+ArrayTests.swift in Sources */,
 				210B0E4B1BFB38760073F2FF /* FSE+NSDateTests.swift in Sources */,
@@ -441,8 +435,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -489,8 +485,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -510,6 +508,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -520,6 +519,7 @@
 		210C52C21BFA3C8100F6C390 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -530,13 +530,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flatstack.FSHelpers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		210C52C31BFA3C8100F6C390 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -547,7 +548,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flatstack.FSHelpers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -558,6 +559,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flatstack.FSHelpersTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -568,6 +570,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.flatstack.FSHelpersTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

@@ -11,7 +11,7 @@ import UIKit
 public extension UIAlertController {
     
     func fs_show () {
-        guard let root = UIApplication.sharedApplication().delegate?.window??.rootViewController else {return}
-        root.showViewController(self, sender: self)
+        guard let root = UIApplication.shared.delegate?.window??.rootViewController else {return}
+        root.show(self, sender: self)
     }
 }
