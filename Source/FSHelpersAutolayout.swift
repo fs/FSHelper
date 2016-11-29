@@ -13,8 +13,8 @@ public enum FSConstraint {
     public static func Visual (
         _ format  : String,
         options : NSLayoutFormatOptions = NSLayoutFormatOptions(),
-        metrics : [String : AnyObject]? = nil,
-        views   : [String : AnyObject]) -> [NSLayoutConstraint]
+        metrics : [String : Any]? = nil,
+        views   : [String : Any]) -> [NSLayoutConstraint]
     {
         let constraints = NSLayoutConstraint.constraints(withVisualFormat: format, options: options, metrics: metrics, views: views)
         return constraints
@@ -22,25 +22,25 @@ public enum FSConstraint {
     
     public static func Edges (_ view: UIView, edges: UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)) -> [NSLayoutConstraint] {
         
-        let dict = ["view": view]
-        let metrics = ["LEFT": edges.left, "TOP": edges.top, "RIGHT": edges.right, "BOTTOM": edges.bottom]
+        let dict   : [String : Any] = ["view": view]
+        let metrics: [String : Any] = ["LEFT": edges.left, "TOP": edges.top, "RIGHT": edges.right, "BOTTOM": edges.bottom]
         
         var constraints:[NSLayoutConstraint] = []
         
-        constraints += Visual("H:|-LEFT-[view]-RIGHT-|", options: [], metrics: metrics as [String : AnyObject]?, views: dict)
-        constraints += Visual("V:|-TOP-[view]-BOTTOM-|", options: [], metrics: metrics as [String : AnyObject]?, views: dict)
+        constraints += Visual("H:|-LEFT-[view]-RIGHT-|", options: [], metrics: metrics, views: dict)
+        constraints += Visual("V:|-TOP-[view]-BOTTOM-|", options: [], metrics: metrics, views: dict)
         
         return constraints
     }
     
     public static func Size (_ view:UIView, size:CGSize) -> [NSLayoutConstraint] {
-        let dict = ["view":view]
-        let metrics = ["WIDTH":size.width, "HEIGHT":size.height]
+        let dict   : [String : Any] = ["view" : view]
+        let metrics: [String : Any] = ["WIDTH" : size.width, "HEIGHT" : size.height]
         
         var constraints:[NSLayoutConstraint] = []
         
-        constraints += Visual("H:[view(WIDTH)]", options: [], metrics: metrics as [String : AnyObject]?, views: dict)
-        constraints += Visual("V:[view(HEIGHT)]", options: [], metrics: metrics as [String : AnyObject]?, views: dict)
+        constraints += Visual("H:[view(WIDTH)]", options: [], metrics: metrics, views: dict)
+        constraints += Visual("V:[view(HEIGHT)]", options: [], metrics: metrics, views: dict)
         
         return constraints
     }
