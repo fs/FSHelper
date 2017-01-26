@@ -24,6 +24,7 @@ open class FSTextView :UITextView {
     @IBInspectable open  var placeholder: String? {
         set (value) {
             self.placeholderLabel.text = value
+            self.placeholderLabel.fs_size = self.placeholderLabel.sizeThatFits(CGSize(width: self.frame.width, height: CGFloat.greatestFiniteMagnitude))
         }
         get {
             return self.placeholderLabel.text
@@ -39,6 +40,7 @@ open class FSTextView :UITextView {
     deinit {
         NotificationCenter.default.removeObserver(self)
         self.removeObserver(self, forKeyPath: "text")
+        self.removeObserver(self, forKeyPath: "bounds")
     }
     
     override init(frame: CGRect, textContainer: NSTextContainer?) {
@@ -56,6 +58,7 @@ open class FSTextView :UITextView {
         self.setupPlaceholder()
         
         self.addObserver(self, forKeyPath: "text", options: NSKeyValueObservingOptions.new, context: nil)
+        self.addObserver(self, forKeyPath: "bounds", options: NSKeyValueObservingOptions.new, context: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(textViewDidBeginEditing(_:)), name: NSNotification.Name.UITextViewTextDidBeginEditing, object: self)
         NotificationCenter.default.addObserver(self, selector: #selector(textViewDidChange(_:)), name: NSNotification.Name.UITextViewTextDidChange, object: self)
@@ -69,27 +72,11 @@ open class FSTextView :UITextView {
     
     fileprivate func setupPlaceholder () {
         self.placeholderLabel.preferredMaxLayoutWidth = self.frame.width
-        self.placeholderLabel.translatesAutoresizingMaskIntoConstraints = false
         self.placeholderLabel.textColor = FSRGBA(198, 198, 204, 1)
         self.placeholderLabel.isUserInteractionEnabled = false
         self.placeholderLabel.numberOfLines = 0
         self.placeholderLabel.font = self.font
-        
         self.addSubview(self.placeholderLabel)
-        
-        let insets = self.textContainerInset
-        let views = ["label": self.placeholderLabel]
-        let metrics = ["LEFT": insets.left, "TOP": insets.top, "RIGHT": insets.right, "BOTTOM": insets.bottom]
-        
-        var constraints:[NSLayoutConstraint] = []
-        
-        constraints += NSLayoutConstraint.constraints(withVisualFormat: "H:|-LEFT-[label]-RIGHT-|", options: [], metrics: metrics, views: views) 
-        constraints += NSLayoutConstraint.constraints(withVisualFormat: "V:|-TOP-[label]-(>=BOTTOM)-|", options: [], metrics: metrics, views: views) 
-        for constraint in constraints {
-            constraint.priority = 751
-        }
-        
-        self.addConstraints(constraints)
         self.textViewDidChange(nil)
     }
     
@@ -104,10 +91,26 @@ open class FSTextView :UITextView {
         return super.fs_textHeight
     }
     
+    
+    
+    private func updatePlaceholderTextPosition () {
+        let insets = self.textContainerInset
+        self.placeholderLabel.frame = CGRect(x: insets.left, y: insets.right, width: self.bounds.width - (insets.left + insets.right), height: self.font?.lineHeight ?? 0)
+    }
+    
     override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath ==  "text" || object as? NSObject == self {
+        guard let key = keyPath, object as? NSObject == self else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+            return
+        }
+        switch key {
+        case "text":
             self.textViewDidChange(nil)
-        } else {
+            
+        case "bounds":
+            self.updatePlaceholderTextPosition()
+            
+        default:
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         }
     }
