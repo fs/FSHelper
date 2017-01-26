@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		079297501E366453003A8E6E /* FSHelpers.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 079297461E3663EB003A8E6E /* FSHelpers.framework */; };
+		079297511E366453003A8E6E /* FSHelpers.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 079297461E3663EB003A8E6E /* FSHelpers.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		210C52841BFA3C6400F6C390 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C52831BFA3C6400F6C390 /* AppDelegate.swift */; };
 		210C52861BFA3C6400F6C390 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210C52851BFA3C6400F6C390 /* ViewController.swift */; };
 		210C52891BFA3C6400F6C390 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210C52871BFA3C6400F6C390 /* Main.storyboard */; };
@@ -27,12 +29,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		210C52E21BFA3CD600F6C390 /* Embed Frameworks */ = {
+		079297521E366453003A8E6E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				079297511E366453003A8E6E /* FSHelpers.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,6 +43,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		079297431E366302003A8E6E /* FSHelpers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FSHelpers.framework; path = "../build/Debug-iphoneos/FSHelpers.framework"; sourceTree = "<group>"; };
+		079297461E3663EB003A8E6E /* FSHelpers.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FSHelpers.framework; path = "../../../../Library/Developer/Xcode/DerivedData/FSHelpers-fmbcrnnqaltbkfggelozszxguygb/Build/Products/Debug-iphonesimulator/FSHelpers.framework"; sourceTree = "<group>"; };
 		210C52801BFA3C6400F6C390 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		210C52831BFA3C6400F6C390 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		210C52851BFA3C6400F6C390 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079297501E366453003A8E6E /* FSHelpers.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +76,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		079297421E366302003A8E6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				079297461E3663EB003A8E6E /* FSHelpers.framework */,
+				079297431E366302003A8E6E /* FSHelpers.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		210C52771BFA3C6400F6C390 = {
 			isa = PBXGroup;
 			children = (
 				210C52821BFA3C6400F6C390 /* Example */,
 				210C52971BFA3C6500F6C390 /* ExampleTests */,
 				210C52811BFA3C6400F6C390 /* Products */,
+				079297421E366302003A8E6E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,7 +136,7 @@
 				210C527C1BFA3C6400F6C390 /* Sources */,
 				210C527D1BFA3C6400F6C390 /* Frameworks */,
 				210C527E1BFA3C6400F6C390 /* Resources */,
-				210C52E21BFA3CD600F6C390 /* Embed Frameworks */,
+				079297521E366453003A8E6E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
