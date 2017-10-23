@@ -317,7 +317,7 @@
 				TargetAttributes = {
 					210C52AC1BFA3C8100F6C390 = {
 						CreatedOnToolsVersion = 7.1.1;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 					};
 					210C52B61BFA3C8100F6C390 = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -530,7 +530,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flatstack.FSHelpers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -548,7 +549,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.flatstack.FSHelpers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

@@ -116,11 +116,11 @@ open class FSTextView :UITextView {
     }
     
     //MARK: - Notifications
-    func textViewDidBeginEditing (_ sender: AnyObject?) {
+    @objc func textViewDidBeginEditing (_ sender: AnyObject?) {
         
     }
     
-    func textViewDidChange (_ sender: AnyObject?) {
+    @objc func textViewDidChange (_ sender: AnyObject?) {
         if self.text.characters.count == 0 {
             self.placeholderLabel.isHidden = false
         } else {
@@ -128,7 +128,7 @@ open class FSTextView :UITextView {
         }
     }
     
-    func textViewDidEndEditing (_ sender: AnyObject?) {
+    @objc func textViewDidEndEditing (_ sender: AnyObject?) {
         
     }
     
@@ -144,7 +144,7 @@ extension UITextView {
         return textView.fs_textHeight
     }
     
-    public var fs_textHeight:CGFloat {
+    @objc public var fs_textHeight:CGFloat {
         let size = self.sizeThatFits(CGSize(width: self.fs_width, height: CGFloat.greatestFiniteMagnitude))
         return size.height + 1
     }
