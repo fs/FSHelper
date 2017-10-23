@@ -80,19 +80,6 @@ open class FSTextView :UITextView {
         self.textViewDidChange(nil)
     }
     
-    override class open func fs_getTextHeight (forText text:String, width:CGFloat, font:UIFont) -> CGFloat {
-        let textView = FSTextView(frame: CGRect(x: 0, y: 0, width: width, height: 0))
-        textView.font = font
-        textView.text = text
-        return textView.fs_textHeight
-    }
-    
-    override open var fs_textHeight:CGFloat {
-        return super.fs_textHeight
-    }
-    
-    
-    
     private func updatePlaceholderTextPosition () {
         let insets = self.textContainerInset
         self.placeholderLabel.frame = CGRect(x: insets.left, y: insets.right, width: self.bounds.width - (insets.left + insets.right), height: self.font?.lineHeight ?? 0)
