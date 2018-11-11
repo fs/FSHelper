@@ -9,7 +9,9 @@
 import UIKit
 
 extension UITextField {
+    
+    /// Deprecated use isEmpty
     var fs_isEmpty: Bool {
-        return self.text?.characters.count == 0
+        return self.text?.isEmpty ?? true
     }
 }

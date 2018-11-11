@@ -19,8 +19,8 @@ class FSE_StringTests: XCTestCase {
         let lenght = 100 + arc4random_uniform(100)
         
         for _ in 0 ..< lenght {
-            let index = Int(arc4random_uniform(UInt32(letters.characters.count)))
-            let stringIndex = letters.characters.index(letters.startIndex, offsetBy: index)
+            let index = Int(arc4random_uniform(UInt32(letters.count)))
+            let stringIndex = letters.index(letters.startIndex, offsetBy: index)
             let char = letters[stringIndex]
             result.append(char)
         }
@@ -34,14 +34,6 @@ class FSE_StringTests: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
-    }
-    
-    func testStringLenght () {
-        for _ in 0 ..< 5 {
-            let string = self.generateRandomString()
-            let stringLenght = string.characters.count
-            XCTAssertEqual(stringLenght, string.fs_length)
-        }
     }
     
     func testGetRowHeight () {
@@ -169,32 +161,62 @@ class FSE_StringTests: XCTestCase {
         }
     }
     
-    func testGetStringBetweenString () {
-        
+    func testGetStringBetweenStringSuccess () {
+        // Arrange
         let string          = "|searching_string|"
         let firstString     = "|first_string|"
         let secondString    = "|second_string|"
-        
-        //Success
         let fullString = "Random text prefix \(firstString)\(string)\(secondString) Random text postfix"
+        
+        // Act
         let result = fullString.fs_getStringBetweenString(firstString, secondString: secondString)
+        
+        // Assert
         XCTAssertEqual(string, result)
-        
-        //First string not found
-        let fullString2 = "Random text prefix other_first\(string)\(secondString) Random text postfix"
-        let result2 = fullString2.fs_getStringBetweenString(firstString, secondString: secondString)
-        XCTAssertNil(result2)
-        
-        //Second string not found
-        let fullString3 = "Random text prefix\(firstString)\(string)other_second Random text postfix"
-        let result3 = fullString3.fs_getStringBetweenString(firstString, secondString: secondString)
-        XCTAssertNil(result3)
-        
-        //Searching string not found
-        let fullString4 = "Random text prefix \(firstString)\(secondString) Random text postfix"
-        let result4 = fullString4.fs_getStringBetweenString(firstString, secondString: secondString)
-        XCTAssertEqual(0, result4!.characters.count)
     }
+    
+    func testGetStringBetweenStringFirstStringNotFound () {
+        // Arrange
+        let string          = "|searching_string|"
+        let firstString     = "|first_string|"
+        let secondString    = "|second_string|"
+        let fullString = "Random text prefix other_first\(string)\(secondString) Random text postfix"
+        
+        // Act
+        let result = fullString.fs_getStringBetweenString(firstString, secondString: secondString)
+        
+        // Assert
+        XCTAssertNil(result)
+    }
+    
+    func testGetStringBetweenStringSecondStringNotFound () {
+        // Arrange
+        let string          = "|searching_string|"
+        let firstString     = "|first_string|"
+        let secondString    = "|second_string|"
+        let fullString = "Random text prefix\(firstString)\(string)other_second Random text postfix"
+        
+        // Act
+        let result = fullString.fs_getStringBetweenString(firstString, secondString: secondString)
+        
+        // Assert
+        XCTAssertNil(result)
+    }
+    
+    func testGetStringBetweenStringSearchStringNotFound () {
+        // Arrange
+        let firstString     = "|first_string|"
+        let secondString    = "|second_string|"
+        let fullString = "Random text prefix \(firstString)\(secondString) Random text postfix"
+        
+        // Act
+        let result = fullString.fs_getStringBetweenString(firstString, secondString: secondString)
+        
+        // Assert
+        XCTAssertEqual(0, result!.count)
+    }
+    
+    
     
     func testLocalizedStringFormat () {
         
@@ -225,31 +247,17 @@ class FSE_StringTests: XCTestCase {
     
     func testSubscriptCharacter () {
         let text = self.generateRandomString()
-        for i in 0 ..< Int(text.characters.count) {
+        for i in 0 ..< Int(text.count) {
             let character: Character = text[i]
-            XCTAssertEqual(character, text[text.characters.index(text.startIndex, offsetBy: i)])
+            XCTAssertEqual(character, text[text.index(text.startIndex, offsetBy: i)])
         }
     }
     
     func testSubscriptString () {
         let text = self.generateRandomString()
-        for i in 0 ..< Int(text.characters.count) {
+        for i in 0 ..< Int(text.count) {
             let string: String = text[i]
-            XCTAssertEqual(string, String(text[text.characters.index(text.startIndex, offsetBy: i)]))
+            XCTAssertEqual(string, String(text[text.index(text.startIndex, offsetBy: i)]))
         }
-    }
-    
-    func testSubscriptRange () {
-        let start = Int(arc4random_uniform(50))
-        let lenght = Int(arc4random_uniform(50))
-        let end = (start+lenght)
-        
-        let text = self.generateRandomString()
-        
-        let range = Range(start ..< end)
-        let substring = text[start ..< end]
-        let etalon = text.substring(with: Range(text.characters.index(text.startIndex, offsetBy: range.lowerBound) ..< text.characters.index(text.startIndex, offsetBy: range.upperBound)))
-        
-        XCTAssertEqual(substring, etalon)
     }
 }

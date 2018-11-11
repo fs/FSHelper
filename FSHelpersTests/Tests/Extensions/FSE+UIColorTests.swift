@@ -43,13 +43,17 @@ class FSE_UIColorTests: XCTestCase {
     
     func testHexString() {
         for _ in 0 ..< 5 {
+            // Arrange
             let red     = CGFloat(arc4random_uniform(255))/255.0
             let green   = CGFloat(arc4random_uniform(255))/255.0
             let blue    = CGFloat(arc4random_uniform(255))/255.0
             
             let etalon = NSString(format: "%02x%02x%02x", (Int(red*255)), (Int(green*255)), (Int(blue*255))) as String
+            
+            // Act
             let color = UIColor(red: red, green: green, blue: blue, alpha: 1)
             
+            // Assert
             XCTAssertEqual(etalon, color.fs_hexString(), "Must be equal")
         }
     }

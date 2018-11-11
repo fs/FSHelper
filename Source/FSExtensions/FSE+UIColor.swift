@@ -14,7 +14,7 @@ public extension UIColor {
         
         let regex: NSRegularExpression = try! NSRegularExpression(pattern: "[^a-fA-F|0-9]", options: [])
         
-        let match: Int = regex.numberOfMatches(in: fs_hexString, options: NSRegularExpression.MatchingOptions.reportCompletion, range: NSMakeRange(0, fs_hexString.characters.count))
+        let match: Int = regex.numberOfMatches(in: fs_hexString, options: NSRegularExpression.MatchingOptions.reportCompletion, range: NSMakeRange(0, fs_hexString.count))
         
         if (match != 0) {
             self.init()
@@ -24,10 +24,10 @@ public extension UIColor {
         var cString: String = fs_hexString.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines).uppercased()
         
         if (cString.hasPrefix("#")) {
-            cString = cString.substring(from: cString.characters.index(cString.startIndex, offsetBy: 1))
+            cString.removeFirst()
         }
         
-        if (cString.characters.count != 6) {
+        if (cString.count != 6) {
             self.init()
             return nil
         }
