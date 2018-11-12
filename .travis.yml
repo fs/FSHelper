@@ -1,0 +1,4 @@
+language: swift
+xcode_project: FSHelpers.xcodeproj
+xcode_scheme: FSHelpers
+xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X

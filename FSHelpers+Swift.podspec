@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "FSHelpers+Swift"
-  s.version      = "2.2"
+  s.version      = "2.2.1"
   s.summary      = "Helpers and extensions for iOS"
 
   # This description is used to generate tags and improve search results.
@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
   #s.description  = <<-DESC
   #                 DESC
 
-  s.homepage     = "https://github.com/fs/FSHelper/tree/master/Swift"
+  s.homepage     = "https://github.com/fs/FSHelper/tree/master"
   # s.screenshots  = "www.example.com/screenshots_1.gif", "www.example.com/screenshots_2.gif"
 
 
@@ -59,7 +59,7 @@ Pod::Spec.new do |s|
   #  the deployment target. You can optionally include the target after the platform.
   #
 
-  s.platform     = :ios, "8.0"
+  s.platform     = :ios, "9.1"
 
   #  When using multiple platforms
   # s.ios.deployment_target = "5.0"
