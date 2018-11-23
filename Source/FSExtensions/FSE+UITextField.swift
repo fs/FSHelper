@@ -10,7 +10,7 @@ import UIKit
 
 extension UITextField {
     
-    /// Deprecated use isEmpty
+    @available(*, deprecated, message: "Deprecated. Use text?.isEmpty")
     var fs_isEmpty: Bool {
         return self.text?.isEmpty ?? true
     }
