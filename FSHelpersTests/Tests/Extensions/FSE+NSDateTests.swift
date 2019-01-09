@@ -81,12 +81,14 @@ class FSE_NSDateTests: XCTestCase {
             let today           = Date(timeIntervalSince1970: localTimestamp + self.randomInterval())
             let tomorrow        = Date(timeIntervalSince1970: localTimestamp + self.randomInterval() + 24*60*60)
             let yesterday       = Date(timeIntervalSince1970: localTimestamp + self.randomInterval() - 24*60*60)
+            let thisWeek        = Date(timeIntervalSince1970: localTimestamp + self.randomInterval() + 2*24*60*60)
             let farAway         = Date(timeIntervalSince1970: localTimestamp + self.randomInterval() + 24*60*60*10)
             
             XCTAssertEqual(FSDatePeriod(date: today),         FSDatePeriod.today, "Must be today")
             XCTAssertEqual(FSDatePeriod(date: tomorrow),      FSDatePeriod.tomorrow, "Must be tomorrow")
             XCTAssertNotEqual(FSDatePeriod(date: yesterday),  FSDatePeriod.tomorrow, "Must be unknow")
             XCTAssertEqual(FSDatePeriod(date: farAway),       FSDatePeriod.unknow, "Must be unknow")
+            XCTAssertEqual(FSDatePeriod(date: thisWeek),      FSDatePeriod.thisWeek, "Must be this week")
         }
     }
     

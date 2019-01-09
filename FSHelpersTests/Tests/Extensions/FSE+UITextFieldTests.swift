@@ -25,12 +25,12 @@ class FSE_UITextFieldTests: XCTestCase {
         let textField = UITextField()
         
         textField.text = nil
-        XCTAssert(textField.fs_isEmpty)
+        XCTAssertTrue(textField.fs_isEmpty)
         
         textField.text = ""
-        XCTAssert(textField.fs_isEmpty)
+        XCTAssertTrue(textField.fs_isEmpty)
         
         textField.text = "test"
-        XCTAssert(!textField.fs_isEmpty)
+        XCTAssertFalse(textField.fs_isEmpty)
     }
 }

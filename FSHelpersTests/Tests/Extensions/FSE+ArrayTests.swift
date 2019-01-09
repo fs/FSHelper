@@ -9,6 +9,19 @@
 import XCTest
 @testable import FSHelpers
 
+fileprivate class TestObject: Equatable {
+    
+    var name: String
+    
+    init(name: String) {
+        self.name = name
+    }
+    
+    static func == (lhs: TestObject, rhs: TestObject) -> Bool {
+        return lhs.name == rhs.name
+    }
+}
+
 class FSE_ArrayTests: XCTestCase {
     
     fileprivate let array: [Int] = {
@@ -65,6 +78,106 @@ class FSE_ArrayTests: XCTestCase {
         XCTAssertNotEqual(array,                shuffleArray,           "Must not be equal")
         XCTAssertNotEqual(shuffleArray,         doubleShuffleArray,     "Must not be equal")
         XCTAssertNotEqual(doubleShuffleArray,   array,                  "Must not be equal")
+    }
+    
+    func testRemoveFirst() {
+        // arrange
+        let expectedArray = [5, 8, 9, 32, 56]
+        let expectedDeletedInt = 3
+        
+        var array = [5, 3, 8, 9, 32, 56]
+        
+        // act
+        let deletedInt = array.fs_removeFirst { $0 == expectedDeletedInt }
+        
+        // assert
+        XCTAssertEqual(array, expectedArray)
+        XCTAssertEqual(deletedInt, expectedDeletedInt)
+    }
+    
+    func testRemoveFirstWithReturnNil() {
+        // arrange
+        var array = [5, 3, 8, 9, 32, 56]
+        
+        // act
+        let deletedElement = array.fs_removeFirst { $0 == 2 }
+        
+        // assert
+        XCTAssertNil(deletedElement)
+    }
+    
+    func testPrepend() {
+        // arrange
+        let expectedArray = [5, 8, 9, 32, 56]
+        let expectedPrependInt = 5
+        
+        var array = [8, 9, 32, 56]
+        
+        // act
+        array.fs_prepend(expectedPrependInt)
+        
+        // assert
+        XCTAssertEqual(array, expectedArray)
+    }
+    
+    func testRemove() {
+        // arrange
+        let object1 = TestObject(name: "object1")
+        let object2 = TestObject(name: "object2")
+        var array = [object1, object2]
+        
+        let expectedArray = [object2]
+        let expectedDeletedObject = object1
+        
+        // act
+        let deletedObject = array.fs_remove(object: object1)
+        
+        // assert
+        XCTAssertEqual(array, expectedArray)
+        XCTAssertEqual(deletedObject, expectedDeletedObject)
+    }
+    
+    func testRemoveWithReturnNil() {
+        // arrange
+        let object1 = TestObject(name: "object1")
+        let object2 = TestObject(name: "object2")
+        let object3 = TestObject(name: "object2")
+        var array = [object1, object2]
+        
+        // act
+        let deletedObject = array.fs_remove(object: object3)
+        
+        // assert
+        XCTAssertNil(deletedObject)
+    }
+    
+    func testContains() {
+        // arrange
+        let object1 = TestObject(name: "object1")
+        let object2 = TestObject(name: "object2")
+        let object3 = TestObject(name: "object2")
+        let array = [object1, object2]
+        
+        // act
+        let containsObject2 = array.fs_contains(object: object2)
+        let containsObject3 = array.fs_contains(object: object3)
+        
+        // assert
+        XCTAssertTrue(containsObject2)
+        XCTAssertFalse(containsObject3)
+    }
+    
+    func testAppend() {
+        // arrange
+        let array1 = [5, 7]
+        let array2 = [2, 9]
+        let expectedArray = [5, 7, 2, 9]
+        
+        // act
+        let resultArray = array1 + array2
+        
+        // assert
+        XCTAssertEqual(resultArray, expectedArray)
     }
     
 }
