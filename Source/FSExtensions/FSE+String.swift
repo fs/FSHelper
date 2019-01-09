@@ -93,6 +93,14 @@ public extension String {
         return URL(string: self)
     }
     
+    public func fs_prefix(count: Int) -> String {
+        return ((self.count > count) ? String(self[..<self.index(self.startIndex, offsetBy: count)]) : self)
+    }
+    
+    public func fs_suffix(from index: Int) -> String {
+        return ((self.count > index) ? String(self[self.index(self.startIndex, offsetBy: index)...]) : "")
+    }
+    
     public var fs_localizedString: String {
         let localized = NSLocalizedString(self.fs_localizedStringFormat, comment: "")
         return localized

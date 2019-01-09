@@ -57,4 +57,30 @@ class FSE_DictionaryTests: XCTestCase {
             }
         }
     }
+    
+    func testAppend() {
+        // arrange
+        let dictionary1 = [1: "Hello", 2: "World"]
+        let dictionary2 = [3: "Hello", 4: "Swift"]
+        let expectedDictionary = [1: "Hello", 2: "World", 3: "Hello", 4: "Swift"]
+        
+        // act
+        let resultDictionary = dictionary1 + dictionary2
+        
+        // assert
+        XCTAssertEqual(resultDictionary, expectedDictionary)
+    }
+    
+    func testAppendWithEquality() {
+        // arrange
+        var dictionary = [1: "Hello", 2: "World"]
+        let appendDictionary = [3: "Hello", 4: "Swift"]
+        let expectedDictionary = [1: "Hello", 2: "World", 3: "Hello", 4: "Swift"]
+        
+        // act
+        dictionary += appendDictionary
+        
+        // assert
+        XCTAssertEqual(dictionary, expectedDictionary)
+    }
 }

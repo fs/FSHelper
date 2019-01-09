@@ -260,4 +260,104 @@ class FSE_StringTests: XCTestCase {
             XCTAssertEqual(string, String(text[text.index(text.startIndex, offsetBy: i)]))
         }
     }
+    
+    func testPrefix() {
+        // arrange
+        let string = "$52.34"
+        let expectedPrefix = "$"
+        
+        // act
+        let prefix = string.fs_prefix(count: 1)
+        
+        // assert
+        XCTAssertEqual(prefix, expectedPrefix)
+    }
+    
+    func testPrefixWithLargeCount() {
+        // arrage
+        let string = "$52.34"
+        let expectedPrefix = "$52.34"
+        
+        // act
+        let prefix = string.fs_prefix(count: string.count + 15)
+        
+        // assert
+        XCTAssertEqual(prefix, expectedPrefix)
+    }
+    
+    func testSuffix() {
+        // arrange
+        let string = "52.34₽"
+        let expectedSuffix = "₽"
+        
+        // act
+        let suffix = string.fs_suffix(from: 5)
+        
+        // assert
+        XCTAssertEqual(suffix, expectedSuffix)
+    }
+    
+    func testSuffixWithLargeFromIndex() {
+        // arrange
+        let string = "52.34₽"
+        let expectedSuffix = ""
+        
+        // act
+        let suffix = string.fs_suffix(from: string.count + 15)
+        
+        // assert
+        XCTAssertEqual(suffix, expectedSuffix)
+    }
+    
+    func testToDouble() {
+        // arrange
+        let string = "52.56"
+        let expectedDouble = Double(string)
+        
+        // act
+        let convertedDouble = string.fs_toDouble()
+        
+        // assert
+        XCTAssertNotNil(convertedDouble)
+        XCTAssertEqual(convertedDouble, expectedDouble)
+    }
+    
+    func testToInt() {
+        // arrange
+        let string = "12"
+        let expectedInt = Int(string)
+        
+        // act
+        let convertedInt = string.fs_toInt()
+        
+        // assert
+        XCTAssertNotNil(convertedInt)
+        XCTAssertEqual(convertedInt, expectedInt)
+    }
+    
+    func testTrim() {
+        // arrange
+        let string = "  \t\t  Let's trim all the whitespace  \n \t  \n  "
+        let expectedString = "Let's trim all the whitespace"
+        
+        // act
+        let trimmedString = string.fs_trim()
+        
+        // assert
+        XCTAssertEqual(trimmedString, expectedString)
+    }
+    
+    func testToURL() {
+        // arrange
+        let string = "https://www.flatstack.com"
+        let expectedURL = URL(string: string)
+        
+        // act
+        let convertedURL = string.fs_toURL()
+        
+        // assert
+        XCTAssertNotNil(convertedURL)
+        XCTAssertEqual(convertedURL, expectedURL)
+    }
+    
 }
