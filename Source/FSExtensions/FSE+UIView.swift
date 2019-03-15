@@ -122,7 +122,7 @@ public extension UICollectionView {
     /**
      - parameter options: UIViewAnimationOptionTransition's only available
      */
-    func fs_reloadDataWithAnimation(_ duration: TimeInterval = 0.2, options: UIViewAnimationOptions, completion: ((Bool) -> Void)?) {
+    func fs_reloadDataWithAnimation(_ duration: TimeInterval = 0.2, options: UIView.AnimationOptions, completion: ((Bool) -> Void)?) {
         
         UIView.transition(with: self,
             duration: duration,
@@ -140,7 +140,7 @@ public extension UITableView {
     /**
      - parameter options: UIViewAnimationOptionTransition's only available
      */
-    func fs_reloadDataWithAnimation(_ duration: TimeInterval = 0.2, options: UIViewAnimationOptions, completion: ((Bool) -> Void)?) {
+    func fs_reloadDataWithAnimation(_ duration: TimeInterval = 0.2, options: UIView.AnimationOptions, completion: ((Bool) -> Void)?) {
         
         UIView.transition(with: self,
             duration: duration,

@@ -54,7 +54,7 @@ class FSHelperAutolayoutTests: XCTestCase {
         
         for constraint in constraints {
             
-            XCTAssertEqual(NSLayoutAttribute.notAnAttribute, constraint.secondAttribute)
+            XCTAssertEqual(NSLayoutConstraint.Attribute.notAnAttribute, constraint.secondAttribute)
             
             XCTAssertEqual(constraint.firstItem as? UIView  , view)
             XCTAssertNil(constraint.secondItem)
@@ -111,8 +111,8 @@ class FSHelperAutolayoutTests: XCTestCase {
         
         let constraint = FSConstraint.CenterX(view, offset: offset)
         
-        XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.centerX)
-        XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.centerX)
+        XCTAssertEqual(constraint.firstAttribute, NSLayoutConstraint.Attribute.centerX)
+        XCTAssertEqual(constraint.secondAttribute, NSLayoutConstraint.Attribute.centerX)
         
         XCTAssertEqual(constraint.firstItem as? UIView, view)
         XCTAssertEqual(constraint.secondItem as? UIView, superview)
@@ -132,8 +132,8 @@ class FSHelperAutolayoutTests: XCTestCase {
         
         let constraint = FSConstraint.CenterY(view, offset: offset)
         
-        XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.centerY)
-        XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.centerY)
+        XCTAssertEqual(constraint.firstAttribute, NSLayoutConstraint.Attribute.centerY)
+        XCTAssertEqual(constraint.secondAttribute, NSLayoutConstraint.Attribute.centerY)
         
         XCTAssertEqual(constraint.firstItem as? UIView, view)
         XCTAssertEqual(constraint.secondItem as? UIView, superview)
@@ -151,8 +151,8 @@ class FSHelperAutolayoutTests: XCTestCase {
         
         let constraint = FSConstraint.ProportionalWidth(view1, secondView: view2, multipler: multipler, constant: constant)
         
-        XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.width)
-        XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.width)
+        XCTAssertEqual(constraint.firstAttribute, NSLayoutConstraint.Attribute.width)
+        XCTAssertEqual(constraint.secondAttribute, NSLayoutConstraint.Attribute.width)
         
         XCTAssertEqual(constraint.firstItem as? UIView, view1)
         XCTAssertEqual(constraint.secondItem as? UIView, view2)
@@ -168,8 +168,8 @@ class FSHelperAutolayoutTests: XCTestCase {
         
         let constraint = FSConstraint.ProportionalHeight(view1, secondView: view2, multipler: multipler, constant: constant)
         
-        XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.height)
-        XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.height)
+        XCTAssertEqual(constraint.firstAttribute, NSLayoutConstraint.Attribute.height)
+        XCTAssertEqual(constraint.secondAttribute, NSLayoutConstraint.Attribute.height)
         
         XCTAssertEqual(constraint.firstItem as? UIView, view1)
         XCTAssertEqual(constraint.secondItem as? UIView, view2)
@@ -185,8 +185,8 @@ class FSHelperAutolayoutTests: XCTestCase {
         
         let constraint = FSConstraint.ProportionalHeightToWidth(view1, secondView: view2, multipler: multipler, constant: constant)
         
-        XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.height)
-        XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.width)
+        XCTAssertEqual(constraint.firstAttribute, NSLayoutConstraint.Attribute.height)
+        XCTAssertEqual(constraint.secondAttribute, NSLayoutConstraint.Attribute.width)
         
         XCTAssertEqual(constraint.firstItem as? UIView, view1)
         XCTAssertEqual(constraint.secondItem as? UIView, view2)
@@ -202,8 +202,8 @@ class FSHelperAutolayoutTests: XCTestCase {
         
         let constraint = FSConstraint.ProportionalWidthToHeight(view1, secondView: view2, multipler: multipler, constant: constant)
         
-        XCTAssertEqual(constraint.firstAttribute, NSLayoutAttribute.width)
-        XCTAssertEqual(constraint.secondAttribute, NSLayoutAttribute.height)
+        XCTAssertEqual(constraint.firstAttribute, NSLayoutConstraint.Attribute.width)
+        XCTAssertEqual(constraint.secondAttribute, NSLayoutConstraint.Attribute.height)
         
         XCTAssertEqual(constraint.firstItem as? UIView, view1)
         XCTAssertEqual(constraint.secondItem as? UIView, view2)

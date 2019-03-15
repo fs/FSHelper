@@ -37,8 +37,8 @@ public extension FSKeyboardScrollSupport where Self: AnyObject {
         
         let center = NotificationCenter.default
         
-        center.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        center.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        center.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        center.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
@@ -49,10 +49,10 @@ public extension FSKeyboardScrollSupport where Self: UIViewController {
         guard let scrollView = self.fs_keyboardScrollSupportScrollView else {return}
         
         guard let info = (notif as NSNotification).userInfo else {return}
-        guard let value = info[UIKeyboardFrameEndUserInfoKey] as? NSValue else {return}
+        guard let value = info[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else {return}
         
         let keyboardFrame = value.cgRectValue
-        let contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardFrame.height, 0.0)
+        let contentInsets = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: keyboardFrame.height, right: 0.0)
         
         scrollView.contentInset             = contentInsets
         scrollView.scrollIndicatorInsets    = contentInsets

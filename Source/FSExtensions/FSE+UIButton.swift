@@ -10,7 +10,7 @@ import UIKit
 
 public extension UIButton{
     var fs_title: String? {
-        set (value) {self.setTitle(value, for: UIControlState())}
-        get         {return self.title(for: UIControlState())}
+        set (value) {self.setTitle(value, for: UIControl.State())}
+        get         {return self.title(for: UIControl.State())}
     }
 }

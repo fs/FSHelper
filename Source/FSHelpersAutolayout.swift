@@ -13,7 +13,7 @@ public enum FSConstraint {
     
     public static func Visual (
         _ format  : String,
-        options : NSLayoutFormatOptions = NSLayoutFormatOptions(),
+        options : NSLayoutConstraint.FormatOptions = NSLayoutConstraint.FormatOptions(),
         metrics : [String : Any]? = nil,
         views   : [String : Any]) -> [NSLayoutConstraint]
     {
@@ -21,7 +21,7 @@ public enum FSConstraint {
         return constraints
     }
     
-    public static func Edges (_ view: UIView, edges: UIEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 0)) -> [NSLayoutConstraint] {
+    public static func Edges (_ view: UIView, edges: UIEdgeInsets = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)) -> [NSLayoutConstraint] {
         
         let dict   : [String : Any] = ["view": view]
         let metrics: [String : Any] = ["LEFT": edges.left, "TOP": edges.top, "RIGHT": edges.right, "BOTTOM": edges.bottom]

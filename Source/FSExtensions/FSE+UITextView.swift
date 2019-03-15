@@ -60,13 +60,13 @@ open class FSTextView :UITextView {
         self.addObserver(self, forKeyPath: "text", options: NSKeyValueObservingOptions.new, context: nil)
         self.addObserver(self, forKeyPath: "bounds", options: NSKeyValueObservingOptions.new, context: nil)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(textViewDidBeginEditing(_:)), name: NSNotification.Name.UITextViewTextDidBeginEditing, object: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(textViewDidChange(_:)), name: NSNotification.Name.UITextViewTextDidChange, object: self)
-        NotificationCenter.default.addObserver(self, selector: #selector(textViewDidEndEditing(_:)), name: NSNotification.Name.UITextViewTextDidEndEditing, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(textViewDidBeginEditing(_:)), name: UITextView.textDidBeginEditingNotification, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(textViewDidChange(_:)), name: UITextView.textDidChangeNotification, object: self)
+        NotificationCenter.default.addObserver(self, selector: #selector(textViewDidEndEditing(_:)), name: UITextView.textDidEndEditingNotification, object: self)
     }
     
     fileprivate func setupInsets () {
-        self.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        self.textContainerInset = UIEdgeInsets.init(top: 0, left: 0, bottom: 0, right: 0)
         self.textContainer.lineFragmentPadding = 0
     }
     
