@@ -78,7 +78,7 @@ public extension UIImage {
     }
     
     public var fs_base64: String {
-        let imageData = UIImagePNGRepresentation(self)!
+        let imageData = self.pngData()!
         let base64String = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
         return base64String
     }

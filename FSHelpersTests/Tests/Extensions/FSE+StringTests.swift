@@ -117,7 +117,7 @@ class FSE_StringTests: XCTestCase {
             
             let boundingSize:CGSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: height)
             
-            let attributes = [NSFontAttributeName:font]
+            let attributes = [NSAttributedString.Key.font:font]
             
             let options : NSStringDrawingOptions = unsafeBitCast(
                 NSStringDrawingOptions.usesLineFragmentOrigin.rawValue |
@@ -143,7 +143,7 @@ class FSE_StringTests: XCTestCase {
             
             let boundingSize:CGSize = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
             
-            let attributes = [NSFontAttributeName:font]
+            let attributes = [NSAttributedString.Key.font:font]
             
             let options : NSStringDrawingOptions = unsafeBitCast(
                 NSStringDrawingOptions.usesLineFragmentOrigin.rawValue |

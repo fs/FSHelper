@@ -29,7 +29,7 @@ class FSE_UIImageTests: XCTestCase {
     func testBase64 () {
         let image = UIImage(data: self.imageData)!
         
-        let imageData = UIImagePNGRepresentation(image)!
+        let imageData = image.pngData()!
         let etalon = imageData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
         
         XCTAssertEqual(etalon, image.fs_base64, "Must be equal")

@@ -114,7 +114,7 @@ public enum FSSettingsApp: FSSettingsAppProtocol {
     
     public var URL: Foundation.URL {
         switch self {
-        case .settings: return Foundation.URL(string: UIApplicationOpenSettingsURLString)!
+        case .settings: return Foundation.URL(string: UIApplication.openSettingsURLString)!
         }
     }
 }
